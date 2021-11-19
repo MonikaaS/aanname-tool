@@ -1,0 +1,7 @@
+.user {
+ margin-left: -14px;
+}
+
+.user:first-of-type{
+ margin-left: 0px;
+}

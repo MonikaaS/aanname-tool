@@ -1,0 +1,26 @@
+.box-shadow{
+ box-shadow: -11px 8px 0px 0px #686868, -11px 8px 0px 2px #000000; 
+ transition: all 0.2s ease-in-out;
+}
+
+.box-shadow:hover{
+ box-shadow: -9px 6px 0px 0px #686868, -9px 6px 0px 2px #000000; 
+}
+
+.box-shadow-card{
+ box-shadow: -11px 10px 0px 0px #fef3c7; 
+ transition: all 0.2s ease-in-out;
+}
+
+.box-shadow-card:hover{
+ box-shadow: -9px 6px 0px 0px #fef3c7; 
+}
+
+.box-shadow-card-q{
+ box-shadow: -11px 10px 0px 0px #4f46e5; 
+ transition: all 0.2s ease-in-out;
+}
+
+.box-shadow-card-q:hover{
+ box-shadow: -9px 6px 0px 0px #4f46e5; 
+}
