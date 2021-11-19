@@ -45,14 +45,9 @@ io.on("connection", (socket) => {
   socket.on(NEW_USER_EVENT, (userInfo) => {
     io.in(roomId).emit(NEW_USER_EVENT, userInfo);
     usersPerRoom[roomId].push(userInfo);
-
-    io.in(roomId).emit(ALL_USERS, usersPerRoom);    
   });
 
-  socket.on(ALL_USERS, (usersPerRoom) => {
-    io.in(roomId).emit(ALL_USERS, usersPerRoom);
-    
-  });
+  io.in(roomId).emit(ALL_USERS, usersPerRoom);
 
   socket.on(QUESTIONS, (data) => {
     io.in(roomId).emit(QUESTIONS, data);

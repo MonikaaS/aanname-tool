@@ -25,7 +25,6 @@ const AssumptionQuestion = (props) => {
    });
 
    socketRef.current.on(QUESTIONS, (data) => {
-    console.log(data)
     setShowQuestion(data.showQuestion)
     setCurrentQuestion(data.currentQuestion)
   });
