@@ -11,9 +11,6 @@ const NEW_USER_EVENT = "newUser";
 const ALL_USERS = "AllUsers"; // Name of the event
 const QUESTIONS = "questions"; // Name of the event
 const SEND_TIME = "SendTime"; // Name of the event
-const RECEIVE_TIME = "ReceiveTime"; // Name of the event
-
-
 
 const usersPerRoom = {};
 
@@ -22,15 +19,6 @@ io.on("connection", (socket) => {
   // Join a conversation
   const { roomId } = socket.handshake.query;
   socket.join(roomId);
-
-//   let countdown = 100;
-// setInterval(function() {
-//    countdown--;
-//    console.log(countdown--);
-//    io.in(roomId).emit(SEND_TIME, {
-//     countdown: countdown
-//  });;
-// }, 100);
 
   if (usersPerRoom[roomId] === undefined) {
     usersPerRoom[roomId] = [];
@@ -45,6 +33,7 @@ io.on("connection", (socket) => {
   socket.on(NEW_USER_EVENT, (userInfo) => {
     io.in(roomId).emit(NEW_USER_EVENT, userInfo);
     usersPerRoom[roomId].push(userInfo);
+    io.in(roomId).emit(ALL_USERS, usersPerRoom);
   });
 
   io.in(roomId).emit(ALL_USERS, usersPerRoom);
@@ -53,10 +42,9 @@ io.on("connection", (socket) => {
     io.in(roomId).emit(QUESTIONS, data);
   })
 
-  // socket.on(SEND_TIME, (data) => {
-  //   //console.log(data)
-  //   io.in(roomId).emit(SEND_TIME, { datetime: new Date().getTime() });
-  // })
+  socket.on(SEND_TIME, (data) => {
+    io.in(roomId).emit(SEND_TIME, data);
+  })
     //here the data object is correct
     //sending back to client
 

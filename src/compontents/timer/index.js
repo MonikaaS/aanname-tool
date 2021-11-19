@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const SEND_TIME = "SendTime"; // Name of the event
-const RECEIVE_TIME = "ReceiveTime"; // Name of the event
 const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Timer = (props) => {
@@ -11,10 +10,6 @@ const Timer = (props) => {
  const [runTimer, setRunTimer] = useState(false);
 
  const socketRef = useRef();
-
- socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
-  query: { roomId },
-  });
 
  useEffect(() => {
   let timerId;
@@ -30,6 +25,28 @@ const Timer = (props) => {
 
   return () => clearInterval(timerId);
 }, [runTimer]);
+
+useEffect(() => {
+   
+  // Creates a WebSocket connection
+  socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+    query: { roomId },
+  });
+
+  socketRef.current.on(SEND_TIME, (data) => {
+    setRunTimer(data.runTimer)
+ });
+
+ socketRef.current.emit(SEND_TIME, {
+   runTimer: runTimer
+ });
+     
+  // Destroys the socket reference
+  // when the connection is closed
+  return () => {
+    socketRef.current.disconnect();
+  };
+}, [roomId, runTimer]);
 
 useEffect(() => {
   if (countDown < 0 && runTimer) {

@@ -32,7 +32,7 @@ const Users = () => {
     return () => {
       socketRef.current.disconnect();
     };
-  }, []);
+  }, [roomId]);
   
 return (
  <div className="flex mr-5">
