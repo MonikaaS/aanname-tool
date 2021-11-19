@@ -58,11 +58,12 @@ const Criticize = () => {
       <Link
         to={{
           pathname: `/${roomId}/reflect`,
+          state: `${users}`
         }}
         >
           Reflecteren
         </Link>
-      <AssumptionQuestion></AssumptionQuestion>
+      <AssumptionQuestion roomId={roomId} ></AssumptionQuestion>
       <Timer roomId={roomId}></Timer>
     </div>
   )};

@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from "react";
+import socketIOClient from "socket.io-client";
 
-const AssumptionQuestion = () => {
+const QUESTIONS = "questions"; // Name of the event
+const SOCKET_SERVER_URL = "http://localhost:4000";
 
+const AssumptionQuestion = (props) => {
+  const socketRef = useRef();
+
+  const roomId = props.roomId;
  const questions = ["Hoe ben je op je aanname gekomen?", "Hoe kan de aanname NIET waar zijn?", "Kun je fout zitten door te denken dat deze oplossing iets is wat de gebruiker nodig heeft?"];
  
  const [currentQuestion, setCurrentQuestion] = useState(1);
@@ -10,6 +16,32 @@ const AssumptionQuestion = () => {
  const handleAssigneeOnClick = () => {
    setCurrentQuestion(prev => (prev + 1) % 3);
  };
+
+ useEffect(() => {
+   
+   // Creates a WebSocket connection
+   socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
+     query: { roomId },
+   });
+
+   socketRef.current.on(QUESTIONS, (data) => {
+    console.log(data)
+    setShowQuestion(data.showQuestion)
+    setCurrentQuestion(data.currentQuestion)
+  });
+
+  socketRef.current.emit(QUESTIONS, {
+    showQuestion: showQuestion,
+    currentQuestion: currentQuestion
+  });
+      
+   // Destroys the socket reference
+   // when the connection is closed
+   return () => {
+     socketRef.current.disconnect();
+   };
+ }, [roomId, showQuestion, currentQuestion]);
+
 
  return (
      <div className="relative">

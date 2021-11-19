@@ -9,6 +9,7 @@ const PORT = 4000;
 const NEW_CHAT_MESSAGE_EVENT = "newAssumptionMessage";
 const NEW_USER_EVENT = "newUser";
 const ALL_USERS = "AllUsers"; // Name of the event
+const QUESTIONS = "questions"; // Name of the event
 const SEND_TIME = "SendTime"; // Name of the event
 const RECEIVE_TIME = "ReceiveTime"; // Name of the event
 
@@ -52,6 +53,10 @@ io.on("connection", (socket) => {
     io.in(roomId).emit(ALL_USERS, usersPerRoom);
     
   });
+
+  socket.on(QUESTIONS, (data) => {
+    io.in(roomId).emit(QUESTIONS, data);
+  })
 
   // socket.on(SEND_TIME, (data) => {
   //   //console.log(data)

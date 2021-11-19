@@ -9,7 +9,6 @@ const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useUsers = (roomId) => {
   const [users, setUsers] = useState([]); // Sent and received messages
-  const [usersNames, setUsersNames] = useState([]); // Sent and received messages
 
   const socketRef = useRef();
 
