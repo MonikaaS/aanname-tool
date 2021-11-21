@@ -11,6 +11,8 @@ const NEW_USER_EVENT = "newUser";
 const ALL_USERS = "AllUsers"; // Name of the event
 const QUESTIONS = "questions"; // Name of the event
 const SEND_TIME = "SendTime"; // Name of the event
+const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
+
 
 const usersPerRoom = {};
 
@@ -44,6 +46,10 @@ io.on("connection", (socket) => {
 
   socket.on(SEND_TIME, (data) => {
     io.in(roomId).emit(SEND_TIME, data);
+  })
+  socket.on(RECEIVE_POSITION, (data) => {
+    console.log(data)
+    io.in(roomId).emit(RECEIVE_POSITION, data);
   })
     //here the data object is correct
     //sending back to client
