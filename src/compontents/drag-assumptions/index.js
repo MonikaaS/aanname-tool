@@ -3,7 +3,7 @@ import Draggable from 'react-draggable';
 import socketIOClient from "socket.io-client";
 
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
 
 const DraggableComponent = (props) => { 
 

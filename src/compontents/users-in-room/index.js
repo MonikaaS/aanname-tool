@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import socketIOClient from "socket.io-client";
 
 const ALL_USERS = "AllUsers"; // Name of the event
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
 
 const Users = () => {
   const { roomId } = useParams();
@@ -37,7 +37,7 @@ const Users = () => {
 return (
  <div className="flex mr-5">
   {users !== null && users.map((user, i) => (
-     <div key={i} className="border-white border-2 user font-open-sans font-bold text-xs my-auto rounded-full h-16 w-16 bg-yellow-100 flex items-center justify-center">
+     <div key={i} className="flex items-center justify-center w-16 h-16 my-auto text-xs font-bold bg-yellow-100 border-2 border-white rounded-full user font-open-sans">
       <span>{user.userName}</span>
      </div>
    ))}

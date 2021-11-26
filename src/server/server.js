@@ -1,11 +1,25 @@
-const server = require("http").createServer();
-const io = require("socket.io")(server, {
+const express = require('express');
+const path = require('path');
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server, {
   cors: {
-    origin: "*",
-  },
+    origin: '*',
+  }
+});
+const PORT = process.env.PORT || 4000;
+
+
+app.use(express.static(path.join(__dirname, '../../build')));
+app.get('*', (req, res) => {                       
+  res.sendFile(path.resolve(__dirname, '../../build', 'index.html'));                               
 });
 
-const PORT = 4000;
+//app.use(express.static(path.join(__dirname, '../../build')));
+//app.get('*', (req, res, next) => res.sendFile(__dirname + '../index.html'));
+
+
+
 const NEW_CHAT_MESSAGE_EVENT = "newAssumptionMessage";
 const NEW_USER_EVENT = "newUser";
 const ALL_USERS = "AllUsers"; // Name of the event
@@ -91,6 +105,5 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen({port: PORT || 3000})
-
+server.listen(PORT);
 //used from https://medium.com/swlh/build-a-real-time-chat-app-with-react-hooks-and-socket-io-4859c9afecb0

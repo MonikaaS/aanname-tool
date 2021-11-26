@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const QUESTIONS = "questions"; // Name of the event
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
 
 const AssumptionQuestion = (props) => {
   const socketRef = useRef();
@@ -47,8 +47,8 @@ const AssumptionQuestion = (props) => {
        <button onClick = {event => {
                       setShowQuestion(true)
                       handleAssigneeOnClick()
-                    }} className="box-shadow-card-q border-black border-2 m-2 p-4 bg-indigo-600 w-48 h-48 rounded-md font-open-sans font-medium text-black"> 
-           <p className="w-full h-full resize-none focus:outline-none bg-indigo-600 text-white">
+                    }} className="w-48 h-48 p-4 m-2 font-medium text-black bg-indigo-600 border-2 border-black rounded-md box-shadow-card-q font-open-sans"> 
+           <p className="w-full h-full text-white bg-indigo-600 resize-none focus:outline-none">
            kritische vragen
             </p>
          </button>
@@ -59,8 +59,8 @@ const AssumptionQuestion = (props) => {
                       setShowQuestion(false)
                       handleAssigneeOnClick()
                     }}
-                    className="-right-2 -top-2 absolute rounded-full h-8 w-8 bg-gray-400 text-center text-black border-2 border-black"> x </button>    
-           <p className="w-full h-full resize-none focus:outline-none text-black">
+                    className="absolute w-8 h-8 text-center text-black bg-gray-400 border-2 border-black rounded-full -right-2 -top-2"> x </button>    
+           <p className="w-full h-full text-black resize-none focus:outline-none">
            {questions[currentQuestion]}
             </p>
          </div>

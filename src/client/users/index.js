@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_USER_EVENT = "newUser"; // Name of the event
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
 
 
 const useUsers = (roomId) => {
