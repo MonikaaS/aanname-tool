@@ -12,9 +12,15 @@ const ALL_USERS = "AllUsers"; // Name of the event
 const QUESTIONS = "questions"; // Name of the event
 const SEND_TIME = "SendTime"; // Name of the event
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
+const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
+const SET_POSITION = "SetPosition"; // Name of the event
+
 
 
 const usersPerRoom = {};
+const assumptionsPerRoom= {}
+const data = '';
+
 
 io.on("connection", (socket) => {
   
@@ -26,11 +32,9 @@ io.on("connection", (socket) => {
     usersPerRoom[roomId] = [];
   }
 
-  // Listen for new messages
-  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
-    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
-  });
-
+  if (assumptionsPerRoom[roomId] === undefined) {
+    assumptionsPerRoom[roomId] = [];
+  }
 
   socket.on(NEW_USER_EVENT, (userInfo) => {
     io.in(roomId).emit(NEW_USER_EVENT, userInfo);
@@ -38,7 +42,13 @@ io.on("connection", (socket) => {
     io.in(roomId).emit(ALL_USERS, usersPerRoom);
   });
 
-  io.in(roomId).emit(ALL_USERS, usersPerRoom);
+
+  // Listen for new messages
+  socket.on(NEW_CHAT_MESSAGE_EVENT, (data) => {
+    io.in(roomId).emit(NEW_CHAT_MESSAGE_EVENT, data);
+    assumptionsPerRoom[roomId].push(data);
+    io.in(roomId).emit(ALL_ASSUMPTIONS, assumptionsPerRoom);
+  });
 
   socket.on(QUESTIONS, (data) => {
     io.in(roomId).emit(QUESTIONS, data);
@@ -47,10 +57,30 @@ io.on("connection", (socket) => {
   socket.on(SEND_TIME, (data) => {
     io.in(roomId).emit(SEND_TIME, data);
   })
+
   socket.on(RECEIVE_POSITION, (data) => {
-    console.log(data)
+    //console.log(data)
     io.in(roomId).emit(RECEIVE_POSITION, data);
+    console.log(data);
+    // assumptionsPerRoom[roomId].find((element) => {
+
+    //   if(element.assumption === data.assumption) {
+    //     element.xPosition = data.xPosition
+    //     element.yPosition = data.yPosition
+    //   }
+    // } )
+
+    // console.log('binnen')
+    // console.log(assumptionsPerRoom)
+    // io.in(roomId).emit(ALL_ASSUMPTIONS, assumptionsPerRoom);
+
+    // io.in(roomId).emit(SET_POSITION, assumptionsPerRoom);
   })
+
+  io.in(roomId).emit(ALL_USERS, usersPerRoom);
+
+  io.in(roomId).emit(ALL_ASSUMPTIONS, assumptionsPerRoom);
+  
     //here the data object is correct
     //sending back to client
 
@@ -61,8 +91,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}`);
-});
+server.listen({port: PORT || 3000})
 
 //used from https://medium.com/swlh/build-a-real-time-chat-app-with-react-hooks-and-socket-io-4859c9afecb0

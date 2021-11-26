@@ -44,7 +44,7 @@ const AssumptionMessage = (props) => {
                  message.ownedByCurrentUser ? "my-message" : "received-message"
                }`}
              >
-               {message.body}
+               {message.assumption}
              </p>
            </div>
          ))}

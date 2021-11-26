@@ -61,14 +61,6 @@ const togglerTimer = () => setRunTimer((t) => !t);
 const seconds = String(countDown % 60).padStart(2, 0);
 const minutes = String(Math.floor(countDown / 60)).padStart(2, 0);
 
-// socketRef.current.on(RECEIVE_TIME, (data) => {
-//   console.log(data)
-// });
-
-// socketRef.current.emit(SEND_TIME, (data) => {
-//   console.log(data)
-//  });
-
  return (
   <div className="">
    <button onClick={ () => {

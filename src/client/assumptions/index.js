@@ -36,8 +36,10 @@ const useAssumptions = (roomId) => {
   // forwards it to all users in the same room
   const sendMessage = (messageBody) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
-      body: messageBody,
+      assumption: messageBody,
       senderId: socketRef.current.id,
+      xPosition: 0, 
+      yPosition: 0,
     });
 
   };
