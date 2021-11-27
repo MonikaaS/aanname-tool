@@ -10,13 +10,13 @@ const io = require('socket.io')(server, {
 const PORT = process.env.PORT || 4000;
 
 
-app.use(express.static(path.join(__dirname, '../../build')));
-app.get('*', (req, res) => {                       
-  res.sendFile(path.resolve(__dirname, '../../build', 'index.html'));                               
-});
+// app.use(express.static(path.join(__dirname, '../../build')));
+// app.get('*', (req, res) => {                       
+//   res.sendFile(path.resolve(__dirname, '../../build', 'index.html'));                               
+// });
 
-//app.use(express.static(path.join(__dirname, '../../build')));
-//app.get('*', (req, res, next) => res.sendFile(__dirname + '../index.html'));
+app.use(express.static(path.join(__dirname, '../../build')));
+app.get('*', (req, res, next) => res.sendFile(__dirname + '../index.html'));
 
 
 
@@ -54,6 +54,7 @@ io.on("connection", (socket) => {
     io.in(roomId).emit(NEW_USER_EVENT, userInfo);
     usersPerRoom[roomId].push(userInfo);
     io.in(roomId).emit(ALL_USERS, usersPerRoom);
+    console.log('yo')
   });
 
 

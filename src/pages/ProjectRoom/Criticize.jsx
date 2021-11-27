@@ -43,7 +43,7 @@ const Criticize = () => {
                         handleSendUser()
                         setHaveName(true)
         }} 
-        className="p-6 absolute inset-y-0 right-0 flex items-center px-4 bg-yellow-100 rounded-r-lg border-black border-2 focus:outline-none ">
+        className="absolute inset-y-0 right-0 flex items-center p-6 px-4 bg-yellow-100 border-2 border-black rounded-r-lg focus:outline-none ">
           Start de sessie
         </button>
         </div>
@@ -55,14 +55,6 @@ const Criticize = () => {
           roomId={roomId}
       >
       </AssumptionMessage>
-      <Link
-        to={{
-          pathname: `/${roomId}/reflect`,
-          state: `${users}`
-        }}
-        >
-          Reflecteren
-        </Link>
       <AssumptionQuestion roomId={roomId} ></AssumptionQuestion>
       <Timer roomId={roomId}></Timer>
     </div>

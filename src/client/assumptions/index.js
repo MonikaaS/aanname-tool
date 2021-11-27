@@ -4,6 +4,7 @@ import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE_EVENT = "newAssumptionMessage"; // Name of the event
 const SOCKET_SERVER_URL = window.location.origin;
+//const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useAssumptions = (roomId) => {
   const [messages, setMessages] = useState([]); // Sent and received messages
