@@ -4,8 +4,6 @@ import { useParams, Link } from 'react-router-dom';
 
 const Header = () => {
  const { roomId } = useParams(); // Gets roomId from URL
-
- console.log(roomId+"/reflect");
  
  return (
   <div className="">
