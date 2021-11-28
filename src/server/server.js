@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 4000;
 // });
 
 app.use(express.static(path.join(__dirname, '../../build')));
-app.get('*', (req, res, next) => res.sendFile(__dirname + '../index.html'));
+app.get('*', (req, res, next) => res.sendFile(path.resolve(__dirname, '../../build', 'index.html')));
 
 
 
