@@ -15,17 +15,14 @@ const AssumptionMessage = (props) => {
  };
 
  return (
-   <div className="h-full w-full mt-20">
-     <div className="relative w-1/2 mx-auto">
-       <h1 className="relative z-10 text-center font-playfair-display font-black text-6xl mt-12">{roomId}</h1>
-       <div className="w-1/2 h-10 bg-yellow-100 mx-auto absolute top-1/2 left-36"></div>
-     </div>
-     <div className="p-6 mt-10 flex flex-wrap w-10/12 mx-auto">
-       <div className="box-shadow-card border-black border-2 m-2 p-4 bg-yellow-100 w-48 h-48 rounded-md font-open-sans font-medium text-black"> 
+   <div className="w-10/12 p-6 mx-auto mt-10 mt-20 ">
+     <h2 className="font-bold">Opstellen:</h2>
+     <div className="flex flex-wrap w-full">
+       <div className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans"> 
            <textarea
              value={newMessage}
              placeholder="Schrijf hier je aanname..."
-             className="w-full h-full resize-none focus:outline-none bg-yellow-100 placeholder-black"
+             className="w-full h-full placeholder-black bg-yellow-100 resize-none focus:outline-none"
              onChange={event => {
               setNewMessage(event.target.value)
              }}
@@ -38,7 +35,7 @@ const AssumptionMessage = (props) => {
          </div>
 
          {messages.map((message, i) => (
-           <div key={i} className="box-shadow-card border-black border-2 m-2 p-4 bg-yellow-100 w-48 h-48 rounded-md font-open-sans font-medium text-black"> 
+           <div key={i} className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans"> 
              <p
                className={`message-item ${
                  message.ownedByCurrentUser ? "my-message" : "received-message"

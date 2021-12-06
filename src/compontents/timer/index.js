@@ -2,8 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const SEND_TIME = "SendTime"; // Name of the event
-//const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+//const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Timer = (props) => {
  const roomId = props.roomId
@@ -66,7 +66,7 @@ const minutes = String(Math.floor(countDown / 60)).padStart(2, 0);
   <div className="">
    <button onClick={ () => {
             togglerTimer();
-        }}  className="fixed p-5 mx-auto font-medium transform -translate-x-1/2 bg-yellow-100 border-2 border-black rounded-lg font-open-sans box-shadow bottom-10 left-1/2">
+        }}  className="w-full p-5 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans box-shadow">
     {runTimer ? ` ${minutes} : ${seconds} `: "Start"}
     </button>
   </div>

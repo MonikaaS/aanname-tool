@@ -7,8 +7,8 @@ import socketIOClient from "socket.io-client";
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
 
-//const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+//const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Reflect = (props) => {
   const { roomId } = useParams(); // Gets roomId from URL
@@ -42,11 +42,9 @@ const Reflect = (props) => {
   }, [roomId]);
 
   return (
-    <div className="relative h-screen md:overflow-hidden">
-      <Header></Header>
-     <h1>Reflecteren</h1>
+    <div className="relative w-full h-screen md:overflow-hidden">
       <DraggableComponent roomId={roomId}></DraggableComponent>
-     <div className="relative w-screen h-screen mt-5">
+     <div className="relative w-full h-screen mx-auto mt-5">
      <div className="absolute mr-5 text-2xl font-black text-center transform -translate-x-1/2 font-playfair-display top-1/10 left-1/2">Onzeker</div>
       <div className="absolute ml-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 right-1/10 ">Lage risico</div>
       <div className="absolute mr-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 left-1/10 ">Hoge risico</div>
