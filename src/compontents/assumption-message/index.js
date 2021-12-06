@@ -15,7 +15,7 @@ const AssumptionMessage = (props) => {
  };
 
  return (
-   <div className="w-10/12 p-6 mx-auto mt-10 mt-20 ">
+   <div className="w-10/12 p-6 mx-auto mt-5 ">
      <h2 className="font-bold">Opstellen:</h2>
      <div className="flex flex-wrap w-full">
        <div className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans"> 
