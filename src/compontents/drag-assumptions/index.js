@@ -61,13 +61,24 @@ const DraggableComponent = (props) => {
     setYposition(e.clientY - 208);
   };
 
-  console.log(assumptions);
+  console.log(props.constraintsRef);
+
+  const item = {
+    hidden: { scale: 0.9, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+    },
+  };
 
   return (
     <div>
       {assumptions !== null &&
         assumptions.map((assumption, i) => (
           <motion.div
+            variants={item}
+            initial="hidden"
+            animate="visible"
             drag
             whileDrag={{ scale: 1.1 }}
             key={i}
@@ -84,7 +95,7 @@ const DraggableComponent = (props) => {
               console.log(assumption.assumption);
               setCurrentlyDragged(assumption.assumption);
             }}
-            className="absolute z-30 w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer top-28 left-10 box-shadow-card font-open-sans"
+            className="absolute z-30 w-40 h-40 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer font-sm top-28 left-32 box-shadow-card font-open-sans"
           >
             <div className={"`message-item"}>{assumption.assumption}</div>
           </motion.div>

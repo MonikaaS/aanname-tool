@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import AssumptionMessage from "../../compontents/assumption-message/index.js";
 import useUsers from "../../client/users/index";
 import AssumptionQuestion from "../../compontents/assumption-questions/index.js";
+import Tooltip from "../../compontents/tooltip/index.js";
 
 const Criticize = () => {
   const { roomId } = useParams(); // Gets roomId from URL
@@ -11,12 +12,16 @@ const Criticize = () => {
   const { users, sendUser } = useUsers(roomId); // Creates a websocket and manages messaging
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full pt-6 pl-6">
       <div>
-        <h1 className="w-10/12 pt-6 pl-6 mx-auto mt-5 mb-2 text-xl font-bold">
-          Bekritiseren
-        </h1>
-        <h2 className="w-10/12 pl-6 mx-auto text-xs font-light">
+        <div className="flex w-10/12 mx-auto mt-5">
+          <h1 className="inline-block mb-2 text-xl font-bold">Bekritiseren</h1>
+          <Tooltip
+            text="Bij deze stap ga je gezamenlijk met elkaar het gesprek aan over de aannames. Met behulp van de kritische vragen, ga je alle aannames af. Je zult misschien merken dat er nieuwe aannames zijn ontstaan, je kan er voor kiezen om deze in de tool te zetten of door te gaan naar reflecteren"
+            roomId={roomId}
+          ></Tooltip>
+        </div>
+        <h2 className="w-10/12 mx-auto text-xs font-light">
           Klik op de kritische vragen om de aannames te Bekritiseren
         </h2>
       </div>

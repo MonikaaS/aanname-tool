@@ -3,6 +3,7 @@ import Header from "../../compontents/header/index.js";
 import { useParams, Link } from "react-router-dom";
 import DraggableComponent from "../../compontents/drag-assumptions/index.js";
 import socketIOClient from "socket.io-client";
+import Tooltip from "../../compontents/tooltip/index.js";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
@@ -42,16 +43,20 @@ const Reflect = (props) => {
   return (
     <div className="relative w-full h-screen md:overflow-hidden">
       <div>
-        <h1 className="w-10/12 pt-6 pl-6 mx-auto mt-5 mb-2 text-xl font-bold">
-          Reflecteren
-        </h1>
+        <div className="flex w-10/12 mx-auto mt-5">
+          <h1 className="inline-block mb-2 text-xl font-bold">Reflecteren</h1>
+          <Tooltip
+            text="Het doel van deze stap is om als groep te kijken waar elk kaartje het beste past op de as. Bespreek met elkaar of een een aanname al vrij zeker is of niet en of de aname een groot risico is voor het project."
+            roomId={roomId}
+          ></Tooltip>
+        </div>
         <h2 className="w-10/12 pl-6 mx-auto text-xs font-light">
           Sleep de kaartjes naar de juiste positie op de as
         </h2>
       </div>
       <DraggableComponent roomId={roomId}></DraggableComponent>
-      {assumptions.length === 0 ? (
-        <div className="w-full mt-40 text-center">
+      {assumptions && assumptions.length === 0 ? (
+        <div className="w-full mt-40 text-center fade-in">
           <h1 className="w-full pt-6 mt-5 mb-2 text-xl font-bold text-indigo-600">
             Er zijn nog geen aannames
           </h1>

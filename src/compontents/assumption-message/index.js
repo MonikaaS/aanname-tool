@@ -47,15 +47,35 @@ const AssumptionMessage = (props) => {
   console.log(props);
 
   const container = {
-    hidden: { opacity: 0.8, scale: 0.9 },
+    hidden: { opacity: 1, scale: 1 },
     visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { y: 5, opacity: 0, scale: 0 },
+    visible: {
+      y: 0,
       opacity: 1,
       scale: 1,
     },
   };
 
+  const zero = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+    },
+  };
+
   return (
-    <div className="w-10/12 p-6 mx-auto mt-5 ">
+    <div className="w-10/12 pt-6 mx-auto ">
       {props.location === "criticize" ? (
         <div></div>
       ) : (
@@ -76,16 +96,18 @@ const AssumptionMessage = (props) => {
         </div>
       )}
 
-      <div className="flex flex-wrap w-full">
-        {assumptions.length > 0 ? (
-          assumptions.map((message, i) => (
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate={assumptions.length > 0 && "visible"}
+        className="container flex flex-wrap w-full"
+      >
+        {assumptions.length !== 0 ? (
+          assumptions.map((message, index) => (
             <motion.div
-              className="container"
-              variants={container}
-              initial="hidden"
-              animate="visible"
-              key={i}
-              className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans"
+              key={index}
+              variants={item}
+              className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md item box-shadow-card font-open-sans"
             >
               <p
                 className={`message-item ${
@@ -97,7 +119,7 @@ const AssumptionMessage = (props) => {
             </motion.div>
           ))
         ) : (
-          <div className="w-full text-center">
+          <div className="w-full text-center fade-in">
             <h1 className="w-full pt-6 mx-auto mt-5 mb-2 text-xl font-bold text-indigo-600">
               Er zijn nog geen aannames
             </h1>
@@ -106,7 +128,7 @@ const AssumptionMessage = (props) => {
             </h2>
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 };

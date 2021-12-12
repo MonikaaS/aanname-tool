@@ -54,7 +54,7 @@ const AssumptionQuestion = (props) => {
 
   return (
     <div>
-      <div className="w-10/12 pt-6 pl-6 mx-auto mt-1">
+      <div className="w-10/12 pt-6 mx-auto mt-1">
         <div className="relative flex flex-wrap w-full mt-5">
           <motion.button
             onClick={(event) => {
