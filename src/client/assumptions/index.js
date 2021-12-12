@@ -1,22 +1,20 @@
-
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_CHAT_MESSAGE_EVENT = "newAssumptionMessage"; // Name of the event
-const SOCKET_SERVER_URL = window.location.origin;
-//const SOCKET_SERVER_URL = "http://localhost:4000";
+//const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useAssumptions = (roomId) => {
   const [messages, setMessages] = useState([]); // Sent and received messages
   const socketRef = useRef();
 
   useEffect(() => {
-    
     // Creates a WebSocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
     });
-    
+
     // Listens for incoming messages
     socketRef.current.on(NEW_CHAT_MESSAGE_EVENT, (message) => {
       const incomingMessage = {
@@ -25,7 +23,7 @@ const useAssumptions = (roomId) => {
       };
       setMessages((messages) => [...messages, incomingMessage]);
     });
-    
+
     // Destroys the socket reference
     // when the connection is closed
     return () => {
@@ -39,11 +37,10 @@ const useAssumptions = (roomId) => {
     socketRef.current.emit(NEW_CHAT_MESSAGE_EVENT, {
       assumption: messageBody,
       senderId: socketRef.current.id,
-      xPosition: 0, 
+      xPosition: 0,
       yPosition: 0,
-      transform: 'translate3d(0px, 0px, 0px)',
+      transform: "translate3d(0px, 0px, 0px)",
     });
-
   };
 
   return { messages, sendMessage };

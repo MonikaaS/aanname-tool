@@ -1,20 +1,18 @@
-
 import { useEffect, useRef } from "react";
 import socketIOClient from "socket.io-client";
 
 const NEW_USER_EVENT = "newUser"; // Name of the event
-const SOCKET_SERVER_URL = window.location.origin;
-//const SOCKET_SERVER_URL = "http://localhost:4000";
+//const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useUsers = (roomId) => {
   const socketRef = useRef();
 
   useEffect(() => {
-    
     // Creates a WebSocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
-    });    
+    });
     // Destroys the socket reference
     // when the connection is closed
     return () => {
@@ -30,7 +28,6 @@ const useUsers = (roomId) => {
       senderId: socketRef.current.id,
       roomId: roomId,
     });
-
   };
 
   return { sendUser };
