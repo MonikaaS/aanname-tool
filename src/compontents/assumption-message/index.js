@@ -2,11 +2,22 @@ import { useState, useEffect, useRef } from "react";
 import useAssumptions from "../../client/assumptions/index";
 import { motion, AnimatePresence, useTransform } from "framer-motion";
 import socketIOClient from "socket.io-client";
+import { ReactComponent as HelpIcon } from "../../assets/svg/help-icon.svg";
+import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
 //const SOCKET_SERVER_URL = window.location.origin;
 const SOCKET_SERVER_URL = "http://localhost:4000";
+
+const useFocus = () => {
+  const htmlElRef = useRef(null);
+  const setFocus = () => {
+    htmlElRef.current && htmlElRef.current.focus();
+  };
+
+  return [htmlElRef, setFocus];
+};
 
 const AssumptionMessage = (props) => {
   const roomId = props.roomId;
@@ -22,6 +33,8 @@ const AssumptionMessage = (props) => {
   const [assumptions, setAssumptions] = useState([]);
   const [newMessage, setNewMessage] = useState(""); // Message to be sent
   const [currentAssumptionTip, setCurrentAssumptionTip] = useState(1);
+  const [help, setHelp] = useState(false);
+  const [inputRef, setInputFocus] = useFocus();
 
   const handleSendMessage = () => {
     sendMessage(newMessage);
@@ -90,11 +103,38 @@ const AssumptionMessage = (props) => {
       {props.location === "criticize" ? (
         <div></div>
       ) : (
-        <div className="w-48 h-48 p-4 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans">
+        <div className="w-48 h-48 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans">
+          <div className="relative z-30 flex pb-3 pl-3">
+            <motion.div
+              whileTap={{ scale: 0.9 }}
+              onClick={(event) => {
+                setInputFocus(true);
+                setHelp(false);
+              }}
+            >
+              {" "}
+              <EditIcon className="mr-2 cursor-pointer"></EditIcon>
+            </motion.div>
+            <motion.div
+              whileTap={{ scale: 0.9 }}
+              onClick={(event) => {
+                setHelp(true);
+                handleAssigneeOnClick();
+              }}
+            >
+              {" "}
+              <HelpIcon className="mr-2 cursor-pointer"></HelpIcon>
+            </motion.div>
+          </div>
           <textarea
+            ref={inputRef}
             value={newMessage}
-            placeholder={`${assumptionsTips[currentAssumptionTip]}`}
-            className="w-full h-full p-4 placeholder-black bg-yellow-100 rounded-md resize-none hover:bg-white hover:bg-opacity-25 focus:outline-none"
+            placeholder={`${
+              help
+                ? assumptionsTips[currentAssumptionTip]
+                : "Schrijf hier je aanname..."
+            }`}
+            className="w-full h-32 p-4 placeholder-black bg-yellow-100 rounded-md resize-none hover:bg-white hover:bg-opacity-25 focus:outline-none"
             onChange={(event) => {
               setNewMessage(event.target.value);
             }}
@@ -102,7 +142,6 @@ const AssumptionMessage = (props) => {
               if (event.key === "Enter") {
                 event.preventDefault();
                 handleSendMessage();
-                handleAssigneeOnClick();
               }
             }}
           />
