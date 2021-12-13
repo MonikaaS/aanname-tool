@@ -7,8 +7,8 @@ import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
-//const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useFocus = () => {
   const htmlElRef = useRef(null);
@@ -29,8 +29,8 @@ const AssumptionMessage = (props) => {
   ];
 
   const socketRef = useRef();
-  const { messages, sendMessage } = useAssumptions(roomId); // Creates a websocket and manages messaging
   const [assumptions, setAssumptions] = useState([]);
+  const { messages, sendMessage } = useAssumptions(roomId); // Creates a websocket and manages messaging
   const [newMessage, setNewMessage] = useState(""); // Message to be sent
   const [currentAssumptionTip, setCurrentAssumptionTip] = useState(1);
   const [help, setHelp] = useState(false);
@@ -83,11 +83,10 @@ const AssumptionMessage = (props) => {
   };
 
   const item = {
-    hidden: { y: 5, opacity: 0, scale: 0 },
+    hidden: { scale: 0.9, opacity: 0 },
     visible: {
-      y: 0,
-      opacity: 1,
       scale: 1,
+      opacity: 1,
     },
   };
 
@@ -148,12 +147,7 @@ const AssumptionMessage = (props) => {
         </div>
       )}
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        animate={assumptions.length > 0 && "visible"}
-        className="container flex flex-wrap w-full"
-      >
+      <div className="container flex flex-wrap w-full">
         {assumptions.length !== 0 ? (
           assumptions.map((message, index) => (
             <motion.div
@@ -171,7 +165,7 @@ const AssumptionMessage = (props) => {
             </motion.div>
           ))
         ) : (
-          <div className="w-full text-center fade-in">
+          <div className="w-full text-center">
             <h1 className="w-full pt-6 mx-auto mt-5 mb-2 text-xl font-bold text-indigo-600">
               Er zijn nog geen aannames
             </h1>
@@ -180,7 +174,7 @@ const AssumptionMessage = (props) => {
             </h2>
           </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };

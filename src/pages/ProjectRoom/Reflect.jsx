@@ -7,8 +7,8 @@ import Tooltip from "../../compontents/tooltip/index.js";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
-//const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Reflect = (props) => {
   const { roomId } = useParams(); // Gets roomId from URL
@@ -41,22 +41,23 @@ const Reflect = (props) => {
 
   console.log(assumptions.length === 0);
   return (
-    <div className="relative w-full h-screen md:overflow-hidden">
+    <div className="relative w-full h-screen pt-6 pl-6 md:overflow-hidden">
       <div>
         <div className="flex w-10/12 mx-auto mt-5">
           <h1 className="inline-block mb-2 text-xl font-bold">Reflecteren</h1>
           <Tooltip
-            text="Het doel van deze stap is om als groep te kijken waar elk kaartje het beste past op de as. Bespreek met elkaar of een een aanname al vrij zeker is of niet en of de aname een groot risico is voor het project."
+            text="Het doel van deze stap is om als groep te kijken waar elk kaartje het beste past op de as. 
+            Bespreek met elkaar of een een aanname al vrij zeker is of niet en of de aanname een groot risico is voor het project."
             roomId={roomId}
           ></Tooltip>
         </div>
-        <h2 className="w-10/12 pl-6 mx-auto text-xs font-light">
+        <h2 className="w-10/12 mx-auto text-xs font-light">
           Sleep de kaartjes naar de juiste positie op de as
         </h2>
       </div>
       <DraggableComponent roomId={roomId}></DraggableComponent>
       {assumptions && assumptions.length === 0 ? (
-        <div className="w-full mt-40 text-center fade-in">
+        <div className="w-full mt-40 text-center">
           <h1 className="w-full pt-6 mt-5 mb-2 text-xl font-bold text-indigo-600">
             Er zijn nog geen aannames
           </h1>

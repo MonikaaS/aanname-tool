@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 
 const ALL_USERS = "AllUsers"; // Name of the event
-//const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Users = () => {
   const { roomId } = useParams();

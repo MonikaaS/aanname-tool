@@ -5,8 +5,8 @@ import socketIOClient from "socket.io-client";
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
-//const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const DraggableComponent = (props) => {
   const roomId = props.roomId;
@@ -76,9 +76,6 @@ const DraggableComponent = (props) => {
       {assumptions !== null &&
         assumptions.map((assumption, i) => (
           <motion.div
-            variants={item}
-            initial="hidden"
-            animate="visible"
             drag
             whileDrag={{ scale: 1.1 }}
             key={i}
