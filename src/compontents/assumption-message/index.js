@@ -11,14 +11,25 @@ const SOCKET_SERVER_URL = "http://localhost:4000";
 const AssumptionMessage = (props) => {
   const roomId = props.roomId;
 
+  const assumptionsTips = [
+    "Wat denk jij dat de gebruiker wilt?",
+    "Wat denk jij dat de verschillende stakeholders willen?",
+    "Wat denk jij dat het eindproduct gaat worden?",
+  ];
+
   const socketRef = useRef();
   const { messages, sendMessage } = useAssumptions(roomId); // Creates a websocket and manages messaging
   const [assumptions, setAssumptions] = useState([]);
   const [newMessage, setNewMessage] = useState(""); // Message to be sent
+  const [currentAssumptionTip, setCurrentAssumptionTip] = useState(1);
 
   const handleSendMessage = () => {
     sendMessage(newMessage);
     setNewMessage("");
+  };
+
+  const handleAssigneeOnClick = () => {
+    setCurrentAssumptionTip((prev) => (prev + 1) % assumptionsTips.length);
   };
 
   useEffect(() => {
@@ -82,14 +93,16 @@ const AssumptionMessage = (props) => {
         <div className="w-48 h-48 p-4 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans">
           <textarea
             value={newMessage}
-            placeholder="Schrijf hier je aanname..."
-            className="w-full h-full placeholder-black bg-yellow-100 resize-none focus:outline-none"
+            placeholder={`${assumptionsTips[currentAssumptionTip]}`}
+            className="w-full h-full p-4 placeholder-black bg-yellow-100 rounded-md resize-none hover:bg-white hover:bg-opacity-25 focus:outline-none"
             onChange={(event) => {
               setNewMessage(event.target.value);
             }}
             onKeyPress={(event) => {
               if (event.key === "Enter") {
+                event.preventDefault();
                 handleSendMessage();
+                handleAssigneeOnClick();
               }
             }}
           />
