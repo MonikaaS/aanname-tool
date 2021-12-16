@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useParams, Route, Routes, Link } from "react-router-dom";
+import { useParams, Route, Routes } from "react-router-dom";
 
 import Header from "../../compontents/header/index.js";
 import useUsers from "../../client/users/index";
@@ -10,15 +9,7 @@ import SetUpAssumptions from "./SetUpAssumptions";
 
 const ProjectRoom = () => {
   const { roomId } = useParams(); // Gets roomId from URL
-
-  const [haveName, setHaveName] = useState(false);
   const { users, sendUser } = useUsers(roomId); // Creates a websocket and manages messaging
-  const [newUser, setNewUser] = useState(""); // Message to be sent
-
-  const handleSendUser = () => {
-    sendUser(newUser);
-    setNewUser("");
-  };
 
   return (
     <div

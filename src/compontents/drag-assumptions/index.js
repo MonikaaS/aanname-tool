@@ -1,5 +1,5 @@
-import React, { useCallback, useState, useRef, useEffect } from "react";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import socketIOClient from "socket.io-client";
 
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event

@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useTransform } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Tooltip = (props) => {
-  const roomId = props.roomId;
   const [isHovered, setIsHovered] = useState(false);
 
   return (

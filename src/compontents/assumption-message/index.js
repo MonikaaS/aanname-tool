@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import useAssumptions from "../../client/assumptions/index";
-import { motion, AnimatePresence, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import socketIOClient from "socket.io-client";
 import { ReactComponent as HelpIcon } from "../../assets/svg/help-icon.svg";
 import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";

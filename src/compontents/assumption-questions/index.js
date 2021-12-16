@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence, useTransform } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import socketIOClient from "socket.io-client";
 
 const QUESTIONS = "questions"; // Name of the event

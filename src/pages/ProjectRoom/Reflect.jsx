@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import Header from "../../compontents/header/index.js";
-import { useParams, Link } from "react-router-dom";
-import DraggableComponent from "../../compontents/drag-assumptions/index.js";
+import { useParams } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 import Tooltip from "../../compontents/tooltip/index.js";
 
