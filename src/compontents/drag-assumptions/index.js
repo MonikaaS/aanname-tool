@@ -15,6 +15,7 @@ const DraggableComponent = (props) => {
   const [yPosition, setYposition] = useState(0);
   const [assumptions, setAssumptions] = useState([]);
   const [currentlyDragged, setCurrentlyDragged] = useState("");
+  const [hover, setHover] = useState("false");
   const ref = useRef([]);
 
   useEffect(() => {
@@ -47,8 +48,9 @@ const DraggableComponent = (props) => {
   }, [roomId, xPosition, yPosition, currentlyDragged]);
 
   const handleDrag = (e, info) => {
-    setXposition(e.clientX);
-    setYposition(e.clientY);
+    setXposition(info.offset.x);
+    setYposition(info.offset.y);
+    console.log(info);
   };
 
   return (
@@ -68,10 +70,13 @@ const DraggableComponent = (props) => {
               y: assumption.yPosition,
               opacity: 1,
             }}
+            onMouseEnter={(event) => {
+              setHover(true);
+            }}
             onMouseUp={(event) => {
               setCurrentlyDragged(assumption.assumption);
             }}
-            className="absolute z-40 w-40 h-40 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer hover:z-50 left-5 font-sm bottom-28 box-shadow-card font-open-sans"
+            className={`assumption-card z-40 w-32 h-32 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer hover:z-50 text-xs font-open-sans`}
           >
             <div className={"`message-item"}>{assumption.assumption}</div>
           </motion.div>

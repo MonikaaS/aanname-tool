@@ -3,6 +3,10 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      fontSize: {
+        xss: ".5rem",
+        xs: ".75rem",
+      },
       fontFamily: {
         "playfair-display": ['"Playfair Display"', "serif"],
         "open-sans": ['"Open Sans"', "Sans-serif"],
