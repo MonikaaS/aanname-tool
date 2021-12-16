@@ -5,9 +5,8 @@ import socketIOClient from "socket.io-client";
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
-const SOCKET_SERVER_URL = window.location.origin;
-// const SOCKET_SERVER_URL = "http://localhost:4000";
-
+// const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = "http://localhost:4000";
 const DraggableComponent = (props) => {
   const roomId = props.roomId;
 
@@ -22,10 +21,6 @@ const DraggableComponent = (props) => {
     // Creates a WebSocket connection
     socketRef.current = socketIOClient(SOCKET_SERVER_URL, {
       query: { roomId },
-    });
-
-    socketRef.current.on(RECEIVE_POSITION, (data) => {
-      console.log(data);
     });
 
     socketRef.current.on(ALL_ASSUMPTIONS, (assumption) => {
@@ -52,16 +47,9 @@ const DraggableComponent = (props) => {
   }, [roomId, xPosition, yPosition, currentlyDragged]);
 
   const handleDrag = (e, info) => {
-    //ref.current[i].focus();
-    //console.log(ref)
-    //console.log(ref.current.textContent)
-    //setCurrentlyDragged(e.explicitOriginalTarget.textContent)
-    console.log(e.clientX);
     setXposition(e.clientX - 189);
     setYposition(e.clientY - 208);
   };
-
-  console.log(props.constraintsRef);
 
   const item = {
     hidden: { scale: 0.9, opacity: 0 },
@@ -89,10 +77,9 @@ const DraggableComponent = (props) => {
               opacity: 1,
             }}
             onMouseUp={(event) => {
-              console.log(assumption.assumption);
               setCurrentlyDragged(assumption.assumption);
             }}
-            className="absolute z-30 w-40 h-40 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer font-sm top-28 left-32 box-shadow-card font-open-sans"
+            className="absolute z-40 w-40 h-40 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer left-5 font-sm bottom-28 box-shadow-card font-open-sans"
           >
             <div className={"`message-item"}>{assumption.assumption}</div>
           </motion.div>

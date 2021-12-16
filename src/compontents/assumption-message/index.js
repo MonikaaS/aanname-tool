@@ -7,9 +7,8 @@ import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
-const SOCKET_SERVER_URL = window.location.origin;
-// const SOCKET_SERVER_URL = "http://localhost:4000";
-
+// const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = "http://localhost:4000";
 const useFocus = () => {
   const htmlElRef = useRef(null);
   const setFocus = () => {
@@ -68,31 +67,10 @@ const AssumptionMessage = (props) => {
     };
   }, [roomId]);
 
-  console.log(props);
-
-  const container = {
-    hidden: { opacity: 1, scale: 1 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        delayChildren: 0.3,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
   const item = {
     hidden: { scale: 0.9, opacity: 0 },
     visible: {
       scale: 1,
-      opacity: 1,
-    },
-  };
-
-  const zero = {
-    hidden: { opacity: 0 },
-    visible: {
       opacity: 1,
     },
   };

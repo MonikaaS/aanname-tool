@@ -21,7 +21,13 @@ const ProjectRoom = () => {
   };
 
   return (
-    <div className="flex flex-row min-h-screen">
+    <div
+      className={`relative flex flex-row ${
+        window.location.pathname === "/" + roomId + "/reflect"
+          ? "h-screen overflow-hidden"
+          : "min-h-screen"
+      }`}
+    >
       <Header users={users}></Header>
       <Routes>
         <Route path="/" element={<AddName />} />

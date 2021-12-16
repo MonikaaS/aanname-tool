@@ -5,8 +5,6 @@ const Tooltip = (props) => {
   const roomId = props.roomId;
   const [isHovered, setIsHovered] = useState(false);
 
-  console.log(isHovered);
-
   return (
     <div className="z-40 inline">
       {" "}

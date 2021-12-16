@@ -1,7 +1,7 @@
-const express = require("express");
-const path = require("path");
-const app = express();
-const server = require("http").createServer(app);
+// const express = require("express");
+// const path = require("path");
+// const app = express();
+const server = require("http").createServer();
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
@@ -9,10 +9,10 @@ const io = require("socket.io")(server, {
 });
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(path.join(__dirname, "../../build")));
-app.get("*", (req, res, next) =>
-  res.sendFile(path.resolve(__dirname, "../../build", "index.html"))
-);
+// app.use(express.static(path.join(__dirname, "../../build")));
+// app.get("*", (req, res, next) =>
+//   res.sendFile(path.resolve(__dirname, "../../build", "index.html"))
+// );
 
 const NEW_CHAT_MESSAGE_EVENT = "newAssumptionMessage";
 const NEW_USER_EVENT = "newUser";
@@ -62,7 +62,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on(RECEIVE_POSITION, (data) => {
-    //console.log(data)
     io.in(roomId).emit(RECEIVE_POSITION, data);
     assumptionsPerRoom[roomId].find((element) => {
       if (element.assumption === data.assumption) {
@@ -71,8 +70,6 @@ io.on("connection", (socket) => {
       }
     });
 
-    // console.log('binnen')
-    //console.log(assumptionsPerRoom)
     io.in(roomId).emit(ALL_ASSUMPTIONS, assumptionsPerRoom);
     // io.in(roomId).emit(SET_POSITION, assumptionsPerRoom);
   });
