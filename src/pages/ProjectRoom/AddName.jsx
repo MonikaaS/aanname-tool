@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 import useUsers from "../../client/users/index";
 
 const AddName = () => {
   const { roomId } = useParams(); // Gets roomId from URL
+  let navigate = useNavigate();
 
   const [haveName, setHaveName] = useState(false);
   const { users, sendUser } = useUsers(roomId); // Creates a websocket and manages messaging
@@ -38,7 +39,7 @@ const AddName = () => {
           onKeyPress={(event) => {
             if (event.key === "Enter") {
               handleSendUser();
-              setHaveName(true);
+              navigate("/" + roomId + "/setup");
             }
           }}
         />
