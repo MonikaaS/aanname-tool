@@ -47,16 +47,8 @@ const DraggableComponent = (props) => {
   }, [roomId, xPosition, yPosition, currentlyDragged]);
 
   const handleDrag = (e, info) => {
-    setXposition(e.clientX - 189);
-    setYposition(e.clientY - 208);
-  };
-
-  const item = {
-    hidden: { scale: 0.9, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-    },
+    setXposition(e.clientX);
+    setYposition(e.clientY);
   };
 
   return (
@@ -79,7 +71,7 @@ const DraggableComponent = (props) => {
             onMouseUp={(event) => {
               setCurrentlyDragged(assumption.assumption);
             }}
-            className="absolute z-40 w-40 h-40 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer left-5 font-sm bottom-28 box-shadow-card font-open-sans"
+            className="absolute z-40 w-40 h-40 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer hover:z-50 left-5 font-sm bottom-28 box-shadow-card font-open-sans"
           >
             <div className={"`message-item"}>{assumption.assumption}</div>
           </motion.div>
