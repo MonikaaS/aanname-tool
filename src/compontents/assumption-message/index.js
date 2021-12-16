@@ -80,7 +80,7 @@ const AssumptionMessage = (props) => {
       {props.location === "criticize" ? (
         <div></div>
       ) : (
-        <div className="w-48 h-48 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md box-shadow-card font-open-sans">
+        <div className="w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md md:w-48 md:h-48 box-shadow-card font-open-sans">
           <div className="relative z-30 flex pb-3 pl-3">
             <motion.div
               whileTap={{ scale: 0.9 }}
@@ -125,13 +125,16 @@ const AssumptionMessage = (props) => {
         </div>
       )}
 
-      <div className="container flex flex-wrap w-full">
+      <div className="container flex-wrap hidden w-full md:flex">
         {assumptions.length !== 0 ? (
           assumptions.map((message, index) => (
             <motion.div
               key={index}
               variants={item}
-              className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md item box-shadow-card font-open-sans"
+              whileHover={{
+                scale: 1.05,
+              }}
+              className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer item box-shadow-card font-open-sans"
             >
               <p
                 className={`message-item ${

@@ -9,6 +9,11 @@ const SetUpAssumptions = () => {
   return (
     <div className="relative w-full pt-6 pl-6">
       <div>
+        <div>
+          <h1 className="relative z-10 w-full mb-10 text-3xl font-black text-center font-playfair-display">
+            {roomId}
+          </h1>
+        </div>
         <div className="flex w-10/12 mx-auto mt-5">
           <h1 className="inline-block mb-2 text-xl font-bold">Opstellen</h1>
           <Tooltip
