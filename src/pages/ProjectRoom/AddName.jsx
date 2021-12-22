@@ -45,7 +45,7 @@ const AddName = () => {
         />
       </div>
       <div
-        className={`my-20 relative w-1/3 mx-auto text-xl font-medium font-open-san`}
+        className={`hover-box my-20 relative w-1/3 mx-auto text-xl font-medium font-open-san`}
       >
         <input
           value={window.location.href}

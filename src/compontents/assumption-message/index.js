@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import useAssumptions from "../../client/assumptions/index";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import socketIOClient from "socket.io-client";
 import { ReactComponent as HelpIcon } from "../../assets/svg/help-icon.svg";
 import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
@@ -22,9 +22,12 @@ const AssumptionMessage = (props) => {
   const roomId = props.roomId;
 
   const assumptionsTips = [
-    "Wat denk jij dat de gebruiker wilt?",
-    "Wat denk jij dat de verschillende stakeholders willen?",
+    "Hoe denk jij dat de oplossing gebruikt gaat worden?",
+    "In welke situatie denk jij dat de oplossing gebruikt gaat worden?",
+    "Wat denk jij dat dat de oplossing gaat zijn?",
+    "Wat denk jij dat de opdrachtgever wilt?",
     "Wat denk jij dat het eindproduct gaat worden?",
+    "Wat denk jij dat de gebruiker wilt?",
   ];
 
   const socketRef = useRef();
@@ -80,19 +83,25 @@ const AssumptionMessage = (props) => {
       {props.location === "criticize" ? (
         <div></div>
       ) : (
-        <div className="w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md md:w-48 md:h-48 box-shadow-card font-open-sans">
-          <div className="relative z-30 flex pb-3 pl-3">
-            <motion.div
-              whileTap={{ scale: 0.9 }}
-              onClick={(event) => {
-                setInputFocus(true);
-                setHelp(false);
+        <div className="flex w-full">
+          <div className="w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md md:w-48 md:h-48 box-shadow-card font-open-sans">
+            <textarea
+              ref={inputRef}
+              value={newMessage}
+              placeholder={`${"Schrijf hier je aanname..."}`}
+              className="w-full p-4 placeholder-black bg-yellow-100 rounded-md resize-none pt-7 h-36 hover:bg-white hover:bg-opacity-25 focus:outline-none"
+              onChange={(event) => {
+                setNewMessage(event.target.value);
               }}
-            >
-              {" "}
-              <EditIcon className="mr-2 cursor-pointer"></EditIcon>
-            </motion.div>
+              onKeyPress={(event) => {
+                if (event.key === "Enter") {
+                  event.preventDefault();
+                  handleSendMessage();
+                }
+              }}
+            />
             <motion.div
+              className="flex mr-auto cursor-pointer"
               whileTap={{ scale: 0.9 }}
               onClick={(event) => {
                 setHelp(true);
@@ -100,28 +109,48 @@ const AssumptionMessage = (props) => {
               }}
             >
               {" "}
-              <HelpIcon className="mr-2 cursor-pointer"></HelpIcon>
+              <button className="pr-2 ml-auto text-xs">hulp nodig ?</button>
             </motion.div>
           </div>
-          <textarea
-            ref={inputRef}
-            value={newMessage}
-            placeholder={`${
-              help
-                ? assumptionsTips[currentAssumptionTip]
-                : "Schrijf hier je aanname..."
-            }`}
-            className="w-full h-32 p-4 placeholder-black bg-yellow-100 rounded-md resize-none hover:bg-white hover:bg-opacity-25 focus:outline-none"
-            onChange={(event) => {
-              setNewMessage(event.target.value);
-            }}
-            onKeyPress={(event) => {
-              if (event.key === "Enter") {
-                event.preventDefault();
-                handleSendMessage();
-              }
-            }}
-          />
+          <AnimatePresence>
+            {help && (
+              <motion.div
+                initial={{ y: 0, x: -30, opacity: 0 }}
+                animate={{ y: 0, x: 0, opacity: 1 }}
+                exit={{ y: 0, x: -30, opacity: 0 }}
+                className={` ${
+                  help ? "show" : ""
+                } relative w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-white border-2 border-black rounded-md md:w-48 md:h-48 font-open-sans`}
+              >
+                <motion.button
+                  onClick={(event) => {
+                    setHelp(false);
+                    handleAssigneeOnClick();
+                  }}
+                  className="absolute top-0 right-0 w-8 h-8 text-center text-black rounded-full"
+                >
+                  {" "}
+                  x{" "}
+                </motion.button>
+                <motion.p className="w-full p-4 pt-2 pb-0 text-xs font-bold">
+                  Geheugensteuntje
+                </motion.p>
+                <motion.p className="w-full p-4 pt-0 placeholder-black bg-white rounded-md resize-none h-28 hover:bg-opacity-25 focus:outline-none">
+                  {assumptionsTips[currentAssumptionTip]}
+                </motion.p>
+                <div
+                  onClick={(event) => {
+                    handleAssigneeOnClick();
+                  }}
+                  className="flex w-full mt-auto"
+                >
+                  <motion.button className="pt-2 ml-auto text-xs">
+                    volgende
+                  </motion.button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       )}
 

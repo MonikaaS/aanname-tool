@@ -3,6 +3,7 @@
  transition: all 0.2s ease-in-out;
 }
 
+.hover-box:hover .box-shadow,
 .box-shadow:hover{
  box-shadow: -10px 7px 0px 0px #686868, -10px 7px 0px 2px #000000; 
 }

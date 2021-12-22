@@ -8,8 +8,10 @@ module.exports = {
         xs: ".75rem",
       },
       fontFamily: {
-        "playfair-display": ['"Playfair Display"', "serif"],
-        "open-sans": ['"Open Sans"', "Sans-serif"],
+        "playfair-display": ["Playfair Display", "serif"],
+        "open-sans": ["Open Sans", "Sans-serif"],
+        domine: ["Domine", "Sans-serif"],
+        poppins: ["Poppins", "serif"],
       },
       fontWeight: {
         black: 900,
