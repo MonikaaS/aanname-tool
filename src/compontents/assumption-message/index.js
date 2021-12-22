@@ -7,8 +7,8 @@ import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
-// const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 const useFocus = () => {
   const htmlElRef = useRef(null);
   const setFocus = () => {
