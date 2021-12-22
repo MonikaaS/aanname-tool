@@ -81,7 +81,7 @@ const AssumptionQuestion = (props) => {
                     setShowQuestion(false);
                     handleAssigneeOnClick();
                   }}
-                  className="absolute w-8 h-8 text-center text-black bg-gray-400 border-2 border-black rounded-full -right-4 -top-4"
+                  className="absolute top-0 right-0 w-8 h-8 text-center text-white rounded-full"
                 >
                   {" "}
                   x{" "}
