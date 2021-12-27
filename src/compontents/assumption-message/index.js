@@ -199,9 +199,9 @@ const AssumptionMessage = (props) => {
                 scale: 1.05,
               }}
               onClick={(event) => {
-                console.log(event.target.lastChild.innerHTML);
+                console.log(!message.active);
                 isSelected(event.target.lastChild.innerHTML);
-                setActive(!active);
+                setActive(!message.active);
               }}
               className={` ${
                 message.active ? "border-yellow-100" : "border-black"
