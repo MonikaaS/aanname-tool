@@ -180,7 +180,7 @@ const AssumptionMessage = (props) => {
               whileHover={{
                 scale: 1.05,
               }}
-              className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer item box-shadow-card font-open-sans"
+              className="relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer item box-shadow-card font-open-sans"
             >
               <button
                 onClick={(event) => {
