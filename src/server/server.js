@@ -23,6 +23,7 @@ const RECEIVE_POSITION = "ReceivePosition";
 const ALL_ASSUMPTIONS = "AllAssumptions";
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
 const SET_POSITION = "SetPosition";
+const SELECTED_ASSUMPTION = "SelectedAssumption";
 
 const usersPerRoom = {};
 const assumptionsPerRoom = {};
@@ -84,6 +85,16 @@ io.on("connection", (socket) => {
       assumptionsPerRoom[roomId].splice(index, 1);
     }
     io.in(roomId).emit(DELETE_ASSUMPTIONS, assumptionsPerRoom);
+  });
+
+  socket.on(SELECTED_ASSUMPTION, (data) => {
+    console.log(data);
+    assumptionsPerRoom[roomId].find((element) => {
+      if (element.assumption === data.assumption) {
+        element.active = data.active;
+      }
+    });
+    io.in(roomId).emit(SELECTED_ASSUMPTION, assumptionsPerRoom);
   });
 
   io.in(roomId).emit(ALL_USERS, usersPerRoom);

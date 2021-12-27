@@ -7,6 +7,7 @@ import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
+const SELECTED_ASSUMPTION = "SelectedAssumption";
 // const SOCKET_SERVER_URL = window.location.origin;
 const SOCKET_SERVER_URL = "http://localhost:4000";
 const useFocus = () => {
@@ -39,6 +40,8 @@ const AssumptionMessage = (props) => {
   const [help, setHelp] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
   const [deleteMessage, setDeleteMessage] = useState("");
+  const [selected, isSelected] = useState("");
+  const [active, setActive] = useState(false);
 
   const handleSendMessage = () => {
     sendMessage(newMessage);
@@ -75,8 +78,23 @@ const AssumptionMessage = (props) => {
       setAssumptions([...filteredUsers[roomId]]);
     });
 
+    socketRef.current.on(SELECTED_ASSUMPTION, (assumption) => {
+      const filteredUsers = Object.keys(assumption)
+        .filter((key) => [roomId].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = assumption[key];
+          return obj;
+        }, {});
+      setAssumptions([...filteredUsers[roomId]]);
+    });
+
     socketRef.current.emit(DELETE_ASSUMPTIONS, {
       assumption: deleteMessage,
+    });
+
+    socketRef.current.emit(SELECTED_ASSUMPTION, {
+      assumption: selected,
+      active: active,
     });
 
     // Destroys the socket reference
@@ -84,7 +102,7 @@ const AssumptionMessage = (props) => {
     return () => {
       socketRef.current.disconnect();
     };
-  }, [roomId, deleteMessage]);
+  }, [roomId, deleteMessage, active, selected]);
 
   const item = {
     hidden: { scale: 0.9, opacity: 0 },
@@ -180,7 +198,14 @@ const AssumptionMessage = (props) => {
               whileHover={{
                 scale: 1.05,
               }}
-              className="relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer item box-shadow-card font-open-sans"
+              onClick={(event) => {
+                console.log(event.target.lastChild.innerHTML);
+                isSelected(event.target.lastChild.innerHTML);
+                setActive(!active);
+              }}
+              className={` ${
+                message.active ? "border-yellow-100" : "border-black"
+              } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item box-shadow-card font-open-sans`}
             >
               <button
                 onClick={(event) => {

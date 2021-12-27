@@ -39,6 +39,7 @@ const useAssumptions = (roomId) => {
       xPosition: 0,
       yPosition: 0,
       transform: "translate3d(0px, 0px, 0px)",
+      active: false,
     });
   };
 
