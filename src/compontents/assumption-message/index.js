@@ -6,9 +6,9 @@ import { ReactComponent as HelpIcon } from "../../assets/svg/help-icon.svg";
 import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
-
-const SOCKET_SERVER_URL = window.location.origin;
-// const SOCKET_SERVER_URL = "http://localhost:4000";
+const DELETE_ASSUMPTIONS = "DeleteAssumptions";
+// const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = "http://localhost:4000";
 const useFocus = () => {
   const htmlElRef = useRef(null);
   const setFocus = () => {
@@ -31,12 +31,14 @@ const AssumptionMessage = (props) => {
   ];
 
   const socketRef = useRef();
+  const messageRef = useRef();
   const [assumptions, setAssumptions] = useState([]);
   const { messages, sendMessage } = useAssumptions(roomId); // Creates a websocket and manages messaging
   const [newMessage, setNewMessage] = useState(""); // Message to be sent
   const [currentAssumptionTip, setCurrentAssumptionTip] = useState(1);
   const [help, setHelp] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
+  const [deleteMessage, setDeleteMessage] = useState("");
 
   const handleSendMessage = () => {
     sendMessage(newMessage);
@@ -63,12 +65,26 @@ const AssumptionMessage = (props) => {
       setAssumptions([...filteredUsers[roomId]]);
     });
 
+    socketRef.current.on(DELETE_ASSUMPTIONS, (assumption) => {
+      const filteredUsers = Object.keys(assumption)
+        .filter((key) => [roomId].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = assumption[key];
+          return obj;
+        }, {});
+      setAssumptions([...filteredUsers[roomId]]);
+    });
+
+    socketRef.current.emit(DELETE_ASSUMPTIONS, {
+      assumption: deleteMessage,
+    });
+
     // Destroys the socket reference
     // when the connection is closed
     return () => {
       socketRef.current.disconnect();
     };
-  }, [roomId]);
+  }, [roomId, deleteMessage]);
 
   const item = {
     hidden: { scale: 0.9, opacity: 0 },
@@ -159,12 +175,23 @@ const AssumptionMessage = (props) => {
           assumptions.map((message, index) => (
             <motion.div
               key={index}
+              ref={messageRef}
               variants={item}
               whileHover={{
                 scale: 1.05,
               }}
               className="w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer item box-shadow-card font-open-sans"
             >
+              <button
+                onClick={(event) => {
+                  event.preventDefault();
+                  setDeleteMessage(event.target.nextSibling.innerHTML);
+                }}
+                className="absolute top-0 right-0 w-8 h-8 text-center text-black rounded-full"
+              >
+                {" "}
+                x{" "}
+              </button>
               <p
                 className={`message-item ${
                   message.ownedByCurrentUser ? "my-message" : "received-message"

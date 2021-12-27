@@ -1,7 +1,7 @@
-const express = require("express");
-const path = require("path");
-const app = express();
-const server = require("http").createServer(app);
+// const express = require("express");
+// const path = require("path");
+// const app = express();
+const server = require("http").createServer();
 const io = require("socket.io")(server, {
   cors: {
     origin: "*",
@@ -9,19 +9,20 @@ const io = require("socket.io")(server, {
 });
 const PORT = process.env.PORT || 4000;
 
-app.use(express.static(path.join(__dirname, "../../build")));
-app.get("*", (req, res, next) =>
-  res.sendFile(path.resolve(__dirname, "../../build", "index.html"))
-);
+// app.use(express.static(path.join(__dirname, "../../build")));
+// app.get("*", (req, res, next) =>
+//   res.sendFile(path.resolve(__dirname, "../../build", "index.html"))
+// );
 
 const NEW_CHAT_MESSAGE_EVENT = "newAssumptionMessage";
 const NEW_USER_EVENT = "newUser";
-const ALL_USERS = "AllUsers"; // Name of the event
-const QUESTIONS = "questions"; // Name of the event
-const SEND_TIME = "SendTime"; // Name of the event
-const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
-const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
-const SET_POSITION = "SetPosition"; // Name of the event
+const ALL_USERS = "AllUsers";
+const QUESTIONS = "questions";
+const SEND_TIME = "SendTime";
+const RECEIVE_POSITION = "ReceivePosition";
+const ALL_ASSUMPTIONS = "AllAssumptions";
+const DELETE_ASSUMPTIONS = "DeleteAssumptions";
+const SET_POSITION = "SetPosition";
 
 const usersPerRoom = {};
 const assumptionsPerRoom = {};
@@ -72,6 +73,17 @@ io.on("connection", (socket) => {
 
     io.in(roomId).emit(ALL_ASSUMPTIONS, assumptionsPerRoom);
     // io.in(roomId).emit(SET_POSITION, assumptionsPerRoom);
+  });
+
+  socket.on(DELETE_ASSUMPTIONS, (data) => {
+    if (data.assumption !== "") {
+      const index = assumptionsPerRoom[roomId].findIndex((key) => {
+        return key.assumption === data.assumption;
+      });
+
+      assumptionsPerRoom[roomId].splice(index, 1);
+    }
+    io.in(roomId).emit(DELETE_ASSUMPTIONS, assumptionsPerRoom);
   });
 
   io.in(roomId).emit(ALL_USERS, usersPerRoom);
