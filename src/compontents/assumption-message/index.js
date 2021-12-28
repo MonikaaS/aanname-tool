@@ -2,8 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import useAssumptions from "../../client/assumptions/index";
 import { motion, AnimatePresence } from "framer-motion";
 import socketIOClient from "socket.io-client";
-import { ReactComponent as HelpIcon } from "../../assets/svg/help-icon.svg";
-import { ReactComponent as EditIcon } from "../../assets/svg/edit-icon.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
@@ -204,8 +202,10 @@ const AssumptionMessage = (props) => {
                 setActive(!message.active);
               }}
               className={` ${
-                message.active ? "border-yellow-100" : "border-black"
-              } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item box-shadow-card font-open-sans`}
+                message.active
+                  ? "border-yellow-100"
+                  : "border-black box-shadow-card"
+              } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-open-sans`}
             >
               <button
                 onClick={(event) => {
