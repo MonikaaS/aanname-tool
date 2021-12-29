@@ -10,15 +10,22 @@ const Header = () => {
 
   return (
     <>
+      <div className="fixed top-10 right-10">
+        <Users></Users>
+      </div>
       <div
-        className={`relative hidden md:block ${
-          window.location.pathname === "/" + roomId ? "hidden" : ""
+        className={`relative ${
+          window.location.pathname === "/" + roomId || "/" + roomId + "/"
+            ? "hidden"
+            : "hidden md:block"
         } w-56 text-center`}
       >
-        <div className="fixed top-10 right-10">
-          <Users></Users>
-        </div>
-        <header className="fixed top-0 z-20 flex flex-col justify-between w-56 h-full overflow-y-hidden bg-white shadow-md ">
+        {window.location.pathname === "/" + roomId ? (
+          <DraggableComponent roomId={roomId}></DraggableComponent>
+        ) : null}
+        <header
+          className={`fixed top-0 z-20 flex flex-col justify-between h-full overflow-y-hidden bg-white shadow-md w-52`}
+        >
           <div className="mt-10">
             <span className="relative z-10 ml-5 text-2xl font-black text-center font-playfair-display">
               {roomId}

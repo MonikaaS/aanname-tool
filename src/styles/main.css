@@ -6,3 +6,6 @@
 @import "./users.css";
 @import "./animation.css";
 @import "./card.css";
+
+@import "slick-carousel/slick/slick.css"; 
+@import "slick-carousel/slick/slick-theme.css";
