@@ -30,7 +30,7 @@ const AddName = () => {
           <div className="absolute w-1/2 h-10 mx-auto bg-yellow-100 top-1/2 left-36"></div>
         </div>
         <div
-          className={`mt-10 relative w-8/12 mx-auto text-xl font-medium font-open-san`}
+          className={`mt-10 relative w-8/12 mx-auto text-xl font-medium font-open-sans`}
         >
           <input
             value={newUser}
@@ -50,7 +50,7 @@ const AddName = () => {
           />
         </div>
         <div
-          className={`hover-box my-20 relative w-8/12 mx-auto text-xl font-medium font-open-san`}
+          className={`hover-box my-20 relative w-8/12 mx-auto text-xl font-medium font-open-sans`}
         >
           <input
             value={window.location.href}
