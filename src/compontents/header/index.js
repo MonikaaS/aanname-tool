@@ -15,7 +15,8 @@ const Header = () => {
       </div>
       <div
         className={`relative ${
-          window.location.pathname === "/" + roomId
+          window.location.pathname === "/" + roomId ||
+          window.location.pathname === "/" + roomId + "/"
             ? "hidden"
             : "hidden md:block"
         } w-56 text-center`}
