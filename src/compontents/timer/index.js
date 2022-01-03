@@ -18,7 +18,7 @@ const Timer = (props) => {
     if (runTimer) {
       timerId = setInterval(() => {
         setCountDown((countDown) => countDown - 1);
-      }, 2000);
+      }, 1000);
     } else {
       clearInterval(timerId);
     }
@@ -64,12 +64,15 @@ const Timer = (props) => {
 
   return (
     <div>
-      <div className="">
+      <p className="mb-2 text-xl font-bold font-open-sans">
+        {minutes} : {seconds}
+      </p>
+      <div className="flex justify-between w-full">
         <button
           onClick={() => {
             setCountDown(countDown - 30);
           }}
-          className="w-full p-5 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans box-shadow"
+          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
         >
           -
         </button>
@@ -77,7 +80,7 @@ const Timer = (props) => {
           onClick={() => {
             setCountDown(countDown + 30);
           }}
-          className="w-full p-5 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans box-shadow"
+          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
         >
           +
         </button>
@@ -85,22 +88,23 @@ const Timer = (props) => {
           onClick={() => {
             togglerTimer();
           }}
-          className="w-full p-5 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans box-shadow"
+          className="w-10 p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
         >
-          {runTimer ? ` []` : ">"}
+          <div
+            className={`${runTimer ? "play-stop" : "play-button"} mx-auto`}
+          ></div>
         </button>
-        <p>
-          {minutes} : {seconds}
-        </p>
       </div>
       <div className="relative">
         <div
           className={` ${
-            runTimer ? "" : "hidden"
-          } fixed w-1/3 p-5 border-2 border-black rounded-lg right-40 top-40 box-shadow`}
+            runTimer || counterText === "Tijd is om!" ? "" : "hidden"
+          } fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-10 bg-white`}
         >
           {" "}
-          <p>{runTimer ? `${minutes} : ${seconds}` : `${counterText}`}</p>
+          <p className="text-3xl font-bold font-open-sans">
+            {runTimer ? `${minutes} : ${seconds}` : `${counterText}`}
+          </p>
         </div>
       </div>
     </div>
