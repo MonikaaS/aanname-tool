@@ -186,6 +186,43 @@ const AssumptionMessage = (props) => {
         </div>
       )}
 
+      <div className="container flex-wrap hidden w-full mb-5 md:flex">
+        {assumptions.map((message) => {
+          if (message.active === true && props.location === "criticize") {
+            return (
+              <motion.div
+                key={message.assumption}
+                ref={messageRef}
+                variants={item}
+                whileHover={{
+                  scale: 1.05,
+                }}
+                onClick={(event) => {
+                  isSelected(event.target.lastChild.innerHTML);
+                  setActive(!message.active);
+                }}
+                className={` ${
+                  message.active
+                    ? "border-indigo-600 box-shadow-card"
+                    : "border-black box-shadow-card"
+                } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-open-sans`}
+              >
+                <p
+                  className={`message-item ${
+                    message.ownedByCurrentUser
+                      ? "my-message"
+                      : "received-message"
+                  }`}
+                >
+                  {message.assumption}
+                </p>
+              </motion.div>
+            );
+          }
+          <p>selecteer een aanname om deze te bespreken</p>;
+        })}
+      </div>
+
       <div className="container flex-wrap hidden w-full md:flex">
         {assumptions.length !== 0 ? (
           assumptions.map((message, index) => (
@@ -197,13 +234,12 @@ const AssumptionMessage = (props) => {
                 scale: 1.05,
               }}
               onClick={(event) => {
-                console.log(!message.active);
                 isSelected(event.target.lastChild.innerHTML);
                 setActive(!message.active);
               }}
               className={` ${
                 message.active
-                  ? "border-yellow-100"
+                  ? "border-indigo-600 box-shadow-card"
                   : "border-black box-shadow-card"
               } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-open-sans`}
             >

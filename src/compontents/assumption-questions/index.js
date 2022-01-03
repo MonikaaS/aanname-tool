@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import socketIOClient from "socket.io-client";
 
 const QUESTIONS = "questions"; // Name of the event
+const SELECTED_ASSUMPTION = "SelectedAssumption";
+
 // const SOCKET_SERVER_URL = window.location.origin;
 const SOCKET_SERVER_URL = "http://localhost:4000";
 const AssumptionQuestion = (props) => {
@@ -21,6 +23,7 @@ const AssumptionQuestion = (props) => {
     "Waarom is deze aanname relevant voor het project/doelgroep",
   ];
 
+  const [assumptions, setAssumptions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(1);
   const [showQuestion, setShowQuestion] = useState(false);
 
@@ -44,6 +47,15 @@ const AssumptionQuestion = (props) => {
       currentQuestion: currentQuestion,
     });
 
+    socketRef.current.on(SELECTED_ASSUMPTION, (assumption) => {
+      const filteredUsers = Object.keys(assumption)
+        .filter((key) => [roomId].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = assumption[key];
+          return obj;
+        }, {});
+      setAssumptions([...filteredUsers[roomId]]);
+    });
     // Destroys the socket reference
     // when the connection is closed
     return () => {
