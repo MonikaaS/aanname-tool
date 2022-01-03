@@ -30,8 +30,8 @@ const Modal = () => {
               Wat is de aanname tool?
             </h3>
             <p className="w-8/12 mx-auto text-center font-open-sans">
-              Stel gezamenlijk in een team aannames over het op te lossen
-              probleem op.
+              Hier komt kort een uitleg over wat de aanname tool is en wat het
+              doel is.
             </p>
           </div>
           <div className="w-10/12 mx-auto mb-10">
@@ -39,8 +39,7 @@ const Modal = () => {
               Aannames opstellen
             </h3>
             <p className="w-8/12 mx-auto text-center font-open-sans">
-              Stel gezamenlijk in een team aannames over het op te lossen
-              probleem op.
+              Korte uitleg over feature
             </p>
           </div>
           <div className="w-10/12 mx-auto mb-10">
@@ -48,8 +47,7 @@ const Modal = () => {
               Aannames bekritiseren
             </h3>
             <p className="w-8/12 mx-auto text-center font-open-sans">
-              Bekritiseer door middel van vragen de aannames, zodat het gesprek
-              met elkaar op gang komt.
+              Korte uitleg over feature
             </p>
           </div>
           <div className="w-10/12 mx-auto mb-10">
@@ -57,8 +55,7 @@ const Modal = () => {
               Reflecteer de aannames
             </h3>
             <p className="w-8/12 mx-auto text-center font-open-sans">
-              Reflecteer samen op de aannames, door de kaartjes op de juiste
-              plek te schuiven.
+              Korte uitleg over feature
             </p>
           </div>
         </Slider>
