@@ -1,17 +1,17 @@
 .assumption-card:first-of-type {
  position: absolute;
- left: 2.5rem;
+ left: 1.5rem;
  bottom: 7rem;
 }
 
 .assumption-card:nth-child(2)  {
  position: absolute;
- left: 3rem;
+ left: 2rem;
  bottom: 7rem;
 }
 
 .assumption-card  {
  position: absolute;
- left: 3.5rem;
+ left: 2.5rem;
  bottom: 7rem;
 }
