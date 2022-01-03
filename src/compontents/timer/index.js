@@ -18,7 +18,7 @@ const Timer = (props) => {
     if (runTimer) {
       timerId = setInterval(() => {
         setCountDown((countDown) => countDown - 1);
-      }, 1000);
+      }, 2000);
     } else {
       clearInterval(timerId);
     }
