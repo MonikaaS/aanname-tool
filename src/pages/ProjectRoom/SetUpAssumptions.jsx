@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 
 import AssumptionMessage from "../../compontents/assumption-message/index.js";
 import Tooltip from "../../compontents/tooltip/index.js";
+import Walkthrough from "../../compontents/walkthrough/index.js";
 
 const SetUpAssumptions = () => {
   const { roomId } = useParams(); // Gets roomId from URL
@@ -19,6 +20,7 @@ const SetUpAssumptions = () => {
               bekritiseren"
             roomId={roomId}
           ></Tooltip>
+          <Walkthrough text="Start de timer en begin met het opstellen van aannames!"></Walkthrough>
         </div>
         <h2 className="w-10/12 mx-auto text-xs font-light">
           Voeg anonieme aannames over het probleem/project toe!
