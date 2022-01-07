@@ -22,12 +22,11 @@ const SEND_TIME = "SendTime";
 const RECEIVE_POSITION = "ReceivePosition";
 const ALL_ASSUMPTIONS = "AllAssumptions";
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
-const SET_POSITION = "SetPosition";
+const NEW_POSITION = "SetPosition";
 const SELECTED_ASSUMPTION = "SelectedAssumption";
 
 const usersPerRoom = {};
 const assumptionsPerRoom = {};
-const data = "";
 
 io.on("connection", (socket) => {
   // Join a conversation
@@ -64,15 +63,16 @@ io.on("connection", (socket) => {
   });
 
   socket.on(RECEIVE_POSITION, (data) => {
-    io.in(roomId).emit(RECEIVE_POSITION, data);
+    console.log(data.assumption);
+    console.log(data);
     assumptionsPerRoom[roomId].find((element) => {
       if (element.assumption === data.assumption) {
         element.xPosition = data.xPosition;
         element.yPosition = data.yPosition;
       }
     });
-
-    io.in(roomId).emit(ALL_ASSUMPTIONS, assumptionsPerRoom);
+    console.log(assumptionsPerRoom);
+    io.in(roomId).emit(RECEIVE_POSITION, assumptionsPerRoom);
     // io.in(roomId).emit(SET_POSITION, assumptionsPerRoom);
   });
 
@@ -88,7 +88,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on(SELECTED_ASSUMPTION, (data) => {
-    console.log(data);
     assumptionsPerRoom[roomId].find((element) => {
       if (element.assumption === data.assumption) {
         element.active = data.active;

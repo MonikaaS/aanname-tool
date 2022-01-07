@@ -1,4 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
+import ReactDOM from "react-dom";
+import Draggable from "react-draggable";
 import { motion } from "framer-motion";
 import socketIOClient from "socket.io-client";
 
@@ -12,11 +14,12 @@ const DraggableComponent = (props) => {
   const roomId = props.roomId;
 
   const socketRef = useRef();
+  const nodeRef = React.useRef(null);
+
   const [xPosition, setXposition] = useState(0);
   const [yPosition, setYposition] = useState(0);
   const [assumptions, setAssumptions] = useState([]);
   const [currentlyDragged, setCurrentlyDragged] = useState("");
-  const [hover, setHover] = useState("false");
   const ref = useRef([]);
 
   useEffect(() => {
@@ -35,12 +38,23 @@ const DraggableComponent = (props) => {
       setAssumptions([...filteredUsers[roomId]]);
     });
 
-    socketRef.current.emit(RECEIVE_POSITION, {
-      assumption: currentlyDragged,
-      xPosition: xPosition,
-      yPosition: yPosition,
+    socketRef.current.on(RECEIVE_POSITION, (assumption) => {
+      const filteredUsers = Object.keys(assumption)
+        .filter((key) => [roomId].includes(key))
+        .reduce((obj, key) => {
+          obj[key] = assumption[key];
+          return obj;
+        }, {});
+      setAssumptions([...filteredUsers[roomId]]);
     });
 
+    if (currentlyDragged !== "") {
+      socketRef.current.emit(RECEIVE_POSITION, {
+        assumption: currentlyDragged,
+        xPosition: xPosition,
+        yPosition: yPosition,
+      });
+    }
     // Destroys the socket reference
     // when the connection is closed
     return () => {
@@ -48,39 +62,38 @@ const DraggableComponent = (props) => {
     };
   }, [roomId, xPosition, yPosition, currentlyDragged]);
 
-  const handleDrag = (e, info) => {
-    setXposition(info.offset.x);
-    setYposition(info.offset.y);
-    console.log(info);
+  console.log(assumptions);
+
+  const handleDrag = (e, data) => {
+    e.preventDefault();
+    console.log(data.node.innerText);
+    console.log(data);
+    setXposition(data.x);
+    setYposition(data.y);
+    setCurrentlyDragged(data.node.innerText);
   };
 
   return (
     <div>
       {assumptions !== null &&
         assumptions.map((assumption, i) => (
-          <motion.div
-            drag
-            whileDrag={{ scale: 1.1 }}
-            key={i}
-            ref={ref}
-            dragTransition={{ power: 0 }}
-            id={props.id}
-            onDragEnd={handleDrag}
-            style={{
+          <Draggable
+            key={assumption.assumption}
+            ref={nodeRef}
+            onStop={handleDrag}
+            position={{ x: assumption.xPosition, y: assumption.yPosition }}
+            defaultPosition={{
               x: assumption.xPosition,
               y: assumption.yPosition,
-              opacity: 1,
             }}
-            onMouseEnter={(event) => {
-              setHover(true);
-            }}
-            onMouseUp={(event) => {
-              setCurrentlyDragged(assumption.assumption);
-            }}
-            className={`assumption-card z-40 w-32 h-32 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer hover:z-50 text-xs font-open-sans`}
           >
-            <div className={"`message-item"}>{assumption.assumption}</div>
-          </motion.div>
+            <div
+              className={`assumption-card z-40 w-32 h-32 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer hover:z-50 text-xs font-open-sans`}
+            >
+              {" "}
+              <div className={"`message-item"}>{assumption.assumption}</div>
+            </div>
+          </Draggable>
         ))}
     </div>
   );
