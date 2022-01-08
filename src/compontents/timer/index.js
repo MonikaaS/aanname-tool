@@ -28,6 +28,7 @@ const Timer = (props) => {
       }, 1000);
     } else {
       clearInterval(timerId);
+      setCountDown(60 * 5);
     }
 
     return () => clearInterval(timerId);
@@ -47,7 +48,6 @@ const Timer = (props) => {
       setAddTime(data.addTime);
 
       if (data.addTime === true) {
-        console.log("yo");
         setCountDown(countDown + 30);
         setAddTime(false);
       }
@@ -57,7 +57,6 @@ const Timer = (props) => {
       setRemoveTime(data.removeTime);
 
       if (data.removeTime === true) {
-        console.log("yo");
         setCountDown(countDown - 30);
         setRemoveTime(false);
       }
@@ -80,7 +79,7 @@ const Timer = (props) => {
     return () => {
       socketRef.current.disconnect();
     };
-  }, [roomId, runTimer, addTime, removeTime]);
+  }, [roomId, runTimer, addTime, removeTime, countDown]);
 
   useEffect(() => {
     if (countDown < 0 && runTimer) {

@@ -65,17 +65,14 @@ io.on("connection", (socket) => {
   });
 
   socket.on(SEND_TIME, (data) => {
-    console.log(data);
     io.in(roomId).emit(SEND_TIME, data);
   });
 
   socket.on(ADD_TIME, (data) => {
-    console.log(data);
     io.in(roomId).emit(ADD_TIME, data);
   });
 
   socket.on(REMOVE_TIME, (data) => {
-    console.log(data);
     io.in(roomId).emit(REMOVE_TIME, data);
   });
 
