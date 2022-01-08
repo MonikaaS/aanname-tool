@@ -19,14 +19,20 @@ const NEW_USER_EVENT = "newUser";
 const ALL_USERS = "AllUsers";
 const QUESTIONS = "questions";
 const SEND_TIME = "SendTime";
+const ADD_TIME = "AddTime";
+const CURRENT_TIME = "CurrentTime";
+const REMOVE_TIME = "RemoveTime";
+const RUN_TIMER = "RunTime";
 const RECEIVE_POSITION = "ReceivePosition";
 const ALL_ASSUMPTIONS = "AllAssumptions";
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
-const NEW_POSITION = "SetPosition";
 const SELECTED_ASSUMPTION = "SelectedAssumption";
 
 const usersPerRoom = {};
 const assumptionsPerRoom = {};
+
+let timerId;
+let counter = 300;
 
 io.on("connection", (socket) => {
   // Join a conversation
@@ -58,20 +64,88 @@ io.on("connection", (socket) => {
     io.in(roomId).emit(QUESTIONS, data);
   });
 
-  socket.on(SEND_TIME, (data) => {
-    io.in(roomId).emit(SEND_TIME, data);
+  socket.on(RUN_TIMER, (data) => {
+    io.in(roomId).emit(RUN_TIMER, data);
+
+    if (data.addTime === true) {
+      counter = counter + 30;
+      console.log("tijd erbij");
+
+      if (data.runTimer === false) {
+        console.log("tijd staat stil");
+        let seconds = String(counter % 60).padStart(2, 0);
+        let minutes = String(Math.floor(counter / 60)).padStart(2, 0);
+
+        io.in(roomId).emit(ADD_TIME, { minutes: minutes, seconds: seconds });
+      } else {
+        io.in(roomId).emit(ADD_TIME, data);
+      }
+    }
+
+    // if (data.removeTime === true) {
+    //   let seconds = String(counter % 60).padStart(2, 0);
+    //   let minutes = String(Math.floor(counter / 60)).padStart(2, 0);
+
+    //   counter = counter - 30;
+    //   console.log("tijd eraf");
+
+    //   if (data.runTimer === false) {
+    //     io.in(roomId).emit(REMOVE_TIME, { minutes: minutes, seconds: seconds });
+    //   }
+    // }
+
+    if (data.runTimer === true) {
+      console.log("nog een keer");
+      timerId = setInterval(() => {
+        counter--;
+
+        let seconds = String(counter % 60).padStart(2, 0);
+        let minutes = String(Math.floor(counter / 60)).padStart(2, 0);
+
+        io.in(roomId).emit(SEND_TIME, { minutes: minutes, seconds: seconds });
+
+        if (counter === 0) {
+          console.log("tijd is om");
+          clearInterval(timerId);
+        }
+      }, 1000);
+    } else {
+      console.log("stop");
+      clearInterval(timerId);
+    }
+
+    // if (data.runTimer === false) {
+    //   let seconds = String(counter % 60).padStart(2, 0);
+    //   let minutes = String(Math.floor(counter / 60)).padStart(2, 0);
+
+    //   io.in(roomId).emit(CURRENT_TIME, { minutes: minutes, seconds: seconds });
+    // }
+  });
+
+  socket.on(ADD_TIME, (data) => {
+    console.log(data);
+    if (data.addTime === true) {
+      counter = counter + 30;
+      console.log("tijd erbij");
+
+      if (data.runTimer === false) {
+        let seconds = String(counter % 60).padStart(2, 0);
+        let minutes = String(Math.floor(counter / 60)).padStart(2, 0);
+
+        io.in(roomId).emit(ADD_TIME, { minutes: minutes, seconds: seconds });
+      } else {
+        io.in(roomId).emit(ADD_TIME, data);
+      }
+    }
   });
 
   socket.on(RECEIVE_POSITION, (data) => {
-    console.log(data.assumption);
-    console.log(data);
     assumptionsPerRoom[roomId].find((element) => {
       if (element.assumption === data.assumption) {
         element.xPosition = data.xPosition;
         element.yPosition = data.yPosition;
       }
     });
-    console.log(assumptionsPerRoom);
     io.in(roomId).emit(RECEIVE_POSITION, assumptionsPerRoom);
     // io.in(roomId).emit(SET_POSITION, assumptionsPerRoom);
   });

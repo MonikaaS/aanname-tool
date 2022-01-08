@@ -2,30 +2,39 @@ import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
 const SEND_TIME = "SendTime"; // Name of the event
+const ADD_TIME = "AddTime";
+const CURRENT_TIME = "CurrentTime";
+const REMOVE_TIME = "RemoveTime";
+const RUN_TIMER = "RunTime";
 // const SOCKET_SERVER_URL = window.location.origin;
 
 const SOCKET_SERVER_URL = "http://localhost:4000";
 const Timer = (props) => {
   const roomId = props.roomId;
-  const [countDown, setCountDown] = useState(60 * 5);
   const [runTimer, setRunTimer] = useState(false);
+  const [countDown, setCountDown] = useState({
+    minutes: "05",
+    seconds: "00",
+  });
   const [counterText, setCounterText] = useState("start de timer");
+  const [addTime, setAddTime] = useState(false);
+  const [removeTime, setRemoveTime] = useState(false);
 
   const socketRef = useRef();
 
-  useEffect(() => {
-    let timerId;
+  // useEffect(() => {
+  //   let timerId;
 
-    if (runTimer) {
-      timerId = setInterval(() => {
-        setCountDown((countDown) => countDown - 1);
-      }, 3000);
-    } else {
-      clearInterval(timerId);
-    }
+  //   if (runTimer) {
+  //     timerId = setInterval(() => {
+  //       setCountDown((countDown) => countDown - 1);
+  //     }, 1000);
+  //   } else {
+  //     clearInterval(timerId);
+  //   }
 
-    return () => clearInterval(timerId);
-  }, [runTimer]);
+  //   return () => clearInterval(timerId);
+  // }, [runTimer]);
 
   useEffect(() => {
     // Creates a WebSocket connection
@@ -33,14 +42,54 @@ const Timer = (props) => {
       query: { roomId },
     });
 
-    socketRef.current.on(SEND_TIME, (data) => {
+    socketRef.current.on(RUN_TIMER, (data) => {
+      console.log("run timer");
+      console.log(data);
       setRunTimer(data.runTimer);
-      setCountDown(data.countDown);
     });
 
-    socketRef.current.emit(SEND_TIME, {
+    socketRef.current.on(SEND_TIME, (data) => {
+      //console.log("send time");
+      setCountDown({
+        minutes: data.minutes,
+        seconds: data.seconds,
+      });
+      //setCountDown(data);
+    });
+
+    socketRef.current.on(ADD_TIME, (data) => {
+      console.log("add time");
+      console.log(data);
+      if (runTimer === false) {
+        console.log("tijd staat stil");
+        setCountDown({
+          minutes: data.minutes,
+          seconds: data.seconds,
+        });
+      }
+      setAddTime(false);
+    });
+
+    socketRef.current.on(REMOVE_TIME, (data) => {
+      console.log("remove time");
+      setCountDown({
+        minutes: data.minutes,
+        seconds: data.seconds,
+      });
+      setRemoveTime(false);
+    });
+
+    socketRef.current.on(CURRENT_TIME, (data) => {
+      console.log("current-time");
+      setCountDown({
+        minutes: data.minutes,
+        seconds: data.seconds,
+      });
+    });
+
+    socketRef.current.emit(RUN_TIMER, {
       runTimer: runTimer,
-      countDown: countDown,
+      addTime: addTime,
     });
 
     // Destroys the socket reference
@@ -48,46 +97,47 @@ const Timer = (props) => {
     return () => {
       socketRef.current.disconnect();
     };
-  }, [roomId, runTimer, countDown]);
+  }, [roomId, runTimer, addTime]);
 
-  useEffect(() => {
-    if (countDown < 0 && runTimer) {
-      setRunTimer(false);
-      setCountDown(60 * 5);
-      setCounterText("Tijd is om!");
-    }
-  }, [countDown, runTimer]);
+  // useEffect(() => {
+  //   if (countDown < 0 && runTimer) {
+  //     setRunTimer(false);
+  //     setCountDown(60 * 5);
+  //     setCounterText("Tijd is om!");
+  //   }
+  // }, [countDown, runTimer]);
 
-  const togglerTimer = () => setRunTimer((t) => !t);
-
-  const seconds = String(countDown % 60).padStart(2, 0);
-  const minutes = String(Math.floor(countDown / 60)).padStart(2, 0);
+  // const seconds = String(countDown % 60).padStart(2, 0);
+  // const minutes = String(Math.floor(countDown / 60)).padStart(2, 0);
 
   return (
     <div>
       <p className="mb-2 text-xl font-bold font-open-sans">
-        {minutes} : {seconds}
+        {countDown.minutes} : {countDown.seconds}
       </p>
       <div className="flex justify-between w-full">
         <button
-          onClick={() => {
-            setCountDown(countDown - 30);
+          onClick={(e) => {
+            e.preventDefault();
+            setRemoveTime(true);
           }}
           className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
         >
           -
         </button>
         <button
-          onClick={() => {
-            setCountDown(countDown + 30);
+          onClick={(e) => {
+            e.preventDefault();
+            setAddTime(true);
           }}
           className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
         >
           +
         </button>
         <button
-          onClick={() => {
-            togglerTimer();
+          onClick={(e) => {
+            e.preventDefault();
+            setRunTimer(!runTimer);
           }}
           className="w-10 p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
         >
@@ -99,12 +149,12 @@ const Timer = (props) => {
       <div className="relative">
         <div
           className={` ${
-            runTimer || counterText === "Tijd is om!" ? "" : "hidden"
+            runTimer === true || counterText === "Tijd is om!" ? "" : "hidden"
           } fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-10 bg-white`}
         >
           {" "}
           <p className="text-3xl font-bold font-open-sans">
-            {runTimer ? `${minutes} : ${seconds}` : `${counterText}`}
+            {countDown.minutes} : {countDown.seconds}
           </p>
         </div>
       </div>
