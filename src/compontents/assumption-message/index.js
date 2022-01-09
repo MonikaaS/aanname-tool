@@ -41,6 +41,8 @@ const AssumptionMessage = (props) => {
   const [deleteMessage, setDeleteMessage] = useState("");
   const [selected, isSelected] = useState("");
   const [active, setActive] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [empty, setEmpty] = useState(false);
 
   const handleSendMessage = () => {
     sendMessage(newMessage);
@@ -65,6 +67,16 @@ const AssumptionMessage = (props) => {
           return obj;
         }, {});
       setAssumptions([...filteredUsers[roomId]]);
+
+      if ([...filteredUsers[roomId]].length < 1) {
+        setLoading(false);
+        setEmpty(true);
+      }
+
+      if ([...filteredUsers[roomId]].length > 0) {
+        setLoading(false);
+        setEmpty(false);
+      }
     });
 
     socketRef.current.on(DELETE_ASSUMPTIONS, (assumption) => {
@@ -75,6 +87,16 @@ const AssumptionMessage = (props) => {
           return obj;
         }, {});
       setAssumptions([...filteredUsers[roomId]]);
+
+      if ([...filteredUsers[roomId]].length < 1) {
+        setLoading(false);
+        setEmpty(true);
+      }
+
+      if ([...filteredUsers[roomId]].length > 0) {
+        setLoading(false);
+        setEmpty(false);
+      }
     });
 
     socketRef.current.on(SELECTED_ASSUMPTION, (assumption) => {
@@ -225,7 +247,7 @@ const AssumptionMessage = (props) => {
       </div>
 
       <div className="container flex-wrap hidden w-full md:flex">
-        {assumptions.length !== 0 ? (
+        {loading === false && empty === false ? (
           assumptions.map((message, index) => (
             <motion.div
               key={index}
@@ -264,6 +286,9 @@ const AssumptionMessage = (props) => {
             </motion.div>
           ))
         ) : (
+          <div></div>
+        )}
+        {loading === false && empty === true ? (
           <div className="w-full text-center">
             <h1 className="w-full pt-6 mx-auto mt-5 mb-2 text-xl font-bold text-indigo-600">
               Er zijn nog geen aannames
@@ -272,6 +297,8 @@ const AssumptionMessage = (props) => {
               Start met het opstellen van aannames
             </h2>
           </div>
+        ) : (
+          <div></div>
         )}
       </div>
     </div>

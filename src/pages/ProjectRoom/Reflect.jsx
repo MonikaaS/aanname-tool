@@ -52,33 +52,22 @@ const Reflect = (props) => {
           Sleep de kaartjes naar de juiste positie op de as
         </h2>
       </div>
-      {assumptions && assumptions.length === 0 ? (
-        <div className="w-full mt-40 text-center">
-          <h1 className="w-full pt-6 mt-5 mb-2 text-xl font-bold text-indigo-600">
-            Er zijn nog geen aannames
-          </h1>
-          <h2 className="w-10/12 mx-auto text-xs font-light">
-            Start met het opstellen van aannames
-          </h2>
+      <div className="relative w-full h-screen mx-auto -mt-10">
+        <div className="absolute mr-5 text-2xl font-black text-center transform -translate-x-1/2 font-playfair-display top-1/10 left-1/2">
+          Onzeker
         </div>
-      ) : (
-        <div className="relative w-full h-screen mx-auto -mt-10">
-          <div className="absolute mr-5 text-2xl font-black text-center transform -translate-x-1/2 font-playfair-display top-1/10 left-1/2">
-            Onzeker
-          </div>
-          <div className="absolute ml-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 right-1/10 ">
-            Lage risico
-          </div>
-          <div className="absolute mr-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 left-1/10 ">
-            Hoge risico
-          </div>
-          <div className="absolute ml-5 text-2xl font-black text-center transform -translate-x-1/2 font-playfair-display bottom-1/10 left-1/2">
-            Zeker
-          </div>
-          <div className="absolute w-3/6 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black top-1/2 left-1/2"></div>
-          <div className="absolute transform -translate-x-1/2 -translate-y-1/2 border-2 border-black h-4/6 top-1/2 left-1/2"></div>
+        <div className="absolute ml-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 right-1/10 ">
+          Lage risico
         </div>
-      )}
+        <div className="absolute mr-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 left-1/10 ">
+          Hoge risico
+        </div>
+        <div className="absolute ml-5 text-2xl font-black text-center transform -translate-x-1/2 font-playfair-display bottom-1/10 left-1/2">
+          Zeker
+        </div>
+        <div className="absolute w-3/6 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black top-1/2 left-1/2"></div>
+        <div className="absolute transform -translate-x-1/2 -translate-y-1/2 border-2 border-black h-4/6 top-1/2 left-1/2"></div>
+      </div>
     </div>
   );
 };
