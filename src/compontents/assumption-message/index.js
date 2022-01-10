@@ -148,7 +148,7 @@ const AssumptionMessage = (props) => {
         <div></div>
       ) : (
         <div className="flex w-full">
-          <div className="w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md md:w-48 md:h-48 box-shadow-card font-open-sans">
+          <div className="w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md md:w-48 md:h-48 box-shadow-card font-poppins">
             <textarea
               ref={inputRef}
               value={newMessage}
@@ -173,7 +173,9 @@ const AssumptionMessage = (props) => {
               }}
             >
               {" "}
-              <button className="pr-2 ml-auto text-xs">zetje nodig ?</button>
+              <button className="pr-2 ml-auto text-xs font-semibold">
+                zetje nodig ?
+              </button>
             </motion.div>
           </div>
           <AnimatePresence>
@@ -184,7 +186,7 @@ const AssumptionMessage = (props) => {
                 exit={{ y: 0, x: -30, opacity: 0 }}
                 className={` ${
                   help ? "show" : ""
-                } relative w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-white border-2 border-black rounded-md md:w-48 md:h-48 font-open-sans`}
+                } relative w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-white border-2 border-black rounded-md md:w-48 md:h-48 font-poppins`}
               >
                 <motion.button
                   onClick={(event) => {
@@ -199,7 +201,7 @@ const AssumptionMessage = (props) => {
                 <motion.p className="w-full p-4 pt-2 pb-0 text-xs font-bold">
                   Geheugensteuntje
                 </motion.p>
-                <motion.p className="w-full p-4 pt-0 placeholder-black bg-white rounded-md resize-none h-28 hover:bg-opacity-25 focus:outline-none">
+                <motion.p className="w-full p-4 pt-0 font-medium placeholder-black bg-white rounded-md resize-none h-28 hover:bg-opacity-25 focus:outline-none">
                   {assumptionsTips[currentAssumptionTip]}
                 </motion.p>
                 <div
@@ -208,7 +210,7 @@ const AssumptionMessage = (props) => {
                   }}
                   className="flex w-full mt-auto"
                 >
-                  <motion.button className="pt-2 ml-auto text-xs">
+                  <motion.button className="pt-2 ml-auto text-xs font-semibold">
                     volgende
                   </motion.button>
                 </div>
@@ -226,7 +228,7 @@ const AssumptionMessage = (props) => {
         } container flex-wrap hidden w-full p-5 mb-5 bg-gray-100 rounded-md hover:bg-yellow-50 border-2 border-gray-100 border-dashed hover:border-black`}
       >
         <p
-          className={` ${hasSelected ? "hidden" : ""} text-center w-full my-20`}
+          className={` ${hasSelected ? "hidden" : ""} text-center w-full my-10`}
         >
           selecteer aannames om bij de kiritsche vraag te bespreken
         </p>
@@ -248,7 +250,7 @@ const AssumptionMessage = (props) => {
                   message.active
                     ? "border-black box-shadow-card-selected"
                     : "bg-gray-800 box-shadow-card"
-                } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-open-sans`}
+                } relative w-48 h-48 p-4 m-2 font-normal text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-poppins`}
               >
                 <p
                   className={`message-item ${
@@ -283,7 +285,7 @@ const AssumptionMessage = (props) => {
                 message.active
                   ? "border-black box-shadow-card-selected "
                   : "border-black box-shadow-card"
-              } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-open-sans`}
+              } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-poppins`}
             >
               <button
                 onClick={(event) => {

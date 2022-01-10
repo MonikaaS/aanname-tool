@@ -28,7 +28,7 @@ const Header = () => {
           className={`fixed top-0 z-20 flex flex-col justify-between h-full overflow-y-hidden bg-white shadow-md w-52`}
         >
           <div className="mt-10">
-            <span className="relative z-10 ml-5 text-2xl font-black text-center font-playfair-display">
+            <span className="relative z-10 text-xl font-bold text-center font-poppins">
               {roomId}
             </span>
             <div className="relative mt-40">
@@ -37,7 +37,7 @@ const Header = () => {
                   window.location.pathname === "/" + roomId + "/setup"
                     ? "border-b-4 border-yellow-300"
                     : ""
-                } mx-auto my-5 block w-2/4 font-bold text-l font-open-sans`}
+                } mx-auto my-5 block w-2/4 font-semibold text-base font-poppins`}
                 to={{
                   pathname: `/${roomId}/setup`,
                 }}
@@ -49,7 +49,7 @@ const Header = () => {
                   window.location.pathname === "/" + roomId + "/criticize"
                     ? "border-b-4 border-yellow-300"
                     : ""
-                } mx-auto my-5 block w-2/4 font-bold text-l font-open-sans`}
+                } mx-auto my-5 block w-2/4 font-semibold text-base font-poppins`}
                 to={{
                   pathname: `/${roomId}/criticize`,
                 }}
@@ -61,7 +61,7 @@ const Header = () => {
                   window.location.pathname === "/" + roomId + "/reflect"
                     ? "border-b-4 border-yellow-300"
                     : ""
-                } mx-auto my-5 block w-2/4 font-bold text-l font-open-sans`}
+                } mx-auto my-5 block w-2/4 font-semibold text-base font-poppins`}
                 to={{
                   pathname: `/${roomId}/reflect`,
                 }}
@@ -70,11 +70,19 @@ const Header = () => {
               </Link>
             </div>
           </div>
-          {window.location.pathname === "/" + roomId + "/setup" ? (
-            <div className="flex justify-center mb-10">
-              <Timer roomId={roomId}></Timer>
-            </div>
-          ) : null}
+          <div className="mb-10">
+            {window.location.pathname === "/" + roomId + "/setup" ? (
+              <div className="flex justify-center mb-10">
+                <Timer roomId={roomId}></Timer>
+              </div>
+            ) : null}
+            <Link
+              to="/"
+              className="relative z-10 mb-10 text-xs font-bold text-center font-poppins hover:text-indigo-600"
+            >
+              Aanname tool
+            </Link>
+          </div>
         </header>
       </div>
       {window.location.pathname === "/" + roomId + "/reflect" ? (

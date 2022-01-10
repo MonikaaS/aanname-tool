@@ -73,9 +73,9 @@ const AssumptionQuestion = (props) => {
               setShowQuestion(true);
               handleAssigneeOnClick();
             }}
-            className="w-48 h-48 p-4 m-2 font-medium text-black bg-indigo-600 border-2 border-black rounded-md box-shadow-card-q font-open-sans"
+            className="w-48 h-48 p-4 m-2 font-medium text-black bg-indigo-600 border-2 border-black rounded-md box-shadow-card-q font-poppins"
           >
-            <motion.p className="w-full h-full text-white bg-indigo-600 resize-none focus:outline-none">
+            <motion.p className="w-full h-full text-white bg-indigo-600 resize-none focus:outline-none font-poppins">
               kritische vragen
             </motion.p>
           </motion.button>
@@ -87,7 +87,7 @@ const AssumptionQuestion = (props) => {
                 exit={{ y: 0, x: -30, opacity: 0 }}
                 className={` ${
                   showQuestion ? "show" : ""
-                } relative w-48 h-48 p-4 m-2 font-medium text-black bg-indigo-600 border-2 border-black rounded-md box-shadow-card-q font-open-sans`}
+                } relative w-48 h-48 p-4 m-2 font-medium text-black bg-indigo-600 border-2 border-black rounded-md box-shadow-card-q font-poppins`}
               >
                 <motion.button
                   onClick={(event) => {

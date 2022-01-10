@@ -41,9 +41,9 @@ const Users = () => {
         users.map((user, i) => (
           <div
             key={i}
-            className="flex items-center justify-center w-16 h-16 my-auto text-xs font-bold bg-yellow-100 border-2 border-white rounded-full user font-open-sans"
+            className="flex items-center justify-center w-16 h-16 my-auto font-medium bg-yellow-100 border-2 border-white rounded-full text-xss user font-poppins"
           >
-            <span>{user.userName}</span>
+            <span className="w-10/12 text-center">{user.userName}</span>
           </div>
         ))}
     </div>

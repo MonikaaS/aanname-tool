@@ -24,20 +24,20 @@ const AddName = () => {
         className={`relative ${haveName ? "hidden" : ""} text-center w-full`}
       >
         <div className="relative w-1/2 mx-auto">
-          <h1 className="relative z-10 mt-40 mb-20 text-6xl font-black text-center font-playfair-display">
+          <h1 className="relative z-10 mt-40 mb-20 text-6xl font-bold text-center font-poppins">
             {roomId}
           </h1>
           <div className="absolute w-1/2 h-10 mx-auto bg-yellow-100 top-1/2 left-36"></div>
         </div>
         <div
-          className={`mt-10 relative w-8/12 mx-auto text-xl font-medium font-open-sans`}
+          className={`mt-10 relative w-8/12 mx-auto text-xl font-normal font-poppins`}
         >
           <input
             value={newUser}
             placeholder="Wat is je naam?"
             className={` ${
               haveName ? "hidden" : ""
-            } box-shadow p-6 font-open-sans font-medium text-xl w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
+            } box-shadow p-6 font-poppins font-normal text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
             onChange={(event) => {
               setNewUser(event.target.value);
             }}
@@ -50,18 +50,18 @@ const AddName = () => {
           />
         </div>
         <div
-          className={`hover-box my-20 relative w-8/12 mx-auto text-xl font-medium font-open-sans`}
+          className={`hover-box my-20 relative w-8/12 mx-auto text-lg font-medium font-poppins`}
         >
           <input
             value={window.location.href}
             placeholder="Wat is je naam?"
             className={` ${
               haveName ? "hidden" : ""
-            } cursor-pointer box-shadow p-6 font-open-sans font-medium text-xl w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
+            } cursor-pointer box-shadow p-6 font-poppins font-normal text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
           />
           <button
             onClick={() => navigator.clipboard.writeText(window.location.href)}
-            className="absolute inset-y-0 right-0 flex items-center p-6 px-4 text-xl font-medium bg-yellow-100 border-2 border-black rounded-r-lg font-open-sans focus:outline-none "
+            className="absolute inset-y-0 right-0 flex items-center p-6 px-4 text-xl font-medium bg-yellow-100 border-2 border-black rounded-r-lg font-poppins focus:outline-none "
           >
             Kopier link
           </button>
@@ -72,7 +72,7 @@ const AddName = () => {
             handleSendUser();
             setHaveName(true);
           }}
-          className="w-full p-4 px-4 mx-auto mt-10 text-xl font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans box-shadow focus:outline-none "
+          className="w-full p-4 px-4 mx-auto mt-10 text-xl font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins box-shadow focus:outline-none "
         >
           Start de sessie
         </Link>

@@ -84,7 +84,7 @@ const DraggableComponent = (props) => {
             }}
           >
             <div
-              className={`assumption-card z-40 w-32 h-32 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer hover:z-50 text-xs font-open-sans`}
+              className={`assumption-card z-40 w-32 h-32 p-4 m-2 text-black bg-yellow-100 border-2 border-black rounded-md cursor-pointer hover:z-50 text-xs font-poppins`}
             >
               {" "}
               <div className={"`message-item"}>{assumption.assumption}</div>

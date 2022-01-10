@@ -95,7 +95,7 @@ const Timer = (props) => {
 
   return (
     <div>
-      <p className="mb-2 text-xl font-bold font-open-sans">
+      <p className="mb-2 text-xl font-bold font-poppins">
         {minutes} : {seconds}
       </p>
       <div className="flex justify-between w-full">
@@ -104,7 +104,7 @@ const Timer = (props) => {
             e.preventDefault();
             setRemoveTime(true);
           }}
-          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
+          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins"
         >
           -
         </button>
@@ -113,7 +113,7 @@ const Timer = (props) => {
             e.preventDefault();
             setAddTime(true);
           }}
-          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
+          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins"
         >
           +
         </button>
@@ -121,7 +121,7 @@ const Timer = (props) => {
           onClick={() => {
             togglerTimer();
           }}
-          className="w-10 p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-open-sans"
+          className="w-10 p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins"
         >
           <div
             className={`${runTimer ? "play-stop" : "play-button"} mx-auto`}
@@ -135,7 +135,7 @@ const Timer = (props) => {
           } fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-10 bg-white`}
         >
           {" "}
-          <p className="text-3xl font-bold font-open-sans">
+          <p className="text-3xl font-bold font-poppins">
             {minutes} : {seconds}
           </p>
         </div>

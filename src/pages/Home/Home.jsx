@@ -35,7 +35,7 @@ const Home = () => {
           <motion.h1
             animate={{ y: [0, -10] }}
             transition={{ ease: "easeOut", duration: 0.2 }}
-            className="relative z-10 mt-20 text-6xl font-semibold text-center item font-domine"
+            className="relative z-10 mt-20 text-6xl font-semibold text-center item font-poppins"
           >
             Aanname tool
           </motion.h1>
@@ -50,11 +50,11 @@ const Home = () => {
         <motion.div
           animate={{ opacity: [0, 1] }}
           transition={{ ease: "easeOut", duration: 0.5, delay: 0.7 }}
-          className="absolute -left-20 top-5"
+          className="absolute -left-24 top-5"
         >
           <ArrowLoop></ArrowLoop>
         </motion.div>
-        <p className="w-10/12 mx-auto text-lg font-normal text-center font-open-sans">
+        <p className="w-11/12 mx-auto text-lg font-normal text-center font-poppins">
           {" "}
           Creëer een nieuw project om samen met elkaar aannames over het op te
           lossen probleem te bespreken
@@ -64,14 +64,14 @@ const Home = () => {
       <motion.div
         animate={{ y: [0, -10], opacity: [0, 1] }}
         transition={{ ease: "easeOut", duration: 0.5, delay: 0.5 }}
-        className="relative w-5/12 mx-auto text-xl font-medium hover-box font-open-sans"
+        className="relative w-5/12 mx-auto text-xl font-medium hover-box font-poppins"
       >
         <input
           type="text"
           placeholder="Projectnaam"
           value={roomName}
           onChange={handleRoomNameChange}
-          className="w-full h-10 p-6 pl-3 pr-8 text-xl font-medium placeholder-black border-2 border-black rounded-lg box-shadow font-open-sans focus:outline-none"
+          className="w-full h-10 p-6 pl-3 pr-8 text-xl font-normal placeholder-black border-2 border-black rounded-lg box-shadow font-poppins focus:outline-none"
         />
         <Link
           to={`/${roomName.replace(/\s/g, "-").toLowerCase()}`}

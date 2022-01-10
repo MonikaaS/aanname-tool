@@ -53,16 +53,16 @@ const Reflect = (props) => {
         </h2>
       </div>
       <div className="relative w-full h-screen mx-auto -mt-10">
-        <div className="absolute mr-5 text-2xl font-black text-center transform -translate-x-1/2 font-playfair-display top-1/10 left-1/2">
+        <div className="absolute mr-3 text-2xl font-black text-center transform -translate-x-1/2 font-poppins top-1/10 left-1/2">
           Onzeker
         </div>
-        <div className="absolute ml-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 right-1/10 ">
+        <div className="absolute ml-5 text-2xl font-black text-center transform -translate-y-1/2 font-poppins top-1/2 right-1/10 ">
           Lage risico
         </div>
-        <div className="absolute mr-5 text-2xl font-black text-center transform -translate-y-1/2 font-playfair-display top-1/2 left-1/10 ">
+        <div className="absolute mr-5 text-2xl font-black text-center transform -translate-y-1/2 font-poppins top-1/2 left-1/10 ">
           Hoge risico
         </div>
-        <div className="absolute ml-5 text-2xl font-black text-center transform -translate-x-1/2 font-playfair-display bottom-1/10 left-1/2">
+        <div className="absolute ml-2 text-2xl font-black text-center transform -translate-x-1/2 font-poppins bottom-1/10 left-1/2">
           Zeker
         </div>
         <div className="absolute w-3/6 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black top-1/2 left-1/2"></div>
