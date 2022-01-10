@@ -29,7 +29,7 @@ const Header = () => {
         >
           <div className="mt-10">
             <span className="relative z-10 text-xl font-bold text-center font-poppins">
-              {roomId}
+              {roomId.replace("-", " ")}
             </span>
             <div className="relative mt-40">
               <Link

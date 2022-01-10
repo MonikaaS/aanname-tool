@@ -25,7 +25,7 @@ const AddName = () => {
       >
         <div className="relative w-full mx-auto md:w-1/2">
           <h1 className="relative z-10 mt-40 mb-20 text-6xl font-bold text-center font-poppins">
-            {roomId}
+            {roomId.replace("-", " ")}
           </h1>
           <div className="absolute w-1/3 h-10 mx-auto bg-yellow-100 left-36 md:w-1/2 top-1/2 md:left-36"></div>
         </div>
