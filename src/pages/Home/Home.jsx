@@ -54,7 +54,7 @@ const Home = () => {
         >
           <ArrowLoop></ArrowLoop>
         </motion.div>
-        <p className="w-11/12 mx-auto font-normal text-center md:text-xs font-poppins">
+        <p className="w-11/12 mx-auto text-xs font-normal text-center md:text-lg font-poppins">
           {" "}
           Creëer een nieuw project om samen met elkaar aannames over het op te
           lossen probleem te bespreken
@@ -71,11 +71,11 @@ const Home = () => {
           placeholder="Projectnaam"
           value={roomName}
           onChange={handleRoomNameChange}
-          className="w-full h-10 p-6 pl-3 pr-8 text-xs font-normal placeholder-black border-2 border-black rounded-lg box-shadow font-poppins focus:outline-none"
+          className="w-full h-10 p-6 pl-3 pr-8 text-xs font-normal placeholder-black border-2 border-black rounded-lg md:text-lg box-shadow font-poppins focus:outline-none"
         />
         <Link
           to={`/${roomName.replace(/\s/g, "-").toLowerCase()}`}
-          className="absolute inset-y-0 right-0 flex items-center p-6 px-4 bg-yellow-100 border-2 border-black rounded-r-lg focus:outline-none "
+          className="absolute inset-y-0 right-0 flex items-center p-6 px-4 bg-yellow-100 border-2 border-black rounded-r-lg md:text-lg focus:outline-none "
         >
           Creër project
         </Link>

@@ -37,7 +37,7 @@ const AddName = () => {
             placeholder="Wat is je naam?"
             className={` ${
               haveName ? "hidden" : ""
-            } box-shadow p-6 font-poppins font-normal text-sm w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
+            } box-shadow p-6 font-poppins font-normal text-sm md:text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
             onChange={(event) => {
               setNewUser(event.target.value);
             }}
@@ -50,14 +50,14 @@ const AddName = () => {
           />
         </div>
         <div
-          className={`hover-box my-20 relative w-8/12 mx-auto text-sm font-medium font-poppins`}
+          className={`hover-box my-20 relative w-8/12 mx-auto text-sm md:text-lg font-medium font-poppins`}
         >
           <input
             value={window.location.href}
             placeholder="Wat is je naam?"
             className={` ${
               haveName ? "hidden" : ""
-            } cursor-pointer box-shadow p-6 font-poppins font-normal text-sm w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
+            } cursor-pointer box-shadow p-6 font-poppins font-normal text-sm md:text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
           />
           <button
             onClick={() => navigator.clipboard.writeText(window.location.href)}
