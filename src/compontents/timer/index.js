@@ -85,6 +85,7 @@ const Timer = (props) => {
     if (countDown < 0 && runTimer) {
       setRunTimer(false);
       setCountDown(0);
+      setCounterText("Tijd is om!");
     }
   }, [countDown, runTimer]);
 
@@ -120,6 +121,7 @@ const Timer = (props) => {
         <button
           onClick={() => {
             togglerTimer();
+            localStorage.setItem("modalSession", "test");
           }}
           className="w-10 p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins"
         >
@@ -132,11 +134,16 @@ const Timer = (props) => {
         <div
           className={` ${
             runTimer === true || counterText === "Tijd is om!" ? "" : "hidden"
-          } fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-10 bg-white`}
+          } shadow-lg fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-7/12 bottom-20 bg-white m-2`}
         >
           {" "}
           <p className="text-3xl font-bold font-poppins">
-            {minutes} : {seconds}
+            {runTimer ? ` ${minutes} : ${seconds} ` : "Tijd is om!"}
+          </p>
+          <p className="w-10/12 mx-auto text-xs font-normal font-poppin">
+            {runTimer
+              ? ""
+              : " Ga gauw door naar bekritiseren of stel nog een keer aannames op!"}
           </p>
         </div>
       </div>

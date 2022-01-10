@@ -20,7 +20,10 @@ const SetUpAssumptions = () => {
               bekritiseren"
             roomId={roomId}
           ></Tooltip>
-          <Walkthrough text="Start de timer en begin met het opstellen van aannames!"></Walkthrough>
+          <Walkthrough
+            roomId={roomId}
+            text="Start de timer en begin met het opstellen van aannames!"
+          ></Walkthrough>
         </div>
         <h2 className="w-10/12 mx-auto text-xs font-light">
           Voeg anonieme aannames over het probleem/project toe!
