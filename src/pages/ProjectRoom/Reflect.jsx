@@ -94,7 +94,7 @@ const Reflect = (props) => {
         </div>
         <div
           style={{ zIndex: -1 }}
-          className="absolute z-0 w-3/6 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black top-1/2 left-1/2"
+          className="absolute z-0 w-1/4 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black lg:w-3/6 top-1/2 left-1/2"
         ></div>
         <div
           style={{ zIndex: -1 }}
