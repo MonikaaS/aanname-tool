@@ -12,7 +12,9 @@ const SetUpAssumptions = () => {
       <div>
         <div></div>
         <div className="flex w-10/12 mx-auto mt-5">
-          <h1 className="inline-block mb-2 text-xl font-bold">Opstellen</h1>
+          <h1 className="inline-block mt-20 mb-2 text-xl font-bold md:mt-0">
+            Opstellen
+          </h1>
           <Tooltip
             text="Start de timer en begin met het opstellen van aannames! Is de tijd
               om?"

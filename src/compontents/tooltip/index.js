@@ -10,7 +10,7 @@ const Tooltip = (props) => {
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="flex items-center justify-center w-4 h-4 my-auto text-xs font-bold bg-gray-100 border-2 border-white rounded-full cursor-pointer user font-poppins"
+        className="items-center justify-center hidden w-4 h-4 my-auto text-xs font-bold bg-gray-100 border-2 border-white rounded-full cursor-pointer md:flex user font-poppins"
       >
         <span className="text-center">?</span>
       </motion.div>

@@ -18,26 +18,26 @@ const AddName = () => {
   };
 
   return (
-    <div className="relative grid w-full grid-cols-2 gap-2 ">
+    <div className="relative grid w-full grid-cols-1 gap-2 md:grid-cols-2 ">
       <Modal></Modal>
       <div
         className={`relative ${haveName ? "hidden" : ""} text-center w-full`}
       >
-        <div className="relative w-1/2 mx-auto">
+        <div className="relative w-full mx-auto md:w-1/2">
           <h1 className="relative z-10 mt-40 mb-20 text-6xl font-bold text-center font-poppins">
             {roomId}
           </h1>
-          <div className="absolute w-1/2 h-10 mx-auto bg-yellow-100 top-1/2 left-36"></div>
+          <div className="absolute w-1/3 h-10 mx-auto bg-yellow-100 left-36 md:w-1/2 top-1/2 md:left-36"></div>
         </div>
         <div
-          className={`mt-10 relative w-8/12 mx-auto text-xl font-normal font-poppins`}
+          className={`mt-10 relative w-8/12 mx-auto text-xs font-normal font-poppins`}
         >
           <input
             value={newUser}
             placeholder="Wat is je naam?"
             className={` ${
               haveName ? "hidden" : ""
-            } box-shadow p-6 font-poppins font-normal text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
+            } box-shadow p-6 font-poppins font-normal text-sm w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
             onChange={(event) => {
               setNewUser(event.target.value);
             }}
@@ -50,18 +50,18 @@ const AddName = () => {
           />
         </div>
         <div
-          className={`hover-box my-20 relative w-8/12 mx-auto text-lg font-medium font-poppins`}
+          className={`hover-box my-20 relative w-8/12 mx-auto text-sm font-medium font-poppins`}
         >
           <input
             value={window.location.href}
             placeholder="Wat is je naam?"
             className={` ${
               haveName ? "hidden" : ""
-            } cursor-pointer box-shadow p-6 font-poppins font-normal text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
+            } cursor-pointer box-shadow p-6 font-poppins font-normal text-sm w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
           />
           <button
             onClick={() => navigator.clipboard.writeText(window.location.href)}
-            className="absolute inset-y-0 right-0 flex items-center p-6 px-4 text-xl font-medium bg-yellow-100 border-2 border-black rounded-r-lg font-poppins focus:outline-none "
+            className="absolute inset-y-0 right-0 flex items-center p-6 px-4 text-sm font-medium bg-yellow-100 border-2 border-black rounded-r-lg font-poppins focus:outline-none "
           >
             Kopier link
           </button>

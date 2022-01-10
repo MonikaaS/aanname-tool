@@ -18,7 +18,7 @@ const Modal = () => {
   };
 
   return (
-    <div className="bg-yellow-100">
+    <div className="hidden bg-yellow-100 md:block">
       <div className="w-full mx-auto mt-40">
         <h2 className="mb-20 text-xl font-bold text-center font-poppins">
           {" "}

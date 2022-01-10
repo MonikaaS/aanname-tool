@@ -147,7 +147,7 @@ const AssumptionMessage = (props) => {
       {props.location === "criticize" ? (
         <div></div>
       ) : (
-        <div className="flex w-full">
+        <div className="w-full md:flex">
           <div className="w-56 h-56 p-2 m-2 mb-12 font-medium text-black bg-yellow-100 border-2 border-black rounded-md md:w-48 md:h-48 box-shadow-card font-poppins">
             <textarea
               ref={inputRef}
