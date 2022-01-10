@@ -43,8 +43,8 @@ const Reflect = (props) => {
         <div className="flex w-10/12 mx-auto mt-5">
           <h1 className="inline-block mb-2 text-xl font-bold">Reflecteren</h1>
           <Tooltip
-            text="Het doel van deze stap is om als groep te kijken waar elk kaartje het beste past op de as. 
-            Bespreek met elkaar of een een aanname al vrij zeker is of niet en of de aanname een groot risico is voor het project."
+            text="Het doel van deze stap is om als groep te kijken waar elk kaartje het beste past op de as."
+            text2="Bespreek met elkaar of een een aanname al vrij zeker is of niet en of de aanname een groot risico is voor het project."
             roomId={roomId}
           ></Tooltip>
         </div>

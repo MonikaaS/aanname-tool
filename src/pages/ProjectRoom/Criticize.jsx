@@ -13,7 +13,9 @@ const Criticize = () => {
         <div className="flex w-10/12 mx-auto mt-5">
           <h1 className="inline-block mb-2 text-xl font-bold">Bekritiseren</h1>
           <Tooltip
-            text="Bij deze stap ga je gezamenlijk met elkaar het gesprek aan over de aannames. Met behulp van de kritische vragen, ga je alle aannames af. Je zult misschien merken dat er nieuwe aannames zijn ontstaan, je kan er voor kiezen om deze in de tool te zetten of door te gaan naar reflecteren"
+            text="Bij deze stap ga je gezamenlijk met elkaar het gesprek aan over de aannames. "
+            text2="Met behulp van de kritische vragen, ga je alle aannames af."
+            text3="Je zult misschien merken dat er nieuwe aannames zijn ontstaan, je kan er voor kiezen om deze in de tool te zetten of door te gaan naar reflecteren"
             roomId={roomId}
           ></Tooltip>
         </div>

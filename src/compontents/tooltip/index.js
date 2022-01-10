@@ -20,10 +20,16 @@ const Tooltip = (props) => {
             initial={{ y: 40, x: 0, opacity: 0 }}
             animate={{ y: 0, x: 0, opacity: 1 }}
             exit={{ y: 40, x: 0, opacity: 0 }}
-            className={`absolute top-0 left-64 w-48 h-18 p-4 m-2 font-sm text-black bg-white border-2 border-black rounded-md font-poppins`}
+            className={`shadow-xl absolute top-10 left-72 w-48 h-18 p-4 m-2 text-xs text-black bg-white border-2 border-black rounded-md font-poppins`}
           >
-            <motion.p className="w-full h-full text-sm text-black bg-white resize-none focus:outline-none">
+            <motion.p className="w-full h-full text-xs text-black bg-white resize-none focus:outline-none">
               {props.text}
+            </motion.p>
+            <motion.p className="w-full h-full mt-2 text-xs text-black bg-white resize-none focus:outline-none">
+              {props.text2}
+            </motion.p>
+            <motion.p className="w-full h-full mt-2 text-xs text-black bg-white resize-none focus:outline-none">
+              {props.text3}
             </motion.p>
           </motion.div>
         )}

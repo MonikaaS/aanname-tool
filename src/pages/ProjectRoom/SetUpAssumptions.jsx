@@ -15,8 +15,10 @@ const SetUpAssumptions = () => {
           <h1 className="inline-block mb-2 text-xl font-bold">Opstellen</h1>
           <Tooltip
             text="Start de timer en begin met het opstellen van aannames! Is de tijd
-              om? Geen probleem, je kan zo vaak aannames opstellen wanneer je
-              wilt. Heb je genoeg aannames opgesteld? Ga dan gauw verder naar
+              om?"
+            text2="Geen probleem, je kan zo vaak aannames opstellen wanneer je
+              wilt."
+            text3="Heb je genoeg aannames opgesteld? Ga dan gauw verder naar
               bekritiseren"
             roomId={roomId}
           ></Tooltip>
@@ -26,7 +28,7 @@ const SetUpAssumptions = () => {
           ></Walkthrough>
         </div>
         <h2 className="w-10/12 mx-auto text-xs font-light">
-          Voeg anonieme aannames over het probleem/project toe!
+          Voeg aannames over het probleem/project toe!
         </h2>
       </div>
       <AssumptionMessage
