@@ -26,37 +26,50 @@ const Modal = () => {
         </h2>
         <Slider {...settings} ref={sliderRef}>
           <div className="w-10/12 mx-auto mb-10">
-            <h3 className="font-medium text-center font-poppins">
-              Wat is de aanname tool?
-            </h3>
-            <p className="w-8/12 mx-auto text-xs text-center font-poppins">
-              Hier komt kort een uitleg over wat de aanname tool is en wat het
-              doel is.
-            </p>
+            <div className="w-56 h-auto p-2 m-2 mx-auto mb-12 font-medium text-black bg-white border-2 border-black rounded-md box-shadow md:w-72 md:h-72 font-poppins">
+              {" "}
+              <h3 className="w-full p-4 pt-2 pb-0 font-bold text-md">
+                Wat is de aanname tool?
+              </h3>
+              <p className="w-full p-4 pt-2 pb-0 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
+                Een aanname is iets wat je denkt of vind zonder het zeker te
+                weten.
+                <br></br>
+                <br></br>
+                Met de aanname tool ga je gezamenlijk de aannames naar boven
+                halen en bespreekbaar maken
+              </p>
+            </div>
           </div>
           <div className="w-10/12 mx-auto mb-10">
-            <h3 className="font-medium text-center font-poppins">
-              Aannames opstellen
-            </h3>
-            <p className="w-8/12 mx-auto text-xs text-center font-poppins">
-              Korte uitleg over feature
-            </p>
+            <div className="w-56 h-auto p-2 m-2 mx-auto mb-12 font-medium text-black bg-white border-2 border-black rounded-md box-shadow md:w-72 md:h-72 font-poppins">
+              <h3 className="w-full p-4 pt-2 pb-0 font-bold text-md">
+                Aannames opstellen
+              </h3>
+              <p className="w-full p-4 pt-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
+                Korte uitleg over feature
+              </p>
+            </div>
           </div>
           <div className="w-10/12 mx-auto mb-10">
-            <h3 className="font-medium text-center font-poppins">
-              Aannames bekritiseren
-            </h3>
-            <p className="w-8/12 mx-auto text-xs text-center font-poppins">
-              Korte uitleg over feature
-            </p>
+            <div className="w-56 h-auto p-2 m-2 mx-auto mb-12 font-medium text-black bg-white border-2 border-black rounded-md box-shadow md:w-72 md:h-72 font-poppins">
+              <h3 className="w-full p-4 pt-2 pb-0 font-bold text-md">
+                Aannames bekritiseren
+              </h3>
+              <p className="w-full p-4 pt-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
+                Korte uitleg over feature
+              </p>
+            </div>
           </div>
           <div className="w-10/12 mx-auto mb-10">
-            <h3 className="font-medium text-center font-poppins">
-              Reflecteer de aannames
-            </h3>
-            <p className="w-8/12 mx-auto text-xs text-center font-poppins">
-              Korte uitleg over feature
-            </p>
+            <div className="w-56 h-auto p-2 m-2 mx-auto mb-12 font-medium text-black bg-white border-2 border-black rounded-md box-shadow md:w-72 md:h-72 font-poppins">
+              <h3 className="w-full p-4 pt-2 pb-0 font-bold text-md">
+                Reflecteren op aannames
+              </h3>
+              <p className="w-full p-4 pt-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
+                Korte uitleg over feature
+              </p>
+            </div>
           </div>
         </Slider>
       </div>
