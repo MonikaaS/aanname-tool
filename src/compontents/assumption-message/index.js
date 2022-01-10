@@ -221,7 +221,7 @@ const AssumptionMessage = (props) => {
       <div
         className={`${
           props.location === "criticize" ? "md:flex" : "hidden"
-        } container flex-wrap hidden w-full p-5 mb-5 bg-gray-100 rounded-md hover:bg-yellow-100 border-2 border-gray-100 border-dashed hover:border-black`}
+        } container flex-wrap hidden w-full p-5 mb-5 bg-gray-100 rounded-md hover:bg-yellow-50 border-2 border-gray-100 border-dashed hover:border-black`}
       >
         <p
           className={` ${hasSelected ? "hidden" : ""} text-center w-full my-20`}
