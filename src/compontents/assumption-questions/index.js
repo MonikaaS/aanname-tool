@@ -13,19 +13,17 @@ const AssumptionQuestion = (props) => {
 
   const roomId = props.roomId;
   const questions = [
-    "Hoe ben je op je aanname gekomen?",
-    "Hoe kan de aanname NIET waar zijn?",
-    "Kun je fout zitten door te denken dat deze oplossing iets is wat de gebruiker nodig heeft?",
     "Wie heeft hier baat bij deze aanname?",
-    "Zijn er andere opties om het probleem te benaderen dan wat we nu denken?",
+    "Wat zou een ander alternatief of oplossing zijn",
+    "Wanneer is deze aanname NIET waar? En wanneer wel?",
+    "Wanneer zou je hulp voor de aanname moeten vragen",
     "Zijn er soort gelijke oplossingen, concepten, situaties?",
-    "Waar neemt deze aanname/oplossing je mee naar toe?",
-    "Wanneer zou deze aanname geaccepteerd/verworpen worden?",
-    "Waarom is deze aanname relevant voor het project/doelgroep",
+    "Waarom is deze aanname relevant voor het project of doelgroep",
+    "Hoe ben je op je aanname gekomen?",
   ];
 
   const [assumptions, setAssumptions] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(1);
+  const [currentQuestion, setCurrentQuestion] = useState(-1);
   const [showQuestion, setShowQuestion] = useState(false);
 
   const handleAssigneeOnClick = () => {
@@ -75,7 +73,7 @@ const AssumptionQuestion = (props) => {
             }}
             className="w-48 h-48 p-4 m-2 font-medium text-black bg-indigo-600 border-2 border-black rounded-md box-shadow-card-q font-poppins"
           >
-            <motion.p className="w-full h-full text-white bg-indigo-600 resize-none focus:outline-none font-poppins">
+            <motion.p className="w-full h-full pt-2 text-white bg-indigo-600 resize-none focus:outline-none font-poppins">
               kritische vragen
             </motion.p>
           </motion.button>
@@ -99,7 +97,7 @@ const AssumptionQuestion = (props) => {
                   {" "}
                   x{" "}
                 </motion.button>
-                <motion.p className="w-full h-full text-white bg-indigo-600 resize-none focus:outline-none">
+                <motion.p className="w-full h-full pt-2 text-white bg-indigo-600 resize-none focus:outline-none">
                   {questions[currentQuestion]}
                 </motion.p>
               </motion.div>
