@@ -164,7 +164,7 @@ const AssumptionMessage = (props) => {
               }}
             >
               {" "}
-              <button className="pr-2 ml-auto text-xs">hulp nodig ?</button>
+              <button className="pr-2 ml-auto text-xs">zetje nodig ?</button>
             </motion.div>
           </div>
           <AnimatePresence>

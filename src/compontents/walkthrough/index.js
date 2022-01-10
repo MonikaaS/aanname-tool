@@ -6,7 +6,6 @@ const Walkthrough = (props) => {
     const session = "test";
     const [showModal, setShowModal] = useState(false);
     const hideModal = () => {
-      console.log("hideModal");
       const modalKey = "modalSession";
       localStorage.setItem(modalKey, session);
       setShowModal(false);

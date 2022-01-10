@@ -62,12 +62,8 @@ const DraggableComponent = (props) => {
     };
   }, [roomId, xPosition, yPosition, currentlyDragged]);
 
-  console.log(assumptions);
-
   const handleDrag = (e, data) => {
     e.preventDefault();
-    console.log(data.node.innerText);
-    console.log(data);
     setXposition(data.x);
     setYposition(data.y);
     setCurrentlyDragged(data.node.innerText);
