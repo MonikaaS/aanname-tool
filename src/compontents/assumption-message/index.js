@@ -39,10 +39,11 @@ const AssumptionMessage = (props) => {
   const [help, setHelp] = useState(false);
   const [inputRef, setInputFocus] = useFocus();
   const [deleteMessage, setDeleteMessage] = useState("");
-  const [selected, isSelected] = useState("");
+  const [selected, setSelected] = useState("");
   const [active, setActive] = useState(false);
   const [loading, setLoading] = useState(true);
   const [empty, setEmpty] = useState(false);
+  const [hasSelected, setHasSelected] = useState(false);
 
   const handleSendMessage = () => {
     sendMessage(newMessage);
@@ -133,6 +134,14 @@ const AssumptionMessage = (props) => {
     },
   };
 
+  useEffect(() => {
+    if (assumptions.some((e) => e.active === true)) {
+      setHasSelected(true);
+    } else {
+      setHasSelected(false);
+    }
+  }, [setHasSelected, assumptions]);
+
   return (
     <div className="w-10/12 pt-6 mx-auto ">
       {props.location === "criticize" ? (
@@ -209,7 +218,16 @@ const AssumptionMessage = (props) => {
         </div>
       )}
 
-      <div className="container flex-wrap hidden w-full mb-5 md:flex">
+      <div
+        className={`${
+          props.location === "criticize" ? "md:flex" : "hidden"
+        } container flex-wrap hidden w-full p-5 mb-5 bg-gray-100 rounded-md hover:bg-yellow-100 border-2 border-gray-100 border-dashed hover:border-black`}
+      >
+        <p
+          className={` ${hasSelected ? "hidden" : ""} text-center w-full my-20`}
+        >
+          selecteer aannames om bij de kiritsche vraag te bespreken
+        </p>
         {assumptions.map((message) => {
           if (message.active === true && props.location === "criticize") {
             return (
@@ -221,13 +239,13 @@ const AssumptionMessage = (props) => {
                   scale: 1.05,
                 }}
                 onClick={(event) => {
-                  isSelected(event.target.lastChild.innerHTML);
+                  setSelected(event.target.lastChild.innerHTML);
                   setActive(!message.active);
                 }}
                 className={` ${
                   message.active
-                    ? "border-indigo-600 box-shadow-card"
-                    : "border-black box-shadow-card"
+                    ? "border-black box-shadow-card-selected"
+                    : "bg-gray-800 box-shadow-card"
                 } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-open-sans`}
               >
                 <p
@@ -242,7 +260,6 @@ const AssumptionMessage = (props) => {
               </motion.div>
             );
           }
-          <p>selecteer een aanname om deze te bespreken</p>;
         })}
       </div>
 
@@ -257,12 +274,12 @@ const AssumptionMessage = (props) => {
                 scale: 1.05,
               }}
               onClick={(event) => {
-                isSelected(event.target.lastChild.innerHTML);
+                setSelected(event.target.lastChild.innerHTML);
                 setActive(!message.active);
               }}
               className={` ${
                 message.active
-                  ? "border-indigo-600 box-shadow-card"
+                  ? "border-black box-shadow-card-selected "
                   : "border-black box-shadow-card"
               } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-open-sans`}
             >

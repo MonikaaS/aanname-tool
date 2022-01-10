@@ -10,6 +10,7 @@ const Walkthrough = (props) => {
       localStorage.setItem(modalKey, session);
       setShowModal(false);
     };
+
     useEffect(() => {
       const modalKey = "modalSession";
       const modalSession = localStorage.getItem(modalKey);
@@ -28,7 +29,7 @@ const Walkthrough = (props) => {
           initial={{ y: 0, x: 60, opacity: 1 }}
           animate={{ y: 0, x: 0, opacity: 1 }}
           exit={{ y: 40, x: 0, opacity: 0 }}
-          className={` absolute bottom-10 left-24 w-48 h-18 p-4 m-2 font-sm text-black bg-white border-2 border-black rounded-md font-open-sans`}
+          className={` shadow-xl absolute bottom-10 left-24 w-48 h-18 p-4 m-2 font-sm text-black bg-white border-2 border-black rounded-md font-open-sans`}
         >
           <button
             className="absolute top-0 right-0 w-8 h-8 text-center text-black rounded-full font-sm"
