@@ -11,7 +11,7 @@ module.exports = {
         "playfair-display": ["Playfair Display", "serif"],
         "open-sans": ["Open Sans", "Sans-serif"],
         domine: ["Domine", "Sans-serif"],
-        poppins: ["Poppins", "serif"],
+        poppins: ["Poppins", "sans-serif"],
       },
       fontWeight: {
         black: 900,
