@@ -10,7 +10,7 @@ const Tooltip = (props) => {
       <motion.div
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-        className="items-center justify-center hidden w-4 h-4 my-auto text-xs font-bold bg-gray-100 border-2 border-white rounded-full cursor-pointer md:flex user font-poppins"
+        className="relative items-center justify-center hidden w-4 h-4 my-auto text-xs font-bold bg-gray-100 border-2 border-white rounded-full cursor-pointer z-60 md:flex user font-poppins"
       >
         <span className="text-center">?</span>
       </motion.div>
@@ -20,7 +20,9 @@ const Tooltip = (props) => {
             initial={{ y: 40, x: 0, opacity: 0 }}
             animate={{ y: 0, x: 0, opacity: 1 }}
             exit={{ y: 40, x: 0, opacity: 0 }}
-            className={`shadow-xl absolute top-10 left-72 w-48 h-18 p-4 m-2 text-xs text-black bg-white border-2 border-black rounded-md font-poppins`}
+            className={`${
+              props.drag ? "bottom-10 right-16" : "top-10 left-72"
+            } shadow-xl absolute w-48 h-18 p-4 m-2 text-xs text-black bg-white border-2 border-black rounded-md font-poppins z-60`}
           >
             <motion.p className="w-full h-full text-xs text-black bg-white resize-none focus:outline-none">
               {props.text}

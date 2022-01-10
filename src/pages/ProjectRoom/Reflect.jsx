@@ -53,20 +53,53 @@ const Reflect = (props) => {
         </h2>
       </div>
       <div className="relative w-full h-screen mx-auto -mt-10">
-        <div className="absolute mr-3 text-2xl font-black text-center transform -translate-x-1/2 font-poppins top-1/10 left-1/2">
-          Onzeker
+        <div className="absolute flex mr-3 transform -translate-x-1/2 top-1/10 left-1/2">
+          <span className="text-2xl font-black text-center font-poppins">
+            Onzeker
+          </span>
+          <Tooltip
+            drag
+            text="Je weet nog niet of deze aanname waar is of niet"
+          ></Tooltip>
         </div>
-        <div className="absolute ml-5 text-2xl font-black text-center transform -translate-y-1/2 font-poppins top-1/2 right-1/10 ">
-          Lage risico
+        <div className="absolute flex ml-5 transform -translate-y-1/2 font-poppins top-1/2 right-1/10 ">
+          <span className="text-2xl font-black text-center font-poppins">
+            {" "}
+            Lage risico
+          </span>
+          <Tooltip
+            drag
+            text="Wanneer deze aanname niet waar blijkt te zijn, heeft het weinig invloed op het project"
+          ></Tooltip>
         </div>
-        <div className="absolute mr-5 text-2xl font-black text-center transform -translate-y-1/2 font-poppins top-1/2 left-1/10 ">
-          Hoge risico
+        <div className="absolute flex mr-5 transform -translate-y-1/2 font-poppins top-1/2 left-1/10 ">
+          <span className="text-2xl font-black text-center font-poppins">
+            {" "}
+            Hoge risico
+          </span>
+          <Tooltip
+            drag
+            text="Wanneer deze aanname niet waar blijkt te zijn, heeft dit grote gevolgen voor het project"
+          ></Tooltip>
         </div>
-        <div className="absolute ml-2 text-2xl font-black text-center transform -translate-x-1/2 font-poppins bottom-1/10 left-1/2">
-          Zeker
+        <div className="absolute flex ml-2 transform -translate-x-1/2 font-poppins bottom-1/10 left-1/2">
+          <span className="text-2xl font-black text-center font-poppins">
+            {" "}
+            Zeker
+          </span>
+          <Tooltip
+            drag
+            text="je bent er zeker van dat deze aanname waar is"
+          ></Tooltip>
         </div>
-        <div className="absolute w-3/6 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black top-1/2 left-1/2"></div>
-        <div className="absolute transform -translate-x-1/2 -translate-y-1/2 border-2 border-black h-4/6 top-1/2 left-1/2"></div>
+        <div
+          style={{ zIndex: -1 }}
+          className="absolute z-0 w-3/6 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black top-1/2 left-1/2"
+        ></div>
+        <div
+          style={{ zIndex: -1 }}
+          className="absolute z-0 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black h-4/6 top-1/2 left-1/2"
+        ></div>
       </div>
     </div>
   );

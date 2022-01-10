@@ -201,7 +201,7 @@ const AssumptionMessage = (props) => {
                 <motion.p className="w-full p-4 pt-2 pb-0 text-xs font-bold">
                   Geheugensteuntje
                 </motion.p>
-                <motion.p className="w-full p-4 pt-0 font-medium placeholder-black bg-white rounded-md resize-none h-28 hover:bg-opacity-25 focus:outline-none">
+                <motion.p className="w-full p-4 pt-0 pr-2 font-medium placeholder-black bg-white rounded-md resize-none h-28 hover:bg-opacity-25 focus:outline-none">
                   {assumptionsTips[currentAssumptionTip]}
                 </motion.p>
                 <div
@@ -225,7 +225,7 @@ const AssumptionMessage = (props) => {
           props.location === "criticize" && loading === false && empty === false
             ? "md:flex"
             : "hidden"
-        } container flex-wrap hidden w-full p-5 mb-5 bg-gray-100 rounded-md hover:bg-yellow-50 border-2 border-gray-100 border-dashed hover:border-black`}
+        } container transition-all flex-wrap hidden w-full p-5 mb-5 bg-gray-100 rounded-md hover:bg-yellow-50 border-2 border-gray-100 border-dashed hover:border-black`}
       >
         <p
           className={` ${hasSelected ? "hidden" : ""} text-center w-full my-10`}
@@ -250,7 +250,7 @@ const AssumptionMessage = (props) => {
                   message.active
                     ? "border-black box-shadow-card-selected"
                     : "bg-gray-800 box-shadow-card"
-                } relative w-48 h-48 p-4 m-2 font-normal text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-poppins`}
+                } transition-all relative w-48 h-48 p-4 m-2 font-normal text-black bg-yellow-100 border-2  rounded-md cursor-pointer item font-poppins`}
               >
                 <p
                   className={`message-item ${
