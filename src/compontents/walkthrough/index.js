@@ -4,8 +4,8 @@ import socketIOClient from "socket.io-client";
 
 const SEND_TIME = "SendTime"; // Name of the event
 
-// const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+//const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Walkthrough = (props) => {
   const socketRef = useRef();

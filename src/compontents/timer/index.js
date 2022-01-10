@@ -6,9 +6,10 @@ const ADD_TIME = "AddTime";
 const CURRENT_TIME = "CurrentTime";
 const REMOVE_TIME = "RemoveTime";
 const RUN_TIMER = "RunTime";
-// const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = window.location.origin;
 
-const SOCKET_SERVER_URL = "http://localhost:4000";
+//const SOCKET_SERVER_URL = "http://localhost:4000";
+
 const Timer = (props) => {
   const roomId = props.roomId;
   const [countDown, setCountDown] = useState(60 * 5);
