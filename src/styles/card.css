@@ -15,3 +15,10 @@
  left: 2.5rem;
  bottom: 5rem;
 }
+
+.assumption-card-last  {
+ position: absolute;
+ left: 2.5rem;
+ bottom: 5rem;
+ background-color: #ece9e4;
+}

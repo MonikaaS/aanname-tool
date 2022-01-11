@@ -5,6 +5,11 @@ import { ReactComponent as OneNote } from "../../assets/svg/one-note.svg";
 import { ReactComponent as TwoNotes } from "../../assets/svg/two-notes.svg";
 import { ReactComponent as ArrowLoop } from "../../assets/svg/arrow-loop.svg";
 import { ReactComponent as SquiqlyLine } from "../../assets/svg/squiqly-line.svg";
+import { ReactComponent as Grid } from "../../assets/svg/grid.svg";
+import { ReactComponent as CornerBottomLeft } from "../../assets/svg/corner-bottom-left.svg";
+import { ReactComponent as CornerBottomRight } from "../../assets/svg/corner-bottom-right.svg";
+import { ReactComponent as CornerTopRight } from "../../assets/svg/corner-top-right.svg";
+import { ReactComponent as CornerTopLeft } from "../../assets/svg/corner-top-left.svg";
 
 const Home = () => {
   const [roomName, setRoomName] = React.useState("");
@@ -15,6 +20,13 @@ const Home = () => {
 
   return (
     <div>
+      <motion.div
+        animate={{ y: [0, -10], opacity: [0, 1] }}
+        transition={{ ease: "easeOut", duration: 0.2, delay: 0.2 }}
+        className="absolute md:w-8/12 -right-0 -top-0"
+      >
+        <Grid className="md:w-full md:h-auto"></Grid>
+      </motion.div>
       <div>
         <div className="relative w-full mx-auto md:w-1/2">
           <motion.div
@@ -40,6 +52,18 @@ const Home = () => {
             Aanname tool
           </motion.h1>
           <div className="absolute w-3/4 h-10 mx-auto bg-yellow-100 md:w-1/2 top-1/4 md:top-1/2 left-20 md:left-36"></div>
+          <div className="absolute left-0 -top-10">
+            <CornerTopLeft></CornerTopLeft>
+          </div>
+          <div className="absolute right-0 -top-10">
+            <CornerTopRight></CornerTopRight>
+          </div>
+          <div className="absolute right-0 -bottom-24">
+            <CornerBottomRight></CornerBottomRight>
+          </div>
+          <div className="absolute left-0 -bottom-24">
+            <CornerBottomLeft></CornerBottomLeft>
+          </div>
         </div>
       </div>
       <motion.div

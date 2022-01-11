@@ -9,7 +9,7 @@ const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
 const SOCKET_SERVER_URL = window.location.origin;
 
-//const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const DraggableComponent = (props) => {
   const roomId = props.roomId;
@@ -92,6 +92,14 @@ const DraggableComponent = (props) => {
             </div>
           </Draggable>
         ))}
+      <div
+        className={`assumption-card-last z-20 w-32 h-32 p-4 m-2 text-black rounded-md text-xs font-poppins`}
+      >
+        {" "}
+        <div className={"`message-item mx-auto w-9/12"}>
+          Er zijn geen aannames
+        </div>
+      </div>
     </div>
   );
 };

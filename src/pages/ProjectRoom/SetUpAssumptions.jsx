@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-
+import { motion } from "framer-motion";
 import AssumptionMessage from "../../compontents/assumption-message/index.js";
 import Tooltip from "../../compontents/tooltip/index.js";
 import Walkthrough from "../../compontents/walkthrough/index.js";
@@ -8,9 +8,13 @@ const SetUpAssumptions = () => {
   const { roomId } = useParams(); // Gets roomId from URL
 
   return (
-    <div className="relative w-full pt-6 pl-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+      className="relative w-full pt-6 pl-6"
+    >
       <div>
-        <div></div>
         <div className="flex w-10/12 mx-auto mt-5">
           <h1 className="inline-block mt-20 mb-2 text-xl font-bold md:mt-0">
             Opstellen
@@ -25,6 +29,7 @@ const SetUpAssumptions = () => {
             roomId={roomId}
           ></Tooltip>
           <Walkthrough
+            localkey="setUp"
             roomId={roomId}
             text="Start de timer en begin met het opstellen van aannames!"
           ></Walkthrough>
@@ -38,7 +43,7 @@ const SetUpAssumptions = () => {
         message={"Aannames opstellen:"}
         location={"setup"}
       ></AssumptionMessage>
-    </div>
+    </motion.div>
   );
 };
 

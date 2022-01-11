@@ -2,6 +2,7 @@ import React from "react";
 import Users from "../users-in-room";
 import { useParams, Link } from "react-router-dom";
 import DraggableComponent from "../../compontents/drag-assumptions/index.js";
+import { ReactComponent as SmallLine } from "../../assets/svg/small-line.svg";
 
 import Timer from "../timer/index";
 
@@ -25,12 +26,14 @@ const Header = () => {
           <DraggableComponent roomId={roomId}></DraggableComponent>
         ) : null}
         <header
-          className={`fixed top-0 z-20 flex flex-col justify-between h-full overflow-y-hidden bg-white shadow-md w-52`}
+          style={{ backgroundColor: "#FBF9F5" }}
+          className={`fixed top-0 z-20 flex flex-col justify-between h-full overflow-y-hidden shadow rounded-2xl w-52 `}
         >
           <div className="mt-10">
             <span className="relative z-10 text-xl font-bold text-center font-poppins">
               {roomId.replace("-", " ")}
             </span>
+            <SmallLine className="w-9/12 mx-auto"></SmallLine>
             <div className="relative mt-40">
               <Link
                 className={`${

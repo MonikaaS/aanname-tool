@@ -7,7 +7,7 @@ const SELECTED_ASSUMPTION = "SelectedAssumption";
 
 const SOCKET_SERVER_URL = window.location.origin;
 
-//const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const AssumptionQuestion = (props) => {
   const socketRef = useRef();

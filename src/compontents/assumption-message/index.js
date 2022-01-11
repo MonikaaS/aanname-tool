@@ -2,13 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import useAssumptions from "../../client/assumptions/index";
 import { motion, AnimatePresence } from "framer-motion";
 import socketIOClient from "socket.io-client";
+import { ReactComponent as BigLine } from "../../assets/svg/big-line.svg";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
 const SELECTED_ASSUMPTION = "SelectedAssumption";
 const SOCKET_SERVER_URL = window.location.origin;
 
-//const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useFocus = () => {
   const htmlElRef = useRef(null);
@@ -266,6 +267,9 @@ const AssumptionMessage = (props) => {
             );
           }
         })}
+      </div>
+      <div className="w-full">
+        <BigLine className="w-full"></BigLine>
       </div>
 
       <div className="container flex-wrap hidden w-full md:flex">

@@ -19,27 +19,47 @@ const Modal = () => {
 
   return (
     <div className="hidden bg-yellow-100 md:block">
-      <div className="w-full mx-auto mt-40">
-        <h2 className="mb-20 text-xl font-bold text-center font-poppins">
+      <motion.div
+        animate={{ y: [0, -10], opacity: [0, 1] }}
+        transition={{ ease: "easeOut", duration: 0.5, delay: 0.3 }}
+        className="w-full mx-auto mt-40"
+      >
+        <motion.h2
+          animate={{ y: [0, -10], opacity: [0, 1] }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 0.5 }}
+          className="mb-20 text-xl font-bold text-center font-poppins"
+        >
           {" "}
           Hoe werkt de aanname tool?
-        </h2>
+        </motion.h2>
         <Slider {...settings} ref={sliderRef}>
-          <div className="w-10/12 mx-auto mb-10">
+          <motion.div
+            animate={{ y: [10, 0], opacity: [0, 1] }}
+            transition={{ ease: "easeOut", duration: 0.5, delay: 0.7 }}
+            className="w-10/12 mx-auto mb-10"
+          >
             <div className="w-56 h-auto p-2 m-2 mx-auto mb-12 font-medium text-black bg-white border-2 border-black rounded-md box-shadow md:w-64 md:h-64 font-poppins">
               {" "}
-              <h3 className="w-full p-4 pt-2 pb-0 font-bold text-md">
+              <motion.h3
+                animate={{ y: [10, 0], opacity: [0, 1] }}
+                transition={{ ease: "easeOut", duration: 0.5, delay: 0.8 }}
+                className="w-full p-4 pt-2 pb-0 font-bold text-md"
+              >
                 Wat is de aanname tool?
-              </h3>
-              <p className="w-full p-4 pt-2 pb-0 pr-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
+              </motion.h3>
+              <motion.p
+                animate={{ y: [10, 0], opacity: [0, 1] }}
+                transition={{ ease: "easeOut", duration: 0.5, delay: 0.8 }}
+                className="w-full p-4 pt-2 pb-0 pr-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none"
+              >
                 De aanname tool is een conversational tool
                 <br></br>
                 <br></br>
                 Gezamenlijk haal je aannames naar boven over een project en
                 maakt deze naar bespreekbaar
-              </p>
+              </motion.p>
             </div>
-          </div>
+          </motion.div>
           <div className="w-10/12 mx-auto mb-10">
             <div className="w-56 h-auto p-2 m-2 mx-auto mb-12 font-medium text-black bg-white border-2 border-black rounded-md box-shadow md:w-64 md:h-64 font-poppins">
               {" "}
@@ -96,13 +116,18 @@ const Modal = () => {
             </div>
           </div>
         </Slider>
-      </div>
-      <button
-        className="block w-20 p-2 mx-auto mt-10 text-xs font-medium bg-white border-2 border-black rounded-lg font-poppins box-shadow focus:outline-none"
-        onClick={() => gotoNext()}
+      </motion.div>
+      <motion.div
+        animate={{ y: [0, -10], opacity: [0, 1] }}
+        transition={{ ease: "easeOut", duration: 0.5, delay: 0.5 }}
       >
-        Volgende
-      </button>
+        <button
+          className="block w-20 p-2 mx-auto mt-10 text-xs font-medium bg-white border-2 border-black rounded-lg font-poppins box-shadow focus:outline-none"
+          onClick={() => gotoNext()}
+        >
+          Volgende
+        </button>
+      </motion.div>
     </div>
   );
 };

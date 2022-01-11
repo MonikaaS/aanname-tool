@@ -1,5 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
+import { motion } from "framer-motion";
+import { ReactComponent as TopLeft } from "../../assets/svg/top-left.svg";
+import { ReactComponent as TopRight } from "../../assets/svg/top-right.svg";
+import { ReactComponent as BottomRight } from "../../assets/svg/bottom-right.svg";
+import { ReactComponent as BottomLeft } from "../../assets/svg/bottom-left.svg";
 
 const SEND_TIME = "SendTime"; // Name of the event
 const ADD_TIME = "AddTime";
@@ -8,7 +13,7 @@ const REMOVE_TIME = "RemoveTime";
 const RUN_TIMER = "RunTime";
 const SOCKET_SERVER_URL = window.location.origin;
 
-//const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Timer = (props) => {
   const roomId = props.roomId;
@@ -27,6 +32,7 @@ const Timer = (props) => {
       timerId = setInterval(() => {
         setCountDown((countDown) => countDown - 1);
       }, 1000);
+      setCounterText("");
     } else {
       clearInterval(timerId);
       setCountDown(60 * 5);
@@ -135,17 +141,55 @@ const Timer = (props) => {
         <div
           className={` ${
             runTimer === true || counterText === "Tijd is om!" ? "" : "hidden"
-          } shadow-lg fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-7/12 bottom-20 bg-white m-2`}
+          } shadow-lg fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-20 bg-white m-2`}
         >
           {" "}
           <p className="text-3xl font-bold font-poppins">
             {runTimer ? ` ${minutes} : ${seconds} ` : "Tijd is om!"}
           </p>
-          <p className="w-10/12 mx-auto text-xs font-normal font-poppin">
-            {runTimer
-              ? ""
-              : " Ga gauw door naar bekritiseren of stel nog een keer aannames op!"}
-          </p>
+          {counterText === "Tijd is om!" && (
+            <motion.p
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="w-10/12 mx-auto text-xs font-normal font-poppin"
+            >
+              {runTimer
+                ? ""
+                : " Ga gauw door naar bekritiseren of stel nog een keer aannames op!"}
+            </motion.p>
+          )}
+          {counterText === "Tijd is om!" && (
+            <div className="relative">
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="fixed -left-10 bottom-28"
+              >
+                <TopLeft></TopLeft>
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="fixed -right-10 bottom-28"
+              >
+                <TopRight></TopRight>
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="fixed -right-10 -bottom-5"
+              >
+                <BottomRight></BottomRight>
+              </motion.div>
+              <motion.div
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="fixed -left-10 -bottom-5"
+              >
+                <BottomLeft></BottomLeft>
+              </motion.div>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-
+import { motion } from "framer-motion";
 import AssumptionMessage from "../../compontents/assumption-message/index.js";
 import AssumptionQuestion from "../../compontents/assumption-questions/index.js";
 import Tooltip from "../../compontents/tooltip/index.js";
@@ -8,7 +8,12 @@ const Criticize = () => {
   const { roomId } = useParams(); // Gets roomId from URL
 
   return (
-    <div className="relative w-full pt-6 pl-6">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+      className="relative w-full pt-6 pl-6"
+    >
       <div>
         <div className="flex w-10/12 mx-auto mt-5">
           <h1 className="inline-block mb-2 text-xl font-bold">Bekritiseren</h1>
@@ -29,7 +34,7 @@ const Criticize = () => {
         message={"Opgestelde aannames:"}
         location={"criticize"}
       ></AssumptionMessage>
-    </div>
+    </motion.div>
   );
 };
 

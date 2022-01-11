@@ -1,12 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import { useParams } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 import Tooltip from "../../compontents/tooltip/index.js";
+import { ReactComponent as BigLineVertical } from "../../assets/svg/big-line-vertical.svg";
+import { ReactComponent as BigLineHorizontal } from "../../assets/svg/big-line-horizontal.svg";
+import Walkthrough from "../../compontents/walkthrough/index.js";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 const SOCKET_SERVER_URL = window.location.origin;
 
-//const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Reflect = (props) => {
   const { roomId } = useParams(); // Gets roomId from URL
@@ -38,7 +42,12 @@ const Reflect = (props) => {
   }, [roomId]);
 
   return (
-    <div className="relative w-full h-screen pt-6 pl-6 md:overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.2 }}
+      className="relative w-full h-screen pt-6 pl-6 md:overflow-hidden"
+    >
       <div>
         <div className="flex w-10/12 mx-auto mt-5">
           <h1 className="inline-block mb-2 text-xl font-bold">Reflecteren</h1>
@@ -94,14 +103,24 @@ const Reflect = (props) => {
         </div>
         <div
           style={{ zIndex: -1 }}
-          className="absolute z-0 w-1/4 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black lg:w-3/6 top-1/2 left-1/2"
-        ></div>
+          className="absolute z-0 w-1/4 transform -translate-x-1/2 -translate-y-1/2 lg:w-3/6 top-1/2 left-1/2"
+        >
+          {" "}
+          <BigLineHorizontal className="w-full h-full"></BigLineHorizontal>
+        </div>
         <div
           style={{ zIndex: -1 }}
-          className="absolute z-0 transform -translate-x-1/2 -translate-y-1/2 border-2 border-black h-4/6 top-1/2 left-1/2"
-        ></div>
+          className="absolute z-0 transform -translate-x-1/2 -translate-y-1/2 h-1/4 lg:h-4/6 top-1/2 left-1/2"
+        >
+          <BigLineVertical className="h-full "></BigLineVertical>
+        </div>
+        <Walkthrough
+          localkey="reflect"
+          roomId={roomId}
+          text="Sleep de kaartjes naar de juiste positie op de as!"
+        ></Walkthrough>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
