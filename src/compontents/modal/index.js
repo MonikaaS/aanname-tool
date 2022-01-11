@@ -99,7 +99,7 @@ const Modal = () => {
                 bespreken
                 <br></br>
                 <br></br>
-                En kom je op nieuwe oplossingen voor je project
+                En kom je op nieuwe oplossingen voor jouw project
               </p>
             </div>
           </div>
