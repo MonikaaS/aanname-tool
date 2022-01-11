@@ -117,7 +117,7 @@ const Reflect = (props) => {
         <Walkthrough
           localkey="reflect"
           roomId={roomId}
-          text="Sleep de kaartjes naar de juiste positie op de as!"
+          text="Sleep hier de kaartjes naar de juiste positie op de as!"
         ></Walkthrough>
       </div>
     </motion.div>
