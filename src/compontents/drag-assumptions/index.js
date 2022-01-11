@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
 import Draggable from "react-draggable";
-import { motion } from "framer-motion";
 import socketIOClient from "socket.io-client";
 
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
@@ -21,7 +19,6 @@ const DraggableComponent = (props) => {
   const [yPosition, setYposition] = useState(0);
   const [assumptions, setAssumptions] = useState([]);
   const [currentlyDragged, setCurrentlyDragged] = useState("");
-  const ref = useRef([]);
 
   useEffect(() => {
     // Creates a WebSocket connection

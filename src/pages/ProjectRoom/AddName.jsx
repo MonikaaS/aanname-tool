@@ -101,11 +101,11 @@ const AddName = () => {
             placeholder="Wat is je naam?"
             className={` ${
               haveName ? "hidden" : ""
-            } cursor-pointer box-shadow p-6 font-poppins font-normal text-sm md:text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none`}
+            } cursor-pointer box-shadow p-6 font-poppins font-normal text-sm md:text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none active:border-bg-gray-400 active:bg-gray-400`}
           />
           <button
             onClick={() => navigator.clipboard.writeText(window.location.href)}
-            className="absolute inset-y-0 right-0 flex items-center p-6 px-4 text-sm font-medium bg-yellow-100 border-2 border-black rounded-r-lg font-poppins focus:outline-none "
+            className="absolute inset-y-0 right-0 flex items-center p-6 px-4 text-sm font-medium bg-yellow-100 border-2 border-black rounded-r-lg active:bg-gray-400 font-poppins focus:outline-none "
           >
             Kopieer link
           </button>

@@ -321,7 +321,7 @@ const AssumptionMessage = (props) => {
             <h1 className="w-full pt-6 mx-auto mt-5 mb-2 text-xl font-bold text-indigo-600">
               Er zijn nog geen aannames
             </h1>
-            <h2 className="w-10/12  font-poppins mx-auto text-xs font-light">
+            <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
               Start met het opstellen van aannames
             </h2>
           </div>

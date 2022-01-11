@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import socketIOClient from "socket.io-client";
 
 import { ReactComponent as ArrowLine } from "../../assets/svg/arrow-line.svg";

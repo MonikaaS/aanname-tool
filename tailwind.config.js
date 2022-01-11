@@ -28,6 +28,8 @@ module.exports = {
   },
   variants: {
     extend: { zIndex: ["hover", "active"] },
+    backgroundColor: ["active"],
+    borderColor: ["active"],
   },
   plugins: [],
 };

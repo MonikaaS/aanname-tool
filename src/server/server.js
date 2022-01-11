@@ -20,9 +20,7 @@ const ALL_USERS = "AllUsers";
 const QUESTIONS = "questions";
 const SEND_TIME = "SendTime";
 const ADD_TIME = "AddTime";
-const CURRENT_TIME = "CurrentTime";
 const REMOVE_TIME = "RemoveTime";
-const RUN_TIMER = "RunTime";
 const RECEIVE_POSITION = "ReceivePosition";
 const ALL_ASSUMPTIONS = "AllAssumptions";
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
@@ -30,9 +28,6 @@ const SELECTED_ASSUMPTION = "SelectedAssumption";
 
 const usersPerRoom = {};
 const assumptionsPerRoom = {};
-
-let timerId;
-let counter = 300;
 
 io.on("connection", (socket) => {
   // Join a conversation
