@@ -2,6 +2,12 @@ import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import socketIOClient from "socket.io-client";
 
+import { ReactComponent as ArrowLine } from "../../assets/svg/arrow-line.svg";
+import { ReactComponent as TopLeft } from "../../assets/svg/top-left.svg";
+import { ReactComponent as TopRight } from "../../assets/svg/top-right.svg";
+import { ReactComponent as BottomRight } from "../../assets/svg/bottom-right.svg";
+import { ReactComponent as BottomLeft } from "../../assets/svg/bottom-left.svg";
+
 const SEND_TIME = "SendTime"; // Name of the event
 
 const SOCKET_SERVER_URL = window.location.origin;
@@ -74,6 +80,21 @@ const Walkthrough = (props) => {
             {props.text}
           </motion.p>
         </motion.div>
+        <div className="absolute left-5 bottom-28">
+          <ArrowLine></ArrowLine>
+        </div>
+        <div className="absolute left-20 bottom-56">
+          <TopLeft></TopLeft>
+        </div>
+        <div className="absolute left-80 bottom-56">
+          <TopRight></TopRight>
+        </div>
+        <div className="absolute left-80 bottom-20">
+          <BottomRight></BottomRight>
+        </div>
+        <div className="absolute left-20 bottom-20">
+          <BottomLeft></BottomLeft>
+        </div>
       </div>
     )
   );
