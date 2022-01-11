@@ -107,7 +107,7 @@ const AddName = () => {
             onClick={() => navigator.clipboard.writeText(window.location.href)}
             className="absolute inset-y-0 right-0 flex items-center p-6 px-4 text-sm font-medium bg-yellow-100 border-2 border-black rounded-r-lg font-poppins focus:outline-none "
           >
-            Kopier link
+            Kopieer link
           </button>
         </motion.div>
         <motion.div

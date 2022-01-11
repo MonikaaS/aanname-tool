@@ -57,7 +57,7 @@ const Reflect = (props) => {
             roomId={roomId}
           ></Tooltip>
         </div>
-        <h2 className="w-10/12 mx-auto text-xs font-light">
+        <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
           Sleep de kaartjes naar de juiste positie op de as
         </h2>
       </div>

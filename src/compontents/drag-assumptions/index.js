@@ -97,7 +97,7 @@ const DraggableComponent = (props) => {
       >
         {" "}
         <div className={"`message-item mx-auto w-9/12"}>
-          Er zijn geen aannames
+          Er zijn geen aannames (meer)
         </div>
       </div>
     </div>

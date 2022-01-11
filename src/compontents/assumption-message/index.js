@@ -230,9 +230,11 @@ const AssumptionMessage = (props) => {
         } container transition-all flex-wrap hidden w-full p-5 mb-5 bg-gray-100 rounded-md hover:bg-yellow-50 border-2 border-gray-100 border-dashed hover:border-black`}
       >
         <p
-          className={` ${hasSelected ? "hidden" : ""} text-center w-full my-10`}
+          className={` ${
+            hasSelected ? "hidden" : ""
+          } text-xs font-poppins  text-center w-full my-10`}
         >
-          selecteer aannames om bij de kiritsche vraag te bespreken
+          Selecteer hier onder aannames om bij de kritische vragen te bespreken
         </p>
         {assumptions.map((message) => {
           if (message.active === true && props.location === "criticize") {
@@ -319,7 +321,7 @@ const AssumptionMessage = (props) => {
             <h1 className="w-full pt-6 mx-auto mt-5 mb-2 text-xl font-bold text-indigo-600">
               Er zijn nog geen aannames
             </h1>
-            <h2 className="w-10/12 mx-auto text-xs font-light">
+            <h2 className="w-10/12  font-poppins mx-auto text-xs font-light">
               Start met het opstellen van aannames
             </h2>
           </div>

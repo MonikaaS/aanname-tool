@@ -101,7 +101,7 @@ const Home = () => {
           to={`/${roomName.replace(/\s/g, "-").toLowerCase()}`}
           className="absolute inset-y-0 right-0 flex items-center p-6 px-4 bg-yellow-100 border-2 border-black rounded-r-lg md:text-lg focus:outline-none "
         >
-          Creëer project
+          Creër project
         </Link>
       </motion.div>
     </div>

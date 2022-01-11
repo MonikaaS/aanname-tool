@@ -55,8 +55,8 @@ const Modal = () => {
                 De aanname tool is een conversational tool
                 <br></br>
                 <br></br>
-                Gezamenlijk haal je aannames naar boven over een project en
-                maakt deze naar bespreekbaar
+                Gezamenlijk haal je de aannames naar boven over een project en
+                maakt deze bespreekbaar
               </motion.p>
             </div>
           </motion.div>
@@ -67,8 +67,8 @@ const Modal = () => {
                 Wat zijn aannames??
               </h3>
               <p className="w-full p-4 pt-2 pb-0 pr-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
-                Een aanname is iets wat je denkt of vind zonder het zeker te
-                weten.
+                Een aanname is iets wat je denkt of vindt zonder het zeker te
+                weten
                 <br></br>
                 <br></br>
                 Belangrijk is dat ze niet vast staan
@@ -81,8 +81,8 @@ const Modal = () => {
                 Aannames opstellen
               </h3>
               <p className="w-full p-4 pt-2 pr-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
-                In een korte tijd ga je proberen zo veel mogelijk aannames op te
-                stellen over het te bespreken project
+                In een korte tijd ga je proberen zo veel mogelijk aannames over
+                het project op te stellen
                 <br></br>
                 <br></br>
                 Het maakt niet uit of deze goed of fout zijn
@@ -99,7 +99,7 @@ const Modal = () => {
                 bespreken
                 <br></br>
                 <br></br>
-                Door het te bespreken kom je op nieuwe inzichten
+                En kom op nieuwe oplossingen voor je project
               </p>
             </div>
           </div>
@@ -109,9 +109,9 @@ const Modal = () => {
                 Reflecteren op aannames
               </h3>
               <p className="w-full p-4 pt-2 pr-2 placeholder-black bg-white rounded-md resize-none font-xss h-28 hover:bg-opacity-25 focus:outline-none">
-                Reflecteer op hoe de aannames binnen het project vallen.
+                Reflecteer op hoe de aannames binnen het project vallen
                 <br></br> <br></br>
-                En kom op nieuwe inzichten over de oplossing
+                Door het te bespreken kom je op nieuwe inzichten
               </p>
             </div>
           </div>

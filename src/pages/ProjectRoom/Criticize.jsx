@@ -24,7 +24,7 @@ const Criticize = () => {
             roomId={roomId}
           ></Tooltip>
         </div>
-        <h2 className="w-10/12 mx-auto text-xs font-light">
+        <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
           Klik op de kritische vragen om de aannames te Bekritiseren
         </h2>
       </div>

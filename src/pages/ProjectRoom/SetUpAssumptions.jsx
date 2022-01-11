@@ -34,7 +34,7 @@ const SetUpAssumptions = () => {
             text="Start de timer en begin met het opstellen van aannames!"
           ></Walkthrough>
         </div>
-        <h2 className="w-10/12 mx-auto text-xs font-light">
+        <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
           Voeg aannames over het probleem/project toe!
         </h2>
       </div>
