@@ -55,7 +55,6 @@ const Timer = (props) => {
       if (data.addTime === true) {
         setCountDown(countDown + 30);
         setAddTime(false);
-        //console.log("yo");
       }
     });
 

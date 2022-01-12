@@ -67,8 +67,6 @@ const AssumptionQuestion = (props) => {
     };
   }, [roomId, showQuestion, currentQuestion]);
 
-  console.log(currentQuestion);
-
   return (
     <div>
       <div className="w-10/12 pt-6 mx-auto mt-1">

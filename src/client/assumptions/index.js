@@ -39,8 +39,9 @@ const useAssumptions = (roomId) => {
       senderId: socketRef.current.id,
       xPosition: 0,
       yPosition: 0,
-      transform: "translate3d(0px, 0px, 0px)",
       active: false,
+      screenwidth: 0,
+      screenheight: 0,
     });
   };
 

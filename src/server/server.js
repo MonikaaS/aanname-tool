@@ -76,6 +76,8 @@ io.on("connection", (socket) => {
       if (element.assumption === data.assumption) {
         element.xPosition = data.xPosition;
         element.yPosition = data.yPosition;
+        element.screenheight = data.screenheight;
+        element.screenwidth = data.screenwidth;
       }
     });
     io.in(roomId).emit(RECEIVE_POSITION, assumptionsPerRoom);
