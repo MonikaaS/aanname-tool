@@ -16,7 +16,9 @@ const Criticize = () => {
     >
       <div>
         <div className="flex w-10/12 mx-auto mt-5">
-          <h1 className="inline-block mb-2 text-xl font-bold">Bekritiseren</h1>
+          <h1 className="inline-block mt-20 mb-2 text-xl font-bold md:mt-0">
+            Bekritiseren
+          </h1>
           <Tooltip
             text="Bij deze stap ga je gezamenlijk met elkaar het gesprek aan over de aannames. "
             text2="Met behulp van de kritische vragen, ga je alle aannames af."
@@ -24,7 +26,7 @@ const Criticize = () => {
             roomId={roomId}
           ></Tooltip>
         </div>
-        <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
+        <h2 className="w-10/12 pl-8 text-xs font-light md:pl-12 lg:w-10/12 md:w-2/5 lg:pl-0 lg:mx-auto font-poppins">
           Klik op de kritische vragen om de aannames te Bekritiseren
         </h2>
       </div>

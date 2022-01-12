@@ -50,14 +50,16 @@ const Reflect = (props) => {
     >
       <div>
         <div className="flex w-10/12 mx-auto mt-5">
-          <h1 className="inline-block mb-2 text-xl font-bold">Reflecteren</h1>
+          <h1 className="inline-block mt-20 mb-2 text-xl font-bold md:mt-0">
+            Reflecteren
+          </h1>
           <Tooltip
             text="Het doel van deze stap is om als groep te kijken waar elk kaartje het beste past op de as."
             text2="Bespreek met elkaar of een een aanname al vrij zeker is of niet en of de aanname een groot risico is voor het project."
             roomId={roomId}
           ></Tooltip>
         </div>
-        <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
+        <h2 className="w-10/12 pl-8 text-xs font-light md:pl-12 lg:w-10/12 md:w-2/5 lg:pl-0 lg:mx-auto font-poppins">
           Sleep de kaartjes naar de juiste positie op de as
         </h2>
       </div>

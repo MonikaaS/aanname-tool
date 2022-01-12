@@ -38,7 +38,7 @@ const AddName = () => {
           <motion.div
             animate={{ y: [0, -10], opacity: [0, 1] }}
             transition={{ ease: "easeOut", duration: 0.5, delay: 0.7 }}
-            className="absolute w-1/3 h-10 mx-auto bg-yellow-100 left-36 md:w-1/2 top-1/2 md:left-36"
+            className="absolute w-1/3 h-10 mx-auto bg-yellow-100 left-36 md:w-full top-1/2 md:left-36"
           ></motion.div>
           <motion.div
             animate={{ scale: [0, 1], opacity: [0, 1] }}

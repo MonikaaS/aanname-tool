@@ -19,7 +19,7 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="mx-auto max-w-screen-2xl">
       <motion.div
         animate={{ y: [0, -10], opacity: [0, 1] }}
         transition={{ ease: "easeOut", duration: 0.2, delay: 0.2 }}

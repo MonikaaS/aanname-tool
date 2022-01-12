@@ -127,7 +127,9 @@ const AssumptionQuestion = (props) => {
           >
             <div className="flex w-full mt-5">
               <button
-                onClick={() => {}}
+                onClick={() => {
+                  handleAssigneeOnClick();
+                }}
                 className="p-2 mx-auto font-medium bg-gray-100 border-2 border-black rounded-lg w-28 box-shadow-timer-button font-poppins"
               >
                 Volgende vraag
@@ -136,7 +138,7 @@ const AssumptionQuestion = (props) => {
                 to={{
                   pathname: `/${roomId}/reflect`,
                 }}
-                className="p-2 mx-auto font-medium text-center bg-yellow-100 border-2 border-black rounded-lg  w-28 box-shadow-timer-button font-poppins"
+                className="p-2 mx-auto font-medium text-center bg-yellow-100 border-2 border-black rounded-lg w-28 box-shadow-timer-button font-poppins"
               >
                 Naar reflecteren
               </Link>
