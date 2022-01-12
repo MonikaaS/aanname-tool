@@ -51,17 +51,16 @@ const Timer = (props) => {
     });
 
     socketRef.current.on(ADD_TIME, (data) => {
-      setAddTime(data.addTime);
+      //setAddTime(data.addTime);
 
       if (data.addTime === true) {
         setCountDown(countDown + 30);
         setAddTime(false);
+        //console.log("yo");
       }
     });
 
     socketRef.current.on(REMOVE_TIME, (data) => {
-      setRemoveTime(data.removeTime);
-
       if (data.removeTime === true) {
         setCountDown(countDown - 30);
         setRemoveTime(false);
