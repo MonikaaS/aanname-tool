@@ -8,9 +8,8 @@ import { ReactComponent as BigLineHorizontal } from "../../assets/svg/big-line-h
 import Walkthrough from "../../compontents/walkthrough/index.js";
 
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
-// const SOCKET_SERVER_URL = window.location.origin;
-
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Reflect = (props) => {
   const { roomId } = useParams(); // Gets roomId from URL

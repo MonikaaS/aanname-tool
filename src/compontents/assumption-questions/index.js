@@ -10,9 +10,8 @@ import { ReactComponent as BottomLeft } from "../../assets/svg/bottom-left.svg";
 const QUESTIONS = "questions"; // Name of the event
 const SELECTED_ASSUMPTION = "SelectedAssumption";
 
-// const SOCKET_SERVER_URL = window.location.origin;
-
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const AssumptionQuestion = (props) => {
   const socketRef = useRef();
@@ -115,9 +114,9 @@ const AssumptionQuestion = (props) => {
       </div>
       {currentQuestion === 3 ? (
         <div
-          className={`  box-shadow-timer-button  fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-20 bg-white m-2 z-50`}
+          className={`  hidden box-shadow-timer-button md:block fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-20 bg-white m-2 z-50`}
         >
-          <p className="text-3xl font-bold text-center font-poppins">
+          <p className="text-2xl font-bold text-center font-poppins">
             Genoeg vragen beantwoord?
           </p>
           <motion.div
@@ -125,12 +124,12 @@ const AssumptionQuestion = (props) => {
             animate={{ scale: 1, opacity: 1 }}
             className="w-10/12 mx-auto text-xs font-normal font-poppin"
           >
-            <div className="flex w-full mt-5">
+            <div className="flex flex-wrap justify-center w-full mt-5">
               <button
                 onClick={() => {
                   handleAssigneeOnClick();
                 }}
-                className="p-2 mx-auto font-medium bg-gray-100 border-2 border-black rounded-lg w-28 box-shadow-timer-button font-poppins"
+                className="w-40 p-2 m-2 font-medium text-center bg-gray-100 border-2 border-black rounded-lg lg:w-28 box-shadow-timer-button font-poppins"
               >
                 Volgende vraag
               </button>
@@ -138,7 +137,7 @@ const AssumptionQuestion = (props) => {
                 to={{
                   pathname: `/${roomId}/reflect`,
                 }}
-                className="p-2 mx-auto font-medium text-center bg-yellow-100 border-2 border-black rounded-lg w-28 box-shadow-timer-button font-poppins"
+                className="w-40 p-2 m-2 font-medium text-center bg-yellow-100 border-2 border-black rounded-lg lg:w-28 box-shadow-timer-button font-poppins"
               >
                 Naar reflecteren
               </Link>

@@ -7,9 +7,8 @@ import { ReactComponent as BigLine } from "../../assets/svg/big-line.svg";
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 const DELETE_ASSUMPTIONS = "DeleteAssumptions";
 const SELECTED_ASSUMPTION = "SelectedAssumption";
-// const SOCKET_SERVER_URL = window.location.origin;
-
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const useFocus = () => {
   const htmlElRef = useRef(null);
