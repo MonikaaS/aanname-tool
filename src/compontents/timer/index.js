@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import socketIOClient from "socket.io-client";
 import { motion } from "framer-motion";
 import { ReactComponent as TopLeft } from "../../assets/svg/top-left.svg";
@@ -9,9 +10,9 @@ import { ReactComponent as BottomLeft } from "../../assets/svg/bottom-left.svg";
 const SEND_TIME = "SendTime"; // Name of the event
 const ADD_TIME = "AddTime";
 const REMOVE_TIME = "RemoveTime";
-const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = window.location.origin;
 
-// const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Timer = (props) => {
   const roomId = props.roomId;
@@ -101,74 +102,95 @@ const Timer = (props) => {
 
   return (
     <div>
-      <p className="mb-2 text-xl font-bold font-poppins">
-        {minutes} : {seconds}
-      </p>
-      <div className="flex justify-between w-full">
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setRemoveTime(true);
-          }}
-          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins"
-        >
-          -
-        </button>
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            setAddTime(true);
-          }}
-          className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins"
-        >
-          +
-        </button>
-        <button
-          onClick={() => {
-            togglerTimer();
-            localStorage.setItem("modalSession", "test");
-          }}
-          className="w-10 p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg font-poppins"
-        >
-          <div
-            className={`${runTimer ? "play-stop" : "play-button"} mx-auto`}
-          ></div>
-        </button>
+      <div className="p-5 rounded-lg box-shadow-timer">
+        <p className="mb-2 text-xl font-bold font-poppins">
+          {minutes} : {seconds}
+        </p>
+        <div className="flex justify-between w-full">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setRemoveTime(true);
+            }}
+            className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg box-shadow-timer-button font-poppins"
+          >
+            -
+          </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setAddTime(true);
+            }}
+            className="w-10 p-2 mx-auto mr-2 font-medium bg-yellow-100 border-2 border-black rounded-lg box-shadow-timer-button font-poppins"
+          >
+            +
+          </button>
+          <button
+            onClick={() => {
+              togglerTimer();
+              localStorage.setItem("SetUp", "SetUp");
+            }}
+            className="w-10 p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg box-shadow-timer-button font-poppins"
+          >
+            <div
+              className={`${runTimer ? "play-stop" : "play-button"} mx-auto`}
+            ></div>
+          </button>
+        </div>
       </div>
       <div className="relative">
         <div
           className={` ${
             runTimer === true || counterText === "Tijd is om!" ? "" : "hidden"
-          } shadow-lg fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-20 bg-white m-2`}
+          } box-shadow-timer-button  fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-20 bg-white m-2`}
         >
           {" "}
           <p className="text-3xl font-bold font-poppins">
             {runTimer ? ` ${minutes} : ${seconds} ` : "Tijd is om!"}
           </p>
           {counterText === "Tijd is om!" && (
-            <motion.p
+            <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               className="w-10/12 mx-auto text-xs font-normal font-poppin"
             >
-              {runTimer
-                ? ""
-                : " Ga gauw door naar bekritiseren of stel nog een keer aannames op!"}
-            </motion.p>
+              {runTimer ? (
+                ""
+              ) : (
+                <div className="flex w-full mt-5">
+                  <button
+                    onClick={() => {
+                      togglerTimer();
+                    }}
+                    className="p-2 mx-auto font-medium bg-gray-100 border-2 border-black rounded-lg w-28 box-shadow-timer-button font-poppins"
+                  >
+                    nog een keer
+                  </button>
+                  <Link
+                    to={{
+                      pathname: `/${roomId}/criticize`,
+                    }}
+                    className="p-2 mx-auto font-medium bg-yellow-100 border-2 border-black rounded-lg w-28 box-shadow-timer-button font-poppins"
+                  >
+                    Naar bekritiseren
+                  </Link>
+                </div>
+              )}
+            </motion.div>
           )}
           {counterText === "Tijd is om!" && (
             <div className="relative">
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="fixed -left-10 bottom-28"
+                className="fixed -left-10 bottom-40"
               >
                 <TopLeft></TopLeft>
               </motion.div>
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="fixed -right-10 bottom-28"
+                className="fixed -right-10 bottom-40"
               >
                 <TopRight></TopRight>
               </motion.div>

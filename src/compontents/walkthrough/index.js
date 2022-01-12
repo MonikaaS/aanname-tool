@@ -10,11 +10,10 @@ import { ReactComponent as BottomLeft } from "../../assets/svg/bottom-left.svg";
 
 const SEND_TIME = "SendTime"; // Name of the event
 
-const SOCKET_SERVER_URL = window.location.origin;
-// const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Walkthrough = (props) => {
-  console.log(props.localkey);
   const socketRef = useRef();
   const roomId = props.roomId;
   const [runTimer, setRunTimer] = useState(false);

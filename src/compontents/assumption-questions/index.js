@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import socketIOClient from "socket.io-client";
+import { ReactComponent as TopLeft } from "../../assets/svg/top-left.svg";
+import { ReactComponent as TopRight } from "../../assets/svg/top-right.svg";
+import { ReactComponent as BottomRight } from "../../assets/svg/bottom-right.svg";
+import { ReactComponent as BottomLeft } from "../../assets/svg/bottom-left.svg";
 
 const QUESTIONS = "questions"; // Name of the event
 const SELECTED_ASSUMPTION = "SelectedAssumption";
 
-const SOCKET_SERVER_URL = window.location.origin;
+// const SOCKET_SERVER_URL = window.location.origin;
 
-// const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const AssumptionQuestion = (props) => {
   const socketRef = useRef();
@@ -63,6 +68,8 @@ const AssumptionQuestion = (props) => {
     };
   }, [roomId, showQuestion, currentQuestion]);
 
+  console.log(currentQuestion);
+
   return (
     <div>
       <div className="w-10/12 pt-6 mx-auto mt-1">
@@ -106,6 +113,69 @@ const AssumptionQuestion = (props) => {
           </AnimatePresence>
         </div>
       </div>
+      {currentQuestion === 3 ? (
+        <div
+          className={`  box-shadow-timer-button  fixed w-1/4 p-5 border-2 border-black rounded-lg transform -translate-x-1/2 left-1/2 bottom-20 bg-white m-2 z-50`}
+        >
+          <p className="text-3xl font-bold text-center font-poppins">
+            Genoeg vragen beantwoord?
+          </p>
+          <motion.div
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            className="w-10/12 mx-auto text-xs font-normal font-poppin"
+          >
+            <div className="flex w-full mt-5">
+              <button
+                onClick={() => {}}
+                className="p-2 mx-auto font-medium bg-gray-100 border-2 border-black rounded-lg w-28 box-shadow-timer-button font-poppins"
+              >
+                Volgende vraag
+              </button>
+              <Link
+                to={{
+                  pathname: `/${roomId}/reflect`,
+                }}
+                className="p-2 mx-auto font-medium text-center bg-yellow-100 border-2 border-black rounded-lg  w-28 box-shadow-timer-button font-poppins"
+              >
+                Naar reflecteren
+              </Link>
+            </div>
+          </motion.div>
+          <div className="relative">
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="fixed z-50 -left-10 bottom-40"
+            >
+              <TopLeft></TopLeft>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="fixed z-50 -right-10 bottom-40"
+            >
+              <TopRight></TopRight>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="fixed z-50 -right-10 -bottom-5"
+            >
+              <BottomRight></BottomRight>
+            </motion.div>
+            <motion.div
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              className="fixed z-50 -left-10 -bottom-5"
+            >
+              <BottomLeft></BottomLeft>
+            </motion.div>
+          </div>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

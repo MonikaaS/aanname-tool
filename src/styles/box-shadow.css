@@ -30,3 +30,19 @@
 .box-shadow-card-q:hover{
  box-shadow: -9px 6px 0px 0px #4f46e5; 
 }
+
+.box-shadow-timer{
+ background-color: #ece9e4;
+ transition: all 0.2s ease-in-out;
+}
+
+.box-shadow-timer-button{
+ box-shadow: -4px 4px 0px 0px #686868; 
+ transition: all 0.2s ease-in-out;
+}
+
+.box-shadow-timer-button:hover,
+.box-shadow-timer-button:focus{
+ box-shadow: -2px 2px 0px 0px #686868; 
+ transition: all 0.2s ease-in-out;
+}

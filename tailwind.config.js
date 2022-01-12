@@ -27,9 +27,11 @@ module.exports = {
     },
   },
   variants: {
-    extend: { zIndex: ["hover", "active"] },
-    backgroundColor: ["active"],
-    borderColor: ["active"],
+    extend: {
+      zIndex: ["hover", "active"],
+      backgroundColor: ["active", "hover", "focus"],
+      borderColor: ["active", "hover", "focus"],
+    },
   },
   plugins: [],
 };
