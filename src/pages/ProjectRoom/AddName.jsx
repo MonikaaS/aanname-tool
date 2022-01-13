@@ -24,9 +24,7 @@ const AddName = () => {
   return (
     <div className="relative grid w-full grid-cols-1 gap-2 md:grid-cols-2 ">
       <Modal></Modal>
-      <div
-        className={`relative ${haveName ? "hidden" : ""} text-center w-full`}
-      >
+      <div className={`relative ${haveName ? "hidden" : ""} w-full`}>
         <div className="relative w-full mx-auto md:w-1/2">
           <motion.h1
             animate={{ y: [0, -10], opacity: [0, 1] }}
@@ -94,11 +92,20 @@ const AddName = () => {
         <motion.div
           animate={{ y: [0, -10], opacity: [0, 1] }}
           transition={{ ease: "easeOut", duration: 0.5, delay: 0.7 }}
-          className={`hover-box my-20 relative w-8/12 mx-auto text-sm md:text-lg font-medium font-poppins`}
+          className="w-8/12 mx-auto mt-20"
+        >
+          <label className="block w-full mr-auto text-xs font-medium font-poppin">
+            Deel de link met deelnemers:
+          </label>
+        </motion.div>
+        <motion.div
+          animate={{ y: [0, -10], opacity: [0, 1] }}
+          transition={{ ease: "easeOut", duration: 0.5, delay: 0.7 }}
+          className={`mb-20 mt-2 hover-box relative w-8/12 mx-auto text-sm md:text-lg font-medium font-poppins`}
         >
           <input
             value={window.location.href}
-            placeholder="Wat is je naam?"
+            placeholder="Kopieer link"
             className={` ${
               haveName ? "hidden" : ""
             } cursor-pointer box-shadow p-6 font-poppins font-normal text-sm md:text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none active:border-bg-gray-400 active:bg-gray-400`}
@@ -111,6 +118,7 @@ const AddName = () => {
           </button>
         </motion.div>
         <motion.div
+          className="text-center"
           animate={{ y: [0, -10], opacity: [0, 1] }}
           transition={{ ease: "easeOut", duration: 0.5, delay: 0.7 }}
         >
