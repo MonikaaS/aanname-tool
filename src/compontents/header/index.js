@@ -11,7 +11,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed top-10 right-10">
+      <div className="absolute top-10 right-10">
         <Users></Users>
       </div>
       <div

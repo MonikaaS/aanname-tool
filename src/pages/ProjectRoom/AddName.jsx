@@ -104,8 +104,8 @@ const AddName = () => {
           className={`mb-20 mt-2 hover-box relative w-8/12 mx-auto text-sm md:text-lg font-medium font-poppins`}
         >
           <input
-            value={window.location.href}
-            placeholder="Kopieer link"
+            placeholder={window.location.href}
+            onClick={() => navigator.clipboard.writeText(window.location.href)}
             className={` ${
               haveName ? "hidden" : ""
             } cursor-pointer box-shadow p-6 font-poppins font-normal text-sm md:text-lg w-full h-10 pl-3 pr-8 placeholder-black border-black border-2 rounded-lg focus:outline-none active:border-bg-gray-400 active:bg-gray-400`}

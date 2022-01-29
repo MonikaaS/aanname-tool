@@ -5,8 +5,8 @@ import socketIOClient from "socket.io-client";
 const RECEIVE_POSITION = "ReceivePosition"; // Name of the event
 const ALL_ASSUMPTIONS = "AllAssumptions"; // Name of the event
 
-const SOCKET_SERVER_URL = window.location.origin;
-// const SOCKET_SERVER_URL = "http://localhost:4000";
+// const SOCKET_SERVER_URL = window.location.origin;
+const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const DraggableComponent = (props) => {
   const roomId = props.roomId;
@@ -114,12 +114,18 @@ const DraggableComponent = (props) => {
             ref={nodeRef}
             onStop={handleDrag}
             position={{
-              x: assumption.xPosition * (width / assumption.screenwidth),
-              y: assumption.yPosition * (height / assumption.screenheight),
+              x:
+                assumption.xPosition === 0
+                  ? assumption.xPosition
+                  : assumption.xPosition * (width / assumption.screenwidth),
+              y:
+                assumption.yPosition === 0
+                  ? assumption.yPosition
+                  : assumption.yPosition * (height / assumption.screenheight),
             }}
             defaultPosition={{
-              x: assumption.xPosition * (width / assumption.screenwidth),
-              y: assumption.yPosition * (height / assumption.screenheight),
+              x: assumption.xPosition,
+              y: assumption.yPosition,
             }}
           >
             <div
