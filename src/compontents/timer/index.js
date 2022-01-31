@@ -10,8 +10,9 @@ import { ReactComponent as BottomLeft } from "../../assets/svg/bottom-left.svg";
 const SEND_TIME = "SendTime"; // Name of the event
 const ADD_TIME = "AddTime";
 const REMOVE_TIME = "RemoveTime";
-// const SOCKET_SERVER_URL = window.location.origin;
-const SOCKET_SERVER_URL = "http://localhost:4000";
+const SOCKET_SERVER_URL = window.location.origin;
+
+// const SOCKET_SERVER_URL = "http://localhost:4000";
 
 const Timer = (props) => {
   const roomId = props.roomId;
