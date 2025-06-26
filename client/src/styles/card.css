@@ -1,0 +1,24 @@
+.assumption-card:first-of-type {
+  position: absolute;
+  left: 1.5rem;
+  bottom: 5rem;
+}
+
+.assumption-card:nth-child(2) {
+  position: absolute;
+  left: 2rem;
+  bottom: 5rem;
+}
+
+.assumption-card {
+  position: absolute;
+  left: 2.5rem;
+  bottom: 5rem;
+}
+
+.assumption-card-last {
+  position: absolute;
+  left: 2.5rem;
+  bottom: 5rem;
+  background-color: #ece9e4;
+}
