@@ -1,70 +1,256 @@
-# Getting Started with Create React App
+# Assumption Tool - Refactored ✨
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A collaborative UX workshop tool for exploring and challenging assumptions in team environments.
 
-## Available Scripts
+## 🚀 What's New
 
-In the project directory, you can run:
+### ✅ Completed Refactoring
 
-### `npm start`
+- **Modern Stack**: Migrated from CRA to Vite + TypeScript
+- **Monorepo Structure**: Separated client and server with workspaces
+- **English Translation**: All UI text converted from Dutch to English
+- **Improved Timer**: Fixed socket synchronization issues
+- **Better Architecture**: Context API, custom hooks, proper error handling
+- **Type Safety**: Full TypeScript implementation with shared types
+- **Modern Styling**: Updated to Tailwind CSS v3 with custom design system
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 🏗️ Project Structure
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+assumption-tool/
+├── client/                    # React + Vite + TypeScript frontend
+│   ├── src/
+│   │   ├── components/       # React components
+│   │   ├── contexts/         # React contexts
+│   │   ├── hooks/           # Custom hooks
+│   │   ├── pages/           # Page components
+│   │   ├── types/           # TypeScript types
+│   │   ├── utils/           # Utility functions
+│   │   └── assets/          # Static assets (SVGs, etc.)
+│   ├── public/              # Public assets
+│   └── dist/               # Built client (generated)
+├── server/                  # Express + Socket.io + TypeScript backend
+│   ├── src/
+│   │   └── server.ts       # Main server file
+│   └── dist/               # Built server (generated)
+├── shared/                 # Shared types and utilities
+│   └── types/              # TypeScript definitions
+└── src/                   # OLD CODE (to be removed)
+```
 
-### `npm test`
+## 🛠️ Development
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js 18+ or 20+
+- npm 9+
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Quick Start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **Install dependencies**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   npm install
+   ```
 
-### `npm run eject`
+2. **Start development servers**
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```bash
+   npm run dev
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+   This runs both client (port 3000) and server (port 4000) concurrently.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+3. **Or run individually**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+   ```bash
+   # Client only
+   npm run client:dev
 
-## Learn More
+   # Server only
+   npm run server:dev
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Available Scripts
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+# Development
+npm run dev              # Start both client and server
+npm run client:dev       # Start client dev server
+npm run server:dev       # Start server dev server
 
-### Code Splitting
+# Building
+npm run build           # Build client for production
+npm run client:build    # Build client only
+npm run server:build    # Build server only
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+# Testing
+npm run test            # Run client tests
+npm run test:ui         # Run tests with UI
 
-### Analyzing the Bundle Size
+# Linting & Type Checking
+npm run lint            # Lint both client and server
+npm run type-check      # Type check both client and server
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🎯 How to Use (UX Workshop)
 
-### Making a Progressive Web App
+### 1. Create a Project
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Go to the home page
+- Enter a project name (e.g., "Mobile App Redesign")
+- Click "Create Project"
 
-### Advanced Configuration
+### 2. Add Team Members
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Share the project URL with your team
+- Each member enters their name to join
 
-### Deployment
+### 3. Workshop Phases
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+#### **Phase 1: Assumptions Brainstorming**
 
-### `npm run build` fails to minify
+- Team members add assumptions about the problem
+- Examples: "Users prefer mobile over desktop", "Price is the main concern"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+#### **Phase 2: Critical Analysis**
+
+- Select assumptions to examine
+- Use critique questions:
+  - What evidence supports this assumption?
+  - What if the opposite were true?
+  - How could we test this assumption?
+  - What biases might influence this assumption?
+
+#### **Phase 3: Reflection & Action**
+
+- Drag assumptions around to group them
+- Identify which assumptions need validation
+- Plan research or testing activities
+
+### 4. Timer Features
+
+- Set time limits for each phase
+- Add or remove time as needed
+- Visual countdown keeps everyone focused
+
+## 🔧 Technical Features
+
+### Improved Timer System
+
+- **Fixed**: Timer synchronization across multiple clients
+- **Added**: Robust error handling for network issues
+- **Improved**: Better UI feedback and controls
+
+### Real-time Collaboration
+
+- Socket.io for instant updates
+- Drag & drop assumption positioning
+- Live user presence indicators
+
+### Enhanced UX
+
+- Responsive design for mobile and desktop
+- Smooth animations with Framer Motion
+- Accessible keyboard navigation
+- Error boundaries for graceful failures
+
+## 🚚 Deployment
+
+### Render.com (Recommended)
+
+1. **Build the project**
+
+   ```bash
+   npm run build
+   ```
+
+2. **Deploy to Render**
+   - Connect your GitHub repository
+   - Set build command: `npm run build`
+   - Set start command: `npm start --workspace=server`
+   - Set Node version: `18` or `20`
+
+### Environment Variables
+
+```bash
+# Server
+PORT=4000
+CLIENT_URL=https://your-app.render.com
+NODE_ENV=production
+
+# Client (built-time)
+VITE_SOCKET_URL=https://your-app.render.com
+```
+
+## 📚 Architecture Decisions
+
+### Why Vite over Next.js?
+
+- **Faster development**: 3-10x faster dev server
+- **Minimal migration**: Keep existing React Router setup
+- **Better for real-time**: No SSR complications with Socket.io
+- **Simpler deployment**: One server handles both client and Socket.io
+
+### Why Monorepo?
+
+- **Shared types**: Single source of truth for data structures
+- **Easier development**: Run both client and server together
+- **Better coordination**: Changes to API and client stay in sync
+
+### Why Context + Hooks over Redux?
+
+- **Simpler setup**: Less boilerplate for this use case
+- **Better TypeScript**: Easier to type with Context API
+- **Focused state**: Room-specific state management
+
+## 🔄 Migration Status
+
+### ✅ Completed
+
+- [x] Basic project structure (Vite + TypeScript)
+- [x] Home page with English translation
+- [x] Server refactoring with improved timer logic
+- [x] Type definitions and shared interfaces
+- [x] Build system and development setup
+- [x] SVG assets integration
+- [x] Error boundaries and basic error handling
+
+### 🚧 In Progress
+
+- [ ] Complete ProjectRoom component
+- [ ] Socket.io hooks and real-time features
+- [ ] Drag and drop functionality
+- [ ] All workshop phases (Setup, Critique, Reflection)
+- [ ] Timer component integration
+- [ ] User management components
+
+### 📋 Todo
+
+- [ ] Testing setup with Vitest
+- [ ] User feedback and toast notifications
+- [ ] Accessibility improvements
+- [ ] Performance optimizations
+- [ ] Documentation for components
+- [ ] Deployment configuration
+
+## 🤝 Contributing
+
+1. **Component Development**: Use TypeScript and follow the existing patterns
+2. **Styling**: Use Tailwind CSS classes and the design system
+3. **State Management**: Use the Context API and custom hooks
+4. **Testing**: Add tests for new features (setup in progress)
+
+## 🐛 Known Issues
+
+- Timer synchronization may have edge cases with network interruptions
+- Drag and drop not yet responsive on mobile
+- Need to add proper loading states for better UX
+
+## 📞 Support
+
+For questions about the refactoring or UX workshop usage, check the git history or create an issue.
+
+---
+
+**Ready for your UX workshop!** 🎨✨

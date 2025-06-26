@@ -1,0 +1,19 @@
+services:
+  # A static site for our frontend
+  - type: web
+    name: assumption-tool-client
+    env: static
+    # Relative to the repo root
+    rootDir: client
+    buildCommand: npm install && npm run build
+    # The folder that contains our static files
+    staticPublishPath: dist
+
+  # A web service for our backend
+  - type: web
+    name: assumption-tool-server
+    env: node
+    # Relative to the repo root
+    rootDir: server
+    buildCommand: npm install
+    startCommand: node src/server.js
