@@ -93,7 +93,7 @@ const Reflect: React.FC<ReflectProps> = ({
           <Draggable
             key={assumption.id}
             onStop={(e, data) => onStop(e, data, assumption)}
-            defaultPosition={{
+            position={{
               x: assumption.xPosition
                 ? assumption.xPosition * window.innerWidth
                 : 0,

@@ -245,7 +245,10 @@ io.on('connection', (socket) => {
           assumption.screenWidth = data.screenWidth;
           assumption.screenHeight = data.screenHeight;
 
-          io.to(roomId).emit(SocketEvents.ALL_ASSUMPTIONS, room.assumptions);
+          io.to(roomId).emit(
+            SocketEvents.UPDATE_ASSUMPTION_POSITION,
+            assumption
+          );
         }
       } catch (error) {
         console.error('Error updating assumption position:', error);
