@@ -71,6 +71,9 @@ const AssumptionMessage: React.FC<AssumptionMessageProps> = ({
     },
   };
 
+  const selectedAssumptions = assumptions.filter((a) => a.isSelected);
+  const unselectedAssumptions = assumptions.filter((a) => !a.isSelected);
+
   return (
     <div className="w-10/12 pt-6 mx-auto">
       {location === 'criticize' ? (
@@ -147,63 +150,102 @@ const AssumptionMessage: React.FC<AssumptionMessageProps> = ({
         </div>
       )}
 
-      {(location === 'criticize' || location === 'setup') && (
-        <div className="container transition-all flex-wrap w-full p-5 mb-5 rounded-md md:flex">
-          {location === 'criticize' && (
-            <p
-              className={`${
-                hasSelected ? 'hidden' : ''
-              } text-xs font-poppins text-center w-full my-10`}
-            >
+      {location === 'criticize' && (
+        <div className="w-full p-5 mb-5 rounded-md min-h-[240px]">
+          {selectedAssumptions.length > 0 ? (
+            <div className="flex flex-wrap justify-center">
+              {selectedAssumptions.map((message) => (
+                <motion.div
+                  key={message.id}
+                  ref={messageRef}
+                  variants={item}
+                  initial="hidden"
+                  animate="visible"
+                  whileHover={{
+                    scale: 1.05,
+                  }}
+                  onClick={() => {
+                    selectAssumption(message.id, !message.isSelected);
+                  }}
+                  className={`${
+                    message.isSelected
+                      ? 'border-black box-shadow-card-selected'
+                      : 'border-black box-shadow-card'
+                  } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 rounded-md cursor-pointer item font-poppins`}
+                >
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      deleteAssumption(message.id);
+                    }}
+                    className="absolute top-0 right-0 w-8 h-8 text-center text-black rounded-full hover:bg-red-200"
+                  >
+                    ×
+                  </button>
+                  <p className="overflow-hidden message-item">{message.text}</p>
+                  <div className="absolute bottom-2 right-2 text-xs text-gray-600">
+                    {message.authorName}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <p className="w-full my-10 text-xs text-center font-poppins">
               Select assumptions below to discuss during the critique questions
             </p>
           )}
-          {assumptions.length > 0 ? (
-            assumptions.map((message) => (
-              <motion.div
-                key={message.id}
-                ref={messageRef}
-                variants={item}
-                initial="hidden"
-                animate="visible"
-                whileHover={{
-                  scale: 1.05,
-                }}
-                onClick={() => {
-                  selectAssumption(message.id, !message.isSelected);
-                }}
-                className={`${
-                  message.isSelected
-                    ? 'border-black box-shadow-card-selected'
-                    : 'border-black box-shadow-card'
-                } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 rounded-md cursor-pointer item font-poppins`}
-              >
-                <button
-                  onClick={(event) => {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    deleteAssumption(message.id);
+        </div>
+      )}
+
+      {(location === 'criticize' || location === 'setup') && (
+        <div className="container flex-wrap w-full p-5 mb-5 rounded-md md:flex transition-all">
+          {unselectedAssumptions.length > 0
+            ? unselectedAssumptions.map((message) => (
+                <motion.div
+                  key={message.id}
+                  ref={messageRef}
+                  variants={item}
+                  initial="hidden"
+                  animate="visible"
+                  whileHover={{
+                    scale: 1.05,
                   }}
-                  className="absolute top-0 right-0 w-8 h-8 text-center text-black rounded-full hover:bg-red-200"
+                  onClick={() => {
+                    selectAssumption(message.id, !message.isSelected);
+                  }}
+                  className={`${
+                    message.isSelected
+                      ? 'border-black box-shadow-card-selected'
+                      : 'border-black box-shadow-card'
+                  } relative w-48 h-48 p-4 m-2 font-medium text-black bg-yellow-100 border-2 rounded-md cursor-pointer item font-poppins`}
                 >
-                  ×
-                </button>
-                <p className="message-item overflow-hidden">{message.text}</p>
-                <div className="absolute bottom-2 right-2 text-xs text-gray-600">
-                  {message.authorName}
+                  <button
+                    onClick={(event) => {
+                      event.preventDefault();
+                      event.stopPropagation();
+                      deleteAssumption(message.id);
+                    }}
+                    className="absolute top-0 right-0 w-8 h-8 text-center text-black rounded-full hover:bg-red-200"
+                  >
+                    ×
+                  </button>
+                  <p className="message-item overflow-hidden">{message.text}</p>
+                  <div className="absolute bottom-2 right-2 text-xs text-gray-600">
+                    {message.authorName}
+                  </div>
+                </motion.div>
+              ))
+            : location === 'setup' && (
+                <div className="w-full text-center">
+                  <h1 className="w-full pt-6 mx-auto mt-5 mb-2 text-xl font-bold text-indigo-600">
+                    There are no assumptions yet
+                  </h1>
+                  <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
+                    Start by drafting assumptions
+                  </h2>
                 </div>
-              </motion.div>
-            ))
-          ) : (
-            <div className="w-full text-center">
-              <h1 className="w-full pt-6 mx-auto mt-5 mb-2 text-xl font-bold text-indigo-600">
-                There are no assumptions yet
-              </h1>
-              <h2 className="w-10/12 mx-auto text-xs font-light font-poppins">
-                Start by drafting assumptions
-              </h2>
-            </div>
-          )}
+              )}
         </div>
       )}
     </div>
